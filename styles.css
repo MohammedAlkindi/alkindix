@@ -1,0 +1,190 @@
+/* =============================
+   PhotographyX — World-Class Minimalist CSS
+   Clean, editorial, responsive
+============================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg: #0b0b0b;
+  --text: #e7e7e7;
+  --accent: #ffffff;
+  --muted: #555;
+  --radius: 10px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  padding-top: 70px;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3%;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+header h1 {
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  transition: 0.25s ease;
+}
+
+nav a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* HERO */
+#hero {
+  text-align: center;
+  padding: 7rem 3% 4rem;
+}
+
+#hero h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+#hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  opacity: 0.8;
+  font-size: 1rem;
+}
+
+/* GALLERY GRID */
+.gallery {
+  padding: 2rem 3% 5rem;
+  display: grid;
+  grid-gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text);
+  opacity: 0.8;
+  transition: 0.25s;
+}
+
+#closeBtn:hover {
+  opacity: 1;
+}
+
+#lightbox-caption {
+  max-width: 700px;
+  text-align: center;
+  opacity: 0.75;
+  font-size: 0.95rem;
+}
+
+/* ABOUT */
+.about {
+  padding: 4rem 3%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  opacity: 0.8;
+}
+
+/* FOOTER */
+footer {
+  padding: 3rem 3%;
+  text-align: center;
+  opacity: 0.65;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  #hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
