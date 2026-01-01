@@ -1,25 +1,28 @@
 // =========================================================
-// PhotographyX — Gallery Controller
+// PhotographyX — Gallery Controller (Dynamic)
 // =========================================================
 
-// Image arrays with new naming convention
-const horizontalImages = [
-  { src: 'images/h1.jpg', caption: 'Terraced order at dusk' },
-  { src: 'images/h2.jpg', caption: 'Geometry across hillsides' },
-  { src: 'images/h3.jpg', caption: 'Light mapping structure' },
-  { src: 'images/h4.jpg', caption: 'Patterns in architecture' },
-  { src: 'images/h5.jpg', caption: 'Horizon lines and symmetry' },
-  { src: 'images/h6.jpg', caption: 'Natural tessellation' }
-];
+// Configuration - Update these captions or leave empty for no captions
+const imageCaptions = {
+  // Horizontal images
+  'h1': 'Terraced order at dusk',
+  'h2': 'Geometry across hillsides',
+  'h3': 'Light mapping structure',
+  // Add more as needed, or leave empty to show no caption
+  
+  // Vertical images
+  'v1': 'Human scale in symmetry',
+  'v2': 'Vertical tension in light',
+  'v3': 'Silence between forms',
+  // Add more as needed
+};
 
-const verticalImages = [
-  { src: 'images/v1.jpg', caption: 'Human scale in symmetry' },
-  { src: 'images/v2.jpg', caption: 'Vertical tension in light' },
-  { src: 'images/v3.jpg', caption: 'Silence between forms' },
-  { src: 'images/v4.jpg', caption: 'Ascending structures' },
-  { src: 'images/v5.jpg', caption: 'Shadow and repetition' },
-  { src: 'images/v6.jpg', caption: 'Compressed perspectives' }
-];
+// Maximum number of images to check (adjust if you have more)
+const MAX_IMAGES = 50;
+
+// Arrays to store loaded images
+let horizontalImages = [];
+let verticalImages = [];
 
 // DOM elements
 const horizontalGallery = document.querySelector('.horizontal-gallery');
@@ -29,11 +32,65 @@ const lightboxImg = document.getElementById('lightbox-img');
 const lightboxCaption = document.getElementById('lightbox-caption');
 const closeBtn = document.getElementById('closeBtn');
 
+// Check if an image exists
+function imageExists(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
+
+// Load all horizontal images
+async function loadHorizontalImages() {
+  const images = [];
+  
+  for (let i = 1; i <= MAX_IMAGES; i++) {
+    const filename = `h${i}`;
+    const src = `images/${filename}.jpg`;
+    
+    if (await imageExists(src)) {
+      images.push({
+        src: src,
+        caption: imageCaptions[filename] || ''
+      });
+    } else {
+      // Stop checking once we hit a missing image
+      break;
+    }
+  }
+  
+  return images;
+}
+
+// Load all vertical images
+async function loadVerticalImages() {
+  const images = [];
+  
+  for (let i = 1; i <= MAX_IMAGES; i++) {
+    const filename = `v${i}`;
+    const src = `images/${filename}.jpg`;
+    
+    if (await imageExists(src)) {
+      images.push({
+        src: src,
+        caption: imageCaptions[filename] || ''
+      });
+    } else {
+      // Stop checking once we hit a missing image
+      break;
+    }
+  }
+  
+  return images;
+}
+
 // Create image element with click handler
 function createImageElement(image) {
   const img = document.createElement('img');
   img.src = image.src;
-  img.alt = image.caption;
+  img.alt = image.caption || 'Photography';
   img.loading = 'lazy';
 
   img.addEventListener('click', () => {
@@ -47,6 +104,19 @@ function createImageElement(image) {
 function populateGallery(images, container) {
   if (!container) return;
   
+  // Clear existing content
+  container.innerHTML = '';
+  
+  if (images.length === 0) {
+    const placeholder = document.createElement('p');
+    placeholder.textContent = 'No images found';
+    placeholder.style.opacity = '0.5';
+    placeholder.style.textAlign = 'center';
+    placeholder.style.gridColumn = '1 / -1';
+    container.appendChild(placeholder);
+    return;
+  }
+  
   images.forEach(image => {
     const imgEl = createImageElement(image);
     container.appendChild(imgEl);
@@ -56,8 +126,8 @@ function populateGallery(images, container) {
 // Open lightbox
 function openLightbox(image) {
   lightboxImg.src = image.src;
-  lightboxImg.alt = image.caption;
-  lightboxCaption.textContent = image.caption;
+  lightboxImg.alt = image.caption || 'Photography';
+  lightboxCaption.textContent = image.caption || '';
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -74,8 +144,30 @@ function closeLightbox() {
 }
 
 // Initialize galleries
-populateGallery(horizontalImages, horizontalGallery);
-populateGallery(verticalImages, verticalGallery);
+async function initGalleries() {
+  // Show loading state
+  if (horizontalGallery) {
+    horizontalGallery.innerHTML = '<p style="opacity: 0.5; text-align: center; grid-column: 1 / -1;">Loading...</p>';
+  }
+  if (verticalGallery) {
+    verticalGallery.innerHTML = '<p style="opacity: 0.5; text-align: center; grid-column: 1 / -1;">Loading...</p>';
+  }
+  
+  // Load images
+  horizontalImages = await loadHorizontalImages();
+  verticalImages = await loadVerticalImages();
+  
+  // Populate galleries
+  populateGallery(horizontalImages, horizontalGallery);
+  populateGallery(verticalImages, verticalGallery);
+  
+  // Set up image observer after images are loaded
+  setTimeout(() => {
+    document.querySelectorAll('.gallery img').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }, 100);
+}
 
 // Close button
 if (closeBtn) {
@@ -196,11 +288,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-  highlightNavOnScroll();
-});
-
 // =========================================================
 // Image Loading Animation
 // =========================================================
@@ -226,9 +313,11 @@ const imageObserver = new IntersectionObserver((entries) => {
   rootMargin: '50px'
 });
 
-// Observe all gallery images
-setTimeout(() => {
-  document.querySelectorAll('.gallery img').forEach(img => {
-    imageObserver.observe(img);
-  });
-}, 100);
+// =========================================================
+// Initialize Everything
+// =========================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  initGalleries();
+  highlightNavOnScroll();
+});
