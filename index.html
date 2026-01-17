@@ -29,8 +29,10 @@
       </button>
 
       <nav class="nav__links">
-        <a href="#horizontal">Horizontal</a>
-        <a href="#vertical">Vertical</a>
+        <a href="#featured">Featured</a>
+        <a href="#horizontal">Collections</a>
+        <a href="#vertical">Portraits</a>
+        <a href="#journal">Journal</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -39,13 +41,92 @@
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <div class="container">
+    <div class="container hero__grid">
       <div class="hero__content">
+        <p class="eyebrow">Visual systems studio</p>
         <h1 class="hero__title">Visual Systems</h1>
         <p class="hero__subtitle">
           Observing structure hidden in plain sight. From remote villages to terraced hillsides —
           exploring natural order, computational beauty, and human geometry.
         </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#horizontal">View collections</a>
+          <a class="btn btn--ghost" href="#contact">Commission a project</a>
+        </div>
+        <div class="hero__stats">
+          <div>
+            <span class="stat__value">12+</span>
+            <span class="stat__label">Global studies</span>
+          </div>
+          <div>
+            <span class="stat__value">38</span>
+            <span class="stat__label">Editorial features</span>
+          </div>
+          <div>
+            <span class="stat__value">5</span>
+            <span class="stat__label">Museum commissions</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__panel">
+        <div class="hero__panel-card">
+          <p class="panel__eyebrow">Featured series</p>
+          <h3>Terraced Order</h3>
+          <p class="muted">
+            A study of altitude, agriculture, and human geometry across three continents.
+          </p>
+          <div class="panel__meta">
+            <span>2025</span>
+            <span>48 frames</span>
+            <span>Medium format</span>
+          </div>
+        </div>
+        <div class="hero__panel-grid">
+          <div class="panel__tile panel__tile--one"></div>
+          <div class="panel__tile panel__tile--two"></div>
+          <div class="panel__tile panel__tile--three"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section id="featured" class="section featured-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>Featured Projects</h2>
+        </div>
+        <p class="section-lead">
+          World-class storytelling for cultural institutions, design studios, and research labs.
+        </p>
+      </div>
+      <div class="featured-grid">
+        <article class="featured-card">
+          <div class="featured-media featured-media--a"></div>
+          <div class="featured-body">
+            <h3>Atlas of Light</h3>
+            <p class="muted">A visual survey of solar architecture from Morocco to Japan.</p>
+            <span class="tag">Exhibition</span>
+          </div>
+        </article>
+        <article class="featured-card">
+          <div class="featured-media featured-media--b"></div>
+          <div class="featured-body">
+            <h3>Human Lattice</h3>
+            <p class="muted">Portraits that trace symmetry in urban design and ritual.</p>
+            <span class="tag">Editorial</span>
+          </div>
+        </article>
+        <article class="featured-card">
+          <div class="featured-media featured-media--c"></div>
+          <div class="featured-body">
+            <h3>Quiet Geometries</h3>
+            <p class="muted">Architectural studies in negative space, light, and silence.</p>
+            <span class="tag">Commission</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -54,6 +135,7 @@
   <section id="horizontal" class="gallery-section">
     <div class="container">
       <h2 class="section-title">Horizontal Studies</h2>
+      <p class="section-subtitle">Landscape narratives built from fieldwork, aerial geometry, and light.</p>
       <div class="gallery horizontal-gallery">
         <!-- JS injects horizontal images -->
       </div>
@@ -64,6 +146,7 @@
   <section id="vertical" class="gallery-section">
     <div class="container">
       <h2 class="section-title">Vertical Studies</h2>
+      <p class="section-subtitle">Portrait sequences exploring the rhythm of human form and space.</p>
       <div class="gallery vertical-gallery">
         <!-- JS injects vertical images -->
       </div>
@@ -79,10 +162,41 @@
     </div>
   </div>
 
+  <!-- JOURNAL -->
+  <section id="journal" class="section journal-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Notes from the field</p>
+          <h2>Journal</h2>
+        </div>
+        <p class="section-lead">Insights on process, location scouting, and the geometry of light.</p>
+      </div>
+      <div class="journal-grid">
+        <article class="journal-card">
+          <p class="journal-date">May 2025</p>
+          <h3>Mapping Silence in High Altitudes</h3>
+          <p class="muted">Creating a visual system for remote villages through drone studies.</p>
+        </article>
+        <article class="journal-card">
+          <p class="journal-date">April 2025</p>
+          <h3>Human Scale, Monumental Light</h3>
+          <p class="muted">Why north-facing studios become the most faithful collaborators.</p>
+        </article>
+        <article class="journal-card">
+          <p class="journal-date">March 2025</p>
+          <h3>Designing a 42-Frame Narrative</h3>
+          <p class="muted">Balancing composition with story across editorial commissions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about" class="section section--about">
     <div class="container">
       <div class="about-card">
+        <p class="eyebrow">Studio profile</p>
         <h2>About PhotographyX</h2>
         <p>
           An exploration into the structural language of our world — light, geometry,
@@ -92,12 +206,53 @@
         <p class="muted">
           Part of the Alkindi network of projects exploring systems, computation, and visual thinking.
         </p>
+        <div class="about-grid">
+          <div>
+            <h3>Practice</h3>
+            <p class="muted">Documentary, editorial, and institutional commissions.</p>
+          </div>
+          <div>
+            <h3>Recognition</h3>
+            <p class="muted">ICP, D&AD, and Aperture shortlist selections.</p>
+          </div>
+          <div>
+            <h3>Availability</h3>
+            <p class="muted">Now booking for 2025 residencies and exhibitions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container contact-card">
+      <div>
+        <p class="eyebrow">Collaborate</p>
+        <h2>Commission a world-class visual story</h2>
+        <p class="section-lead">
+          Share your brief, location, and timing. We respond within 48 hours with a tailored proposal.
+        </p>
+      </div>
+      <div class="contact-details">
+        <div>
+          <p class="muted">Email</p>
+          <a href="mailto:studio@photographyx.com">studio@photographyx.com</a>
+        </div>
+        <div>
+          <p class="muted">Based in</p>
+          <p>New York · Lisbon · Kyoto</p>
+        </div>
+        <div>
+          <p class="muted">Representation</p>
+          <p>Available worldwide</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer id="contact" class="footer">
+  <footer class="footer">
     <div class="container footer__inner">
       <span class="muted">© 2025 PhotographyX</span>
       <nav class="footer__links">
