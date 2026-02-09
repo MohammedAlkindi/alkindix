@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>ClaudeX</title>
+  <meta name="description" content="ClaudeX is infrastructure for building production-grade LLM applications with streaming, validation, and security controls."/>
+
+  <link rel="canonical" href="https://alkindix.com/claudex"/>
+
+  <meta property="og:title" content="ClaudeX"/>
+  <meta property="og:description" content="Infrastructure for production-grade LLM applications. Streaming, validation, privacy safeguards, and security controls."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://alkindix.com/claudex"/>
+  <meta property="og:image" content="meta.jpg"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="ClaudeX"/>
+  <meta name="twitter:description" content="Infrastructure for production-grade LLM applications. Streaming, validation, privacy safeguards, and security controls."/>
+  <meta name="twitter:image" content="meta.jpg"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <link rel="icon" href="/favicon.ico"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <link rel="stylesheet" href="/styles.css"/>
+</head>
+
+<body>
+
+<header class="nav" role="banner">
+  <div class="container nav__inner">
+    <a class="brand" href="/" aria-label="Alkindi home">
+      <span class="brand__text">Alkindi</span>
+    </a>
+
+    <button class="nav__toggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav__links" role="navigation" aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#what">About Claude</a>
+      <a href="#principles">Design</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section id="top" class="section hero" aria-labelledby="hero-title">
+  <div class="container hero__wrap">
+    <h1 id="hero-title" class="hero__h1">ClaudeX</h1>
+    <p class="hero__sub">
+      A production oriented wrapper API for building LLM applications with real time streaming and security controls.
+      <br/>Built as infrastructure, not a prompt demo.
+    </p>
+    <div class="hero__cta">
+      <a class="btn btn--secondary" href="#work">See work</a>
+      <a class="btn btn--secondary" href="/">Back to AlkindiX</a>
+    </div>
+  </div>
+</section>
+
+<section id="overview" class="section" aria-labelledby="overview-title">
+  <div class="container">
+    <div class="card">
+      <h2 id="overview-title">Overview</h2>
+      <p>
+        ClaudeX is a Node.js backend that wraps a large language model API and exposes a streaming chat endpoint.
+        It focuses on production concerns like validation, rate limiting, privacy aware output handling, and logging.
+      </p>
+      <div class="muted">
+        <p><strong>Status</strong> Active and deployable</p>
+        <p><strong>Focus</strong> Streaming, security middleware, and extensible integration</p>
+        <p><strong>Use case</strong> A reliable backend layer for AI powered applications</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="what" class="section" aria-labelledby="what-title">
+  <div class="container">
+    <div class="card">
+      <h2 id="what-title">About Claude</h2>
+      <p>
+        Claude is a family of large language models used for generating and understanding text.
+        It supports streamed responses, which enables applications to display output incrementally instead of waiting for a full completion.
+      </p>
+      <p class="muted">
+        ClaudeX is not affiliated with Anthropic. This page documents an independent infrastructure project that integrates with an LLM provider through an API.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="principles" class="section" aria-labelledby="principles-title">
+  <div class="container">
+    <div class="card">
+      <h2 id="principles-title">Design</h2>
+
+      <h3>Core capabilities</h3>
+      <ul class="muted">
+        <li>Real time token streaming to clients</li>
+        <li>Strict request schema validation and normalization</li>
+        <li>Model allow listing and parameter clamping</li>
+        <li>Rate limiting and optional origin controls</li>
+        <li>Security headers and hardened middleware</li>
+        <li>Sanitized error handling and privacy safeguards</li>
+        <li>Request IDs and structured logging for observability</li>
+        <li>Abort handling when clients disconnect</li>
+      </ul>
+
+      <h3>Why this exists</h3>
+      <p class="muted">
+        Most LLM demos skip safety and reliability. ClaudeX treats the model as a dependency and builds the controls around it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section" aria-labelledby="work-title">
+  <div class="container">
+    <div class="card card--row">
+      <div>
+        <h2 id="work-title">Work</h2>
+        <p class="muted">
+          The full implementation, documentation, and deployment setup are available in the repository.
+        </p>
+      </div>
+      <div class="contact__actions" role="group" aria-label="work links">
+        <a class="btn btn--pill" href="https://github.com/Mohammed-coder-dev/ClaudeX" target="_blank" rel="noopener">See work</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Repository highlights</h3>
+      <ul class="muted">
+        <li>Express server with streaming endpoints</li>
+        <li>Security middleware and rate limiting</li>
+        <li>Validation logic and safe parameter bounds</li>
+        <li>Deployment configuration for production environments</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="card card--row">
+      <div>
+        <h2 id="contact-title">Contact</h2>
+        <p class="muted">For infrastructure review, collaboration, or integration discussions.</p>
+      </div>
+      <div class="contact__actions" role="group" aria-label="contact actions">
+        <a class="btn btn--pill" href="mailto:hello@alkindix.com">Email</a>
+        <a class="btn btn--pill" href="https://www.linkedin.com/in/alkindi-network/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <span class="muted">© 2026 Alkindi</span>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="#overview">Overview</a>
+      <a href="#what">About Claude</a>
+      <a href="#principles">Design</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

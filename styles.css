@@ -263,6 +263,14 @@ a:hover {
   max-width: 100%;
 }
 
+.hero__cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* =========================================================
    SECTIONS
 ========================================================= */
