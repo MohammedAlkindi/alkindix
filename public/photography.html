@@ -158,6 +158,23 @@
       letter-spacing: 0.1em;
     }
 
+    /* Legacy note */
+    .page-hero__legacy {
+      margin-top: 1.1rem;
+      font-size: 0.72rem;
+      font-family: "Space Mono", monospace;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    .page-hero__legacy a {
+      color: rgba(255,255,255,0.32);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .page-hero__legacy a:hover { color: rgba(255,255,255,0.58); }
+
     /* Contact strip */
     .contact-strip {
       padding: 4rem 0 6rem;
@@ -218,6 +235,12 @@
           A long-term study of structure, geometry, and light — from terraced hillsides to
           urban symmetry. Medium format. Fieldwork across three continents.
         </p>
+        <p class="page-hero__legacy">
+          Legacy archives →
+          <a href="https://photographyx.org" target="_blank" rel="noopener">photographyx.org</a>
+          &amp;
+          <a href="https://architectofsilence.com" target="_blank" rel="noopener">architectofsilence.com</a>
+        </p>
       </div>
     </div>
 
@@ -273,7 +296,8 @@
 
   <script src="/public/app.js"></script>
   <script>
-    // Gallery: probe which images exist then render
+    // Gallery: probe images in declaration order, fill pre-allocated slots progressively,
+    // then wire lightbox indices once all probes complete (preserves h1→h2→… display order).
     (function () {
       const IMAGES = [
         'h1','h2','h3','h4','h5','h6','h7','h8','h9','h10',
@@ -300,6 +324,15 @@
       let loaded = [];
       let current = 0;
       let pending = IMAGES.length;
+
+      // Pre-allocate one hidden slot per image to preserve declaration order.
+      const slots = IMAGES.map(() => {
+        const slot = document.createElement('div');
+        slot.style.display = 'none';
+        grid.appendChild(slot);
+        return slot;
+      });
+      const results = new Array(IMAGES.length).fill(null);
 
       function openLightbox(idx) {
         current = idx;
@@ -339,30 +372,25 @@
         if (e.key === 'ArrowRight') lbNext.click();
       });
 
-      function tryLoad(name) {
+      function tryLoad(name, i) {
         const src = '/images/' + name + '.jpg';
         const probe = new Image();
         probe.onload = function () {
-          const idx = loaded.length;
-          loaded.push({ src, alt: 'Photograph ' + name });
+          results[i] = { src, alt: 'Photograph ' + name };
 
-          const item = document.createElement('div');
-          item.className = 'gallery-item';
-          item.setAttribute('role', 'listitem');
-          item.tabIndex = 0;
-          item.setAttribute('aria-label', 'Open photograph ' + name);
+          const slot = slots[i];
+          slot.className = 'gallery-item';
+          slot.setAttribute('role', 'listitem');
 
           const img = document.createElement('img');
           img.src = src;
           img.alt = 'Photograph ' + name;
           img.loading = 'lazy';
           img.onload = () => img.classList.add('loaded');
-          img.onerror = () => img.classList.add('loaded'); // avoid stuck state
+          img.onerror = () => img.classList.add('loaded');
 
-          item.appendChild(img);
-          item.addEventListener('click', () => openLightbox(idx));
-          item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); } });
-          grid.appendChild(item);
+          slot.appendChild(img);
+          slot.style.display = '';
 
           checkDone();
         };
@@ -372,11 +400,28 @@
 
       function checkDone() {
         pending--;
-        if (pending <= 0) {
-          countEl.textContent = loaded.length + ' frame' + (loaded.length !== 1 ? 's' : '');
-          if (loaded.length === 0) {
-            grid.innerHTML = '<p class="muted" style="padding:3rem 0;">No images available yet.</p>';
+        if (pending > 0) return;
+
+        // All probes settled — build loaded[] in order and wire lightbox click handlers.
+        loaded = [];
+        slots.forEach((slot, i) => {
+          if (results[i]) {
+            const idx = loaded.length;
+            loaded.push(results[i]);
+            slot.tabIndex = 0;
+            slot.setAttribute('aria-label', 'Open photograph ' + IMAGES[i]);
+            slot.addEventListener('click', () => openLightbox(idx));
+            slot.addEventListener('keydown', e => {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); }
+            });
+          } else {
+            slot.remove(); // clean up empty placeholder
           }
+        });
+
+        countEl.textContent = loaded.length + ' frame' + (loaded.length !== 1 ? 's' : '');
+        if (loaded.length === 0) {
+          grid.innerHTML = '<p class="muted" style="padding:3rem 0;">No images available yet.</p>';
         }
       }
 
