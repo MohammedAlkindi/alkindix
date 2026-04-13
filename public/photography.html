@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>About — Alkindi</title>
-  <meta name="description" content="About Alkindi — systems, computation, photography, and thoughtful work."/>
+  <title>Photography — Alkindi</title>
+  <meta name="description" content="A long-term visual study of structure, geometry, and light across three continents."/>
+  <link rel="canonical" href="https://alkindix.com/photography"/>
+  <meta property="og:title" content="Photography — Alkindi"/>
+  <meta property="og:description" content="A long-term visual study of structure, geometry, and light across three continents."/>
+  <meta property="og:type" content="website"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
@@ -39,159 +43,147 @@
       margin-bottom: 0;
     }
 
-    /* Bio layout */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.8fr;
-      gap: 4rem;
-      padding: 5rem 0;
-      border-bottom: 1px solid var(--line-subtle);
-    }
+    /* Gallery */
+    .gallery-section { padding: 4rem 0 6rem; }
 
-    .about-sidebar {}
-
-    .about-sidebar__meta {
-      margin-top: 2rem;
+    .gallery-meta {
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
     }
 
-    .meta-item {}
+    .gallery-meta h2 { margin-bottom: 0; }
 
-    .meta-item__label {
+    .gallery-count {
       font-family: "Space Mono", monospace;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 0.35rem;
-      display: block;
-    }
-
-    .meta-item__value {
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .about-body {}
-
-    .about-body p {
-      max-width: 100%;
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
-
-    .about-body h3 {
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.65);
-      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
       letter-spacing: 0.08em;
-      font-family: "Space Mono", monospace;
     }
 
-    /* Principles */
-    .principles {
-      padding: 5rem 0;
-      border-bottom: 1px solid var(--line-subtle);
+    .gallery-grid {
+      columns: 3;
+      column-gap: 6px;
     }
 
-    .principles__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 6px;
       overflow: hidden;
-      margin-top: 2.5rem;
-    }
-
-    .principle-card {
       background: var(--bg-elevated);
-      padding: 2rem;
+      cursor: zoom-in;
     }
 
-    .principle-card__num {
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .gallery-item img.loaded { opacity: 1; }
+    .gallery-item:hover img { transform: scale(1.02); }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox__img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      box-shadow: 0 0 80px rgba(0,0,0,0.8);
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
+      transition: color 0.2s ease;
+    }
+
+    .lightbox__close:hover { color: rgba(255,255,255,0.9); }
+
+    .lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .lightbox__nav:hover { color: rgba(255,255,255,0.85); }
+    .lightbox__prev { left: 1rem; }
+    .lightbox__next { right: 1rem; }
+
+    .lightbox__counter {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: "Space Mono", monospace;
       font-size: 0.68rem;
-      color: rgba(255,255,255,0.25);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .principle-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.01em;
-    }
-
-    .principle-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 0;
-      max-width: 100%;
-      opacity: 1;
-    }
-
-    /* Timeline */
-    .timeline-section { padding: 5rem 0; }
-
-    .timeline {
-      position: relative;
-      margin-top: 2.5rem;
-      padding-left: 1.5rem;
-      border-left: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
-
-    .timeline-item { position: relative; }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -1.6rem;
-      top: 0.45rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.4;
-    }
-
-    .timeline-item__year {
-      font-family: "Space Mono", monospace;
-      font-size: 0.7rem;
       color: rgba(255,255,255,0.3);
       letter-spacing: 0.1em;
-      margin-bottom: 0.35rem;
-      display: block;
     }
 
-    .timeline-item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
+    /* Contact strip */
+    .contact-strip {
+      padding: 4rem 0 6rem;
+      border-top: 1px solid var(--line-subtle);
     }
 
-    .timeline-item p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 0;
-      max-width: 560px;
-      opacity: 1;
+    .contact-strip__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
+
+    .contact-strip h2 { margin-bottom: 0.4rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .contact-strip p { margin-bottom: 0; }
+    .contact-strip__actions { display: flex; gap: 0.75rem; flex-shrink: 0; flex-wrap: wrap; }
 
     @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .principles__grid { grid-template-columns: 1fr; }
+      .gallery-grid { columns: 2; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { columns: 1; }
+      .contact-strip__inner { flex-direction: column; }
+      .lightbox__nav { display: none; }
     }
   </style>
 </head>
@@ -220,155 +212,37 @@
   <main>
     <div class="page-hero">
       <div class="container">
-        <span class="page-hero__label">Studio profile</span>
-        <h1>About</h1>
+        <span class="page-hero__label">PhotographyX</span>
+        <h1>Visual studies</h1>
         <p class="page-hero__lead">
-          I grew up curious about how things fit together — tools, patterns, and encoded rules.
-          That instinct focused into computation, geometry, and structure.
+          A long-term study of structure, geometry, and light — from terraced hillsides to
+          urban symmetry. Medium format. Fieldwork across three continents.
         </p>
       </div>
     </div>
 
-    <!-- BIO -->
-    <section class="section">
+    <section class="gallery-section">
       <div class="container">
-        <div class="about-grid">
-          <div class="about-sidebar" data-reveal>
-            <div class="about-sidebar__meta">
-              <div class="meta-item">
-                <span class="meta-item__label">Based in</span>
-                <span class="meta-item__value">New York · Lisbon · Kyoto</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-item__label">Focus</span>
-                <span class="meta-item__value">Systems, computation, visual research</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-item__label">Practice</span>
-                <span class="meta-item__value">Documentary, editorial, institutional</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-item__label">Recognition</span>
-                <span class="meta-item__value">ICP, D&AD, Aperture shortlists</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-item__label">Availability</span>
-                <span class="meta-item__value">Booking for 2026 residencies</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-item__label">Contact</span>
-                <span class="meta-item__value"><a href="mailto:hello@alkindix.com" style="opacity:0.65; font-size:0.95rem;">hello@alkindix.com</a></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-body" data-reveal>
-            <p>
-              I build and study systems where ideas become structure and structure becomes clarity.
-              This site is a working archive — a place to collect and refine the systems I study
-              and build over time.
-            </p>
-            <p>
-              My work sits at the intersection of computation and visual thinking. I approach every
-              problem as a systems question: what are the inputs, constraints, and feedback loops?
-              Whether building machine learning pipelines or composing a photographic series, the
-              underlying method is the same — observe carefully, model rigorously, iterate.
-            </p>
-
-            <h3>Research interests</h3>
-            <p>
-              Mathematical structure, interpretable machine learning, documentary photography, geometry
-              in natural systems, and the design of tools that help people think more clearly.
-              Part of the Alkindi network of projects exploring systems, computation, and visual thinking.
-            </p>
-
-            <h3>Photography</h3>
-            <p>
-              A long-term visual study of structure, geometry, and light — from terraced hillsides to
-              urban symmetry. Medium format. Fieldwork across three continents. Commissions available
-              worldwide.
-            </p>
-
-            <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="mailto:hello@alkindix.com" class="btn btn--primary">Get in touch</a>
-              <a href="/photography" class="btn">View photography</a>
-              <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
-            </div>
-          </div>
+        <div class="gallery-meta" data-reveal>
+          <h2>Horizontal series</h2>
+          <span class="gallery-count" id="gallery-count"></span>
+        </div>
+        <div class="gallery-grid" id="gallery-grid" role="list" aria-label="Photography gallery">
+          <!-- Populated by JS -->
         </div>
       </div>
     </section>
 
-    <!-- PRINCIPLES -->
-    <section class="principles">
+    <section class="contact-strip">
       <div class="container">
-        <span class="eyebrow">How I work</span>
-        <h2>Operating principles</h2>
-        <div class="principles__grid">
-          <div class="principle-card" data-reveal>
-            <span class="principle-card__num">01</span>
-            <h3>Silence as architecture</h3>
-            <p>Absence is load-bearing. Stillness carries weight. What is left out defines what remains.</p>
+        <div class="contact-strip__inner" data-reveal>
+          <div>
+            <h2>Commission or collaborate</h2>
+            <p class="muted">Medium format. Available worldwide for editorial and institutional work.</p>
           </div>
-          <div class="principle-card" data-reveal>
-            <span class="principle-card__num">02</span>
-            <h3>Emotion as protocol</h3>
-            <p>Regulate, serialize, transmit intact. Feeling is not opposed to rigor — it is the signal.</p>
-          </div>
-          <div class="principle-card" data-reveal>
-            <span class="principle-card__num">03</span>
-            <h3>Graceful degradation</h3>
-            <p>When the storm arrives, fall back without failing. Design for failure, not just success.</p>
-          </div>
-          <div class="principle-card" data-reveal>
-            <span class="principle-card__num">04</span>
-            <h3>Graph theory as method</h3>
-            <p>If a path exists, find it. If no path exists, rewire the graph and try again.</p>
-          </div>
-          <div class="principle-card" data-reveal>
-            <span class="principle-card__num">05</span>
-            <h3>Lossless compression</h3>
-            <p>Every observation preserved with perfect fidelity. No data lost in translation.</p>
-          </div>
-          <div class="principle-card" data-reveal>
-            <span class="principle-card__num">06</span>
-            <h3>Pressure as forge</h3>
-            <p>Constraint breeds innovation. Limitation shapes sound. The best work is built under pressure.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section class="timeline-section">
-      <div class="container">
-        <span class="eyebrow">Milestones</span>
-        <h2>Selected history</h2>
-        <div class="timeline">
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2026</span>
-            <h3>Active research — multiple projects</h3>
-            <p>Parallel development across ProofX, DistressX, PhotographyX, and MemoirX. GitHub: MohammedAlkindi.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2025</span>
-            <h3>Terraced Order photographic series</h3>
-            <p>48-frame medium-format study across three continents. Aperture shortlist.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2024</span>
-            <h3>ClaudeX infrastructure</h3>
-            <p>Production-grade LLM infrastructure with streaming, validation, and security controls.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2023</span>
-            <h3>OmanX guidance system</h3>
-            <p>Compliance-focused routing system for Omani students navigating US institutions.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2022</span>
-            <h3>DistressX — financial ML research</h3>
-            <p>Interpretable machine learning for financial distress prediction. Transparent methodology, documented tradeoffs.</p>
+          <div class="contact-strip__actions">
+            <a class="btn btn--primary" href="mailto:hello@alkindix.com">Get in touch</a>
+            <a class="btn" href="/about">About me</a>
           </div>
         </div>
       </div>
@@ -380,7 +254,7 @@
       <span class="muted" style="font-size:0.85rem;">© 2026 Alkindi</span>
       <nav class="footer__links" aria-label="Footer">
         <a href="/">Home</a>
-        <a href="/photography">Photography</a>
+        <a href="/about">About</a>
         <a href="/memoir">Memoir</a>
         <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener">GitHub</a>
       </nav>
@@ -388,6 +262,126 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image">&#8592;</button>
+    <img class="lightbox__img" id="lightbox-img" src="" alt=""/>
+    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">&#8594;</button>
+    <span class="lightbox__counter" id="lightbox-counter"></span>
+  </div>
+
   <script src="app.js"></script>
+  <script>
+    // Gallery: probe which images exist then render
+    (function () {
+      const IMAGES = [
+        'h1','h2','h3','h4','h5','h6','h7','h8','h9','h10',
+        'h11','h12','h13','h14','h15','h16','h17','h18','h19','h20',
+        'h21','h22','h23','h24','h25','h26','h27','h28','h29','h30',
+        'h31','h32','h33','h34','h35','h36','h37','h38','h39','h40',
+        'h41','h42','h43','h44','h45','h46','h47','h48','h49','h50',
+        'v1','v2','v3','v4','v5','v6','v7','v8','v9','v10',
+        'v11','v12','v13','v14','v15','v16','v17','v18','v19','v20',
+        'v21','v22','v23','v24','v25','v26','v27','v28','v29','v30',
+        'v31','v32','v33','v34','v35','v36','v37','v38','v39','v40',
+        'v41','v42','v43','v44','v45','v46','v47','v48','v49','v50'
+      ];
+
+      const grid = document.getElementById('gallery-grid');
+      const countEl = document.getElementById('gallery-count');
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCounter = document.getElementById('lightbox-counter');
+      const lbClose = document.getElementById('lightbox-close');
+      const lbPrev = document.getElementById('lightbox-prev');
+      const lbNext = document.getElementById('lightbox-next');
+
+      let loaded = [];
+      let current = 0;
+      let pending = IMAGES.length;
+
+      function openLightbox(idx) {
+        current = idx;
+        lbImg.src = loaded[current].src;
+        lbImg.alt = loaded[current].alt;
+        lbCounter.textContent = (current + 1) + ' / ' + loaded.length;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+      lbPrev.addEventListener('click', () => {
+        current = (current - 1 + loaded.length) % loaded.length;
+        lbImg.src = loaded[current].src;
+        lbImg.alt = loaded[current].alt;
+        lbCounter.textContent = (current + 1) + ' / ' + loaded.length;
+      });
+
+      lbNext.addEventListener('click', () => {
+        current = (current + 1) % loaded.length;
+        lbImg.src = loaded[current].src;
+        lbImg.alt = loaded[current].alt;
+        lbCounter.textContent = (current + 1) + ' / ' + loaded.length;
+      });
+
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lbPrev.click();
+        if (e.key === 'ArrowRight') lbNext.click();
+      });
+
+      function tryLoad(name) {
+        const src = '/images/' + name + '.jpg';
+        const probe = new Image();
+        probe.onload = function () {
+          const idx = loaded.length;
+          loaded.push({ src, alt: 'Photograph ' + name });
+
+          const item = document.createElement('div');
+          item.className = 'gallery-item';
+          item.setAttribute('role', 'listitem');
+          item.tabIndex = 0;
+          item.setAttribute('aria-label', 'Open photograph ' + name);
+
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = 'Photograph ' + name;
+          img.loading = 'lazy';
+          img.onload = () => img.classList.add('loaded');
+          img.onerror = () => img.classList.add('loaded'); // avoid stuck state
+
+          item.appendChild(img);
+          item.addEventListener('click', () => openLightbox(idx));
+          item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); } });
+          grid.appendChild(item);
+
+          checkDone();
+        };
+        probe.onerror = checkDone;
+        probe.src = src;
+      }
+
+      function checkDone() {
+        pending--;
+        if (pending <= 0) {
+          countEl.textContent = loaded.length + ' frame' + (loaded.length !== 1 ? 's' : '');
+          if (loaded.length === 0) {
+            grid.innerHTML = '<p class="muted" style="padding:3rem 0;">No images available yet.</p>';
+          }
+        }
+      }
+
+      IMAGES.forEach(tryLoad);
+    })();
+  </script>
 </body>
 </html>
