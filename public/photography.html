@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>About — Alkindi</title>
+  <meta name="description" content="About Alkindi — systems, computation, photography, and thoughtful work."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="../favicon.ico"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .page-hero {
+      padding: 6rem 0 4rem;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .page-hero__label {
+      font-family: "Space Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      margin-bottom: 1.25rem;
+    }
+
+    .page-hero__lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    /* Bio layout */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 4rem;
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .about-sidebar {}
+
+    .about-sidebar__meta {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .meta-item {}
+
+    .meta-item__label {
+      font-family: "Space Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .meta-item__value {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .about-body {}
+
+    .about-body p {
+      max-width: 100%;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .about-body h3 {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: "Space Mono", monospace;
+    }
+
+    /* Principles */
+    .principles {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .principles__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .principle-card {
+      background: var(--bg-elevated);
+      padding: 2rem;
+    }
+
+    .principle-card__num {
+      font-family: "Space Mono", monospace;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .principle-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .principle-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 0;
+      max-width: 100%;
+      opacity: 1;
+    }
+
+    /* Timeline */
+    .timeline-section { padding: 5rem 0; }
+
+    .timeline {
+      position: relative;
+      margin-top: 2.5rem;
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .timeline-item { position: relative; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.6rem;
+      top: 0.45rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .timeline-item__year {
+      font-family: "Space Mono", monospace;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .timeline-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-item p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0;
+      max-width: 560px;
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .principles__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a class="brand" href="/" aria-label="Alkindi home">Alkindi</a>
+      <button class="nav__toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" role="navigation" aria-label="Primary">
+        <a href="/about">About</a>
+        <a href="/photography">Photography</a>
+        <a href="/memoir">Memoir</a>
+        <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener" class="nav-external">
+          GitHub <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8.5 1.5h-7m7 0v7m0-7L1.5 8.5" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/alkindi-network/" target="_blank" rel="noopener" class="nav-external">
+          LinkedIn <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8.5 1.5h-7m7 0v7m0-7L1.5 8.5" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <span class="page-hero__label">Studio profile</span>
+        <h1>About</h1>
+        <p class="page-hero__lead">
+          I grew up curious about how things fit together — tools, patterns, and encoded rules.
+          That instinct focused into computation, geometry, and structure.
+        </p>
+      </div>
+    </div>
+
+    <!-- BIO -->
+    <section class="section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-sidebar" data-reveal>
+            <div class="about-sidebar__meta">
+              <div class="meta-item">
+                <span class="meta-item__label">Based in</span>
+                <span class="meta-item__value">New York · Lisbon · Kyoto</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-item__label">Focus</span>
+                <span class="meta-item__value">Systems, computation, visual research</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-item__label">Practice</span>
+                <span class="meta-item__value">Documentary, editorial, institutional</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-item__label">Recognition</span>
+                <span class="meta-item__value">ICP, D&AD, Aperture shortlists</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-item__label">Availability</span>
+                <span class="meta-item__value">Booking for 2026 residencies</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-item__label">Contact</span>
+                <span class="meta-item__value"><a href="mailto:hello@alkindix.com" style="opacity:0.65; font-size:0.95rem;">hello@alkindix.com</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-body" data-reveal>
+            <p>
+              I build and study systems where ideas become structure and structure becomes clarity.
+              This site is a working archive — a place to collect and refine the systems I study
+              and build over time.
+            </p>
+            <p>
+              My work sits at the intersection of computation and visual thinking. I approach every
+              problem as a systems question: what are the inputs, constraints, and feedback loops?
+              Whether building machine learning pipelines or composing a photographic series, the
+              underlying method is the same — observe carefully, model rigorously, iterate.
+            </p>
+
+            <h3>Research interests</h3>
+            <p>
+              Mathematical structure, interpretable machine learning, documentary photography, geometry
+              in natural systems, and the design of tools that help people think more clearly.
+              Part of the Alkindi network of projects exploring systems, computation, and visual thinking.
+            </p>
+
+            <h3>Photography</h3>
+            <p>
+              A long-term visual study of structure, geometry, and light — from terraced hillsides to
+              urban symmetry. Medium format. Fieldwork across three continents. Commissions available
+              worldwide.
+            </p>
+
+            <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="mailto:hello@alkindix.com" class="btn btn--primary">Get in touch</a>
+              <a href="/photography" class="btn">View photography</a>
+              <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="principles">
+      <div class="container">
+        <span class="eyebrow">How I work</span>
+        <h2>Operating principles</h2>
+        <div class="principles__grid">
+          <div class="principle-card" data-reveal>
+            <span class="principle-card__num">01</span>
+            <h3>Silence as architecture</h3>
+            <p>Absence is load-bearing. Stillness carries weight. What is left out defines what remains.</p>
+          </div>
+          <div class="principle-card" data-reveal>
+            <span class="principle-card__num">02</span>
+            <h3>Emotion as protocol</h3>
+            <p>Regulate, serialize, transmit intact. Feeling is not opposed to rigor — it is the signal.</p>
+          </div>
+          <div class="principle-card" data-reveal>
+            <span class="principle-card__num">03</span>
+            <h3>Graceful degradation</h3>
+            <p>When the storm arrives, fall back without failing. Design for failure, not just success.</p>
+          </div>
+          <div class="principle-card" data-reveal>
+            <span class="principle-card__num">04</span>
+            <h3>Graph theory as method</h3>
+            <p>If a path exists, find it. If no path exists, rewire the graph and try again.</p>
+          </div>
+          <div class="principle-card" data-reveal>
+            <span class="principle-card__num">05</span>
+            <h3>Lossless compression</h3>
+            <p>Every observation preserved with perfect fidelity. No data lost in translation.</p>
+          </div>
+          <div class="principle-card" data-reveal>
+            <span class="principle-card__num">06</span>
+            <h3>Pressure as forge</h3>
+            <p>Constraint breeds innovation. Limitation shapes sound. The best work is built under pressure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+      <div class="container">
+        <span class="eyebrow">Milestones</span>
+        <h2>Selected history</h2>
+        <div class="timeline">
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-item__year">2026</span>
+            <h3>Active research — multiple projects</h3>
+            <p>Parallel development across ProofX, DistressX, PhotographyX, and MemoirX. GitHub: MohammedAlkindi.</p>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-item__year">2025</span>
+            <h3>Terraced Order photographic series</h3>
+            <p>48-frame medium-format study across three continents. Aperture shortlist.</p>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-item__year">2024</span>
+            <h3>ClaudeX infrastructure</h3>
+            <p>Production-grade LLM infrastructure with streaming, validation, and security controls.</p>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-item__year">2023</span>
+            <h3>OmanX guidance system</h3>
+            <p>Compliance-focused routing system for Omani students navigating US institutions.</p>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-item__year">2022</span>
+            <h3>DistressX — financial ML research</h3>
+            <p>Interpretable machine learning for financial distress prediction. Transparent methodology, documented tradeoffs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <span class="muted" style="font-size:0.85rem;">© 2026 Alkindi</span>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/photography">Photography</a>
+        <a href="/memoir">Memoir</a>
+        <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <a class="to-top" href="#" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

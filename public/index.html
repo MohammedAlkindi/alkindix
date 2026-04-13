@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Alkindi</title>
+  <meta name="description" content="Personal HQ — systems, computation, photography, and thoughtful work."/>
+  <link rel="canonical" href="https://alkindix.com/"/>
+  <meta property="og:title" content="Alkindi"/>
+  <meta property="og:description" content="Systems, computation, photography, and thoughtful work."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── Index-specific ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: 72vh;
+      padding: 8rem 0 5rem;
+    }
+
+    .hero__wrap { max-width: 680px; }
+
+    .hero__greeting {
+      font-family: "Space Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero__greeting::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .hero__h1 {
+      font-size: clamp(2.8rem, 7vw, 4.4rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .hero__sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 5rem;
+    }
+
+    .stats__item {
+      padding: 1.75rem 1.5rem;
+      background: var(--bg-elevated);
+    }
+
+    .stats__value {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: block;
+      letter-spacing: -0.03em;
+    }
+
+    .stats__label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    /* Projects */
+    .projects-section { padding: 5rem 0 7rem; }
+
+    .projects-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .projects-header h2 { margin-bottom: 0; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .project-card {
+      background: var(--bg-elevated);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: background 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      background: #161616;
+      opacity: 1;
+    }
+
+    .project-card__icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
+      opacity: 0.7;
+    }
+
+    .project-card__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: -0.01em;
+    }
+
+    .project-card__desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+      margin: 0;
+      max-width: 100%;
+      opacity: 1;
+    }
+
+    .project-card__link {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      font-family: "Space Mono", monospace;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s ease;
+    }
+
+    .project-card:hover .project-card__link { color: rgba(255,255,255,0.65); }
+
+    /* Contact strip */
+    .contact-strip {
+      padding: 4rem 0 6rem;
+      border-top: 1px solid var(--line-subtle);
+    }
+
+    .contact-strip__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-strip h2 { margin-bottom: 0.4rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .contact-strip p { margin-bottom: 0; }
+
+    .contact-strip__actions { display: flex; gap: 0.75rem; flex-shrink: 0; flex-wrap: wrap; }
+
+    @media (max-width: 640px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .contact-strip__inner { flex-direction: column; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 5rem 0 3rem; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a class="brand" href="/" aria-label="Alkindi home">Alkindi</a>
+      <button class="nav__toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" role="navigation" aria-label="Primary">
+        <a href="/about">About</a>
+        <a href="/photography">Photography</a>
+        <a href="/memoir">Memoir</a>
+        <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener" class="nav-external">
+          GitHub <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8.5 1.5h-7m7 0v7m0-7L1.5 8.5" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/alkindi-network/" target="_blank" rel="noopener" class="nav-external">
+          LinkedIn <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8.5 1.5h-7m7 0v7m0-7L1.5 8.5" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__wrap">
+          <p class="hero__greeting">Personal HQ</p>
+          <h1 id="hero-title" class="hero__h1">Hi, I am Alkindi.</h1>
+          <p class="hero__sub">
+            I build and study systems where ideas become structure and structure becomes clarity.
+            This space documents research tools, computational projects, and long-form thinking.
+          </p>
+          <div class="hero__actions">
+            <a href="/about" class="btn btn--primary">About me</a>
+            <a href="/photography" class="btn">Photography</a>
+            <a href="/memoir" class="btn">Memoir</a>
+          </div>
+        </div>
+
+        <div class="stats" data-reveal>
+          <div class="stats__item">
+            <span class="stats__value" data-count="6">0</span>
+            <span class="stats__label">Active projects</span>
+          </div>
+          <div class="stats__item">
+            <span class="stats__value" data-count="38">0</span>
+            <span class="stats__label">Editorial features</span>
+          </div>
+          <div class="stats__item">
+            <span class="stats__value" data-count="12">0</span>
+            <span class="stats__label">Global studies</span>
+          </div>
+          <div class="stats__item">
+            <span class="stats__value" data-count="5">0</span>
+            <span class="stats__label">Museum commissions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects-section">
+      <div class="container">
+        <div class="projects-header">
+          <h2>Projects</h2>
+          <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener" class="btn" style="font-size:0.82rem;">
+            View on GitHub →
+          </a>
+        </div>
+
+        <div class="project-grid">
+          <a href="https://proofx.org" target="_blank" rel="noopener" class="project-card" data-reveal>
+            <div class="project-card__icon">◈</div>
+            <div class="project-card__title">ProofX</div>
+            <p class="project-card__desc">A computational research framework for exploring mathematical structure through deterministic experimentation.</p>
+            <span class="project-card__link">proofx.org ↗</span>
+          </a>
+
+          <a href="public/distressx.html" class="project-card" data-reveal>
+            <div class="project-card__icon">◉</div>
+            <div class="project-card__title">DistressX</div>
+            <p class="project-card__desc">Interpretable machine learning for financial distress prediction with transparent methodology and documented tradeoffs.</p>
+            <span class="project-card__link">alkindix.com/distressx ↗</span>
+          </a>
+
+          <a href="public/omanx.html" class="project-card" data-reveal>
+            <div class="project-card__icon">◎</div>
+            <div class="project-card__title">OmanX</div>
+            <p class="project-card__desc">A compliance-focused guidance system for Omani students in the United States, built around structured information and risk-aware routing.</p>
+            <span class="project-card__link">alkindix.com/omanx ↗</span>
+          </a>
+
+          <a href="public/claudex.html" class="project-card" data-reveal>
+            <div class="project-card__icon">⬡</div>
+            <div class="project-card__title">ClaudeX</div>
+            <p class="project-card__desc">Production-grade LLM infrastructure with streaming, validation, privacy safeguards, and security controls.</p>
+            <span class="project-card__link">alkindix.com/claudex ↗</span>
+          </a>
+
+          <a href="/photography" class="project-card" data-reveal>
+            <div class="project-card__icon">⬚</div>
+            <div class="project-card__title">PhotographyX</div>
+            <p class="project-card__desc">A long-term visual study of structure, geometry, and light across three continents.</p>
+            <span class="project-card__link">alkindix.com/photography ↗</span>
+          </a>
+
+          <a href="/memoir" class="project-card" data-reveal>
+            <div class="project-card__icon">◻</div>
+            <div class="project-card__title">MemoirX</div>
+            <p class="project-card__desc">Essays and reflections on systems thinking, research discipline, and quiet work.</p>
+            <span class="project-card__link">alkindix.com/memoir ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT STRIP -->
+    <section class="contact-strip">
+      <div class="container">
+        <div class="contact-strip__inner" data-reveal>
+          <div>
+            <h2>Let's connect</h2>
+            <p class="muted">For thoughtful conversation or collaboration.</p>
+          </div>
+          <div class="contact-strip__actions">
+            <a class="btn btn--primary" href="mailto:hello@alkindix.com">Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/alkindi-network/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn" href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <span class="muted" style="font-size:0.85rem;">© 2026 Alkindi</span>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="/about">About</a>
+        <a href="/photography">Photography</a>
+        <a href="/memoir">Memoir</a>
+        <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <a class="to-top" href="#" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
