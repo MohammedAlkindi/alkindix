@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout *)",
+      "Bash(dir public\\\\images)",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\photography.html\"\\); $text = [System.Text.Encoding]::UTF8.GetString\\($bytes\\); $idx = $text.IndexOf\\(\"long-term study\"\\); $text.Substring\\($idx, 100\\))",
+      "PowerShell(Get-Content \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\photography.html\" -Encoding UTF8 | Select-String -Pattern \"â|Â\" | ForEach-Object { $_.Line.Trim\\(\\) } | Select-Object -First 30)",
+      "PowerShell(Get-Content \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\photography.html\" -Encoding UTF8 | Select-String -Pattern \"â|Â|mdash|&amp;\" | ForEach-Object { $_.Line.Trim\\(\\) } | Select-Object -First 20)",
+      "PowerShell(Get-Content \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\about.html\" -Encoding UTF8 | Select-String -Pattern \"â|Â\" | ForEach-Object { $_.Line.Trim\\(\\) } | Select-Object -First 10)",
+      "PowerShell(Get-Content \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\memoir.html\" -Encoding UTF8 | Select-String -Pattern \"â|Â\" | ForEach-Object { $_.Line.Trim\\(\\) } | Select-Object -First 10)",
+      "PowerShell(Get-Content \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\photography.html\" -Encoding UTF8 | Select-String -Pattern \"â|Â\" | ForEach-Object { $_.Line.Trim\\(\\) } | Select-Object -First 10)",
+      "Bash(Get-ChildItem \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\images\\\\\" -File | Select-Object Name | Sort-Object Name)",
+      "PowerShell(\\(Get-ChildItem \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\images\" -File\\).Name | Sort-Object)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\images\" -File | Measure-Object; Get-ChildItem \"c:\\\\Users\\\\alkin\\\\projects\\\\AlkindiX\\\\public\\\\images\" -File | Group-Object {$_.Name[0]} | Select-Object Name, Count)"
+    ]
+  }
+}
