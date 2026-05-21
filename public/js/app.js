@@ -30,6 +30,32 @@ if (navToggle && navLinks) {
   });
 }
 
+// Projects dropdown
+const dropdown = document.querySelector('.nav__dropdown');
+const dropdownBtn = dropdown?.querySelector('.nav__dropdown-btn');
+
+if (dropdown && dropdownBtn) {
+  dropdownBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = dropdown.classList.toggle('active');
+    dropdownBtn.setAttribute('aria-expanded', open);
+  });
+
+  document.addEventListener('click', e => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('active');
+      dropdownBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  dropdown.querySelectorAll('.nav__dropdown-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      dropdown.classList.remove('active');
+      dropdownBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 // Nav scroll state
 const nav = document.querySelector('.nav');
 const progressBar = document.createElement('div');
@@ -44,10 +70,14 @@ window.addEventListener('scroll', () => {
 
 // Active nav link based on current path
 const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-document.querySelectorAll('.nav__links a').forEach(a => {
+document.querySelectorAll('.nav__links a, .nav__dropdown-menu a').forEach(a => {
   const href = a.getAttribute('href');
   const hrefPath = href ? new URL(href, window.location.href).pathname.replace(/\/$/, '') : '';
-  if (hrefPath === currentPath) a.classList.add('active');
+  if (hrefPath === currentPath) {
+    a.classList.add('active');
+    const parentDropdown = a.closest('.nav__dropdown');
+    if (parentDropdown) parentDropdown.classList.add('active');
+  }
 });
 
 // Scroll reveal
