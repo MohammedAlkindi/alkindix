@@ -140,56 +140,6 @@
       opacity: 1;
     }
 
-    /* Timeline */
-    .timeline-section { padding: 5rem 0; }
-
-    .timeline {
-      position: relative;
-      margin-top: 2.5rem;
-      padding-left: 1.5rem;
-      border-left: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
-
-    .timeline-item { position: relative; }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -1.6rem;
-      top: 0.45rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.4;
-    }
-
-    .timeline-item__year {
-      font-family: "Space Mono", monospace;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.35rem;
-      display: block;
-    }
-
-    .timeline-item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-
-    .timeline-item p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 0;
-      max-width: 560px;
-      opacity: 1;
-    }
-
     @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .principles__grid { grid-template-columns: 1fr; }
@@ -206,7 +156,11 @@
       </button>
       <nav class="nav__links" role="navigation" aria-label="Primary">
         <a href="/about">About</a>
+        <a href="/projects">Projects</a>
         <a href="/memoir">Memoir</a>
+        <a href="https://photographyx.org" target="_blank" rel="noopener noreferrer" class="nav-photo" aria-label="Photography">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </a>
       </nav>
     </div>
   </header>
@@ -278,6 +232,7 @@
 
             <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
               <a href="mailto:alkindi.ceo@gmail.com" class="btn btn--primary">Get in touch</a>
+              <a href="/projects" class="btn">Projects</a>
               <a href="/memoir" class="btn">Memoir</a>
               <a href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
             </div>
@@ -326,40 +281,6 @@
       </div>
     </section>
 
-    <!-- TIMELINE -->
-    <section class="timeline-section">
-      <div class="container">
-        <span class="eyebrow">Milestones</span>
-        <h2>Selected history</h2>
-        <div class="timeline">
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2026</span>
-            <h3>Shell · MIT Bitcoin Hackathon · Purdue</h3>
-            <p>Data Analytics Intern at Shell. BridgX (BTC→EVM bridge) recognized at MIT Bitcoin Hackathon (22 of 47 projects). Incoming CS at Purdue University, Fall 2026.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2025 – 2026</span>
-            <h3>DistressX · Thiel Fellowship · UPenn</h3>
-            <p>Financial distress prediction research: ~105K firm-year observations, hybrid ML pipeline, ~0.84 ROC-AUC. Thiel Fellowship Semifinalist (top ~3% of 3,000+ applicants). Attended UPenn.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2025</span>
-            <h3>MIT E14 Lab · Student engagement research</h3>
-            <p>Engaged with MIT E14 partners on ProofX research infrastructure. Published student engagement &amp; learning analysis using clustering, PCA, and predictive modeling.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2024</span>
-            <h3>ProofX founded · Math Club</h3>
-            <p>Founded ProofX to build computational infrastructure for large-scale experimentation in discrete mathematics and integer dynamics. Founded Math Club at AUS Kuwait.</p>
-          </div>
-          <div class="timeline-item" data-reveal>
-            <span class="timeline-item__year">2023 – 2024</span>
-            <h3>Math Club · OmanX guidance system</h3>
-            <p>Founded &amp; led Math Club at A'Takamul International School. Built OmanX, a compliance-focused routing system for Omani students navigating US institutions.</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer" role="contentinfo">
@@ -390,7 +311,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
     </a>
     <a class="social-bar__link" href="https://www.snapchat.com/add/alkindi.ceo" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12.166.75c2.717 0 5.836 1.876 5.836 5.823v.289l.022.007c.371.107.788.193 1.236.193.419 0 .57.255.57.464 0 .342-.34.643-.87.8l-.143.035c-.577.131-1.036.472-1.305.969-.09.17-.138.337-.138.478 0 .207.066.37.198.548.45.607 1.183 1.037 1.975 1.235.305.075.503.246.503.537 0 .41-.382.706-.981.706-.104 0-.21-.014-.314-.028-.174-.024-.349-.072-.502-.117-.391-.117-.735-.186-1.028-.186a2.7 2.7 0 0 0-.716.093c.327.447.521.994.521 1.564 0 1.32-.854 2.338-2.11 2.618-.151.034-.278.048-.409.048-.556 0-1.082-.205-1.428-.621a.797.797 0 0 0-.6-.272.797.797 0 0 0-.6.272c-.346.416-.872.621-1.428.621-.131 0-.258-.014-.41-.048-1.255-.28-2.109-1.298-2.109-2.618 0-.57.194-1.117.521-1.564a2.7 2.7 0 0 0-.716-.093c-.293 0-.637.069-1.028.186-.153.045-.328.093-.502.117-.104.014-.21.028-.314.028-.599 0-.981-.296-.981-.706 0-.291.198-.462.503-.537.792-.198 1.525-.628 1.975-1.235.132-.178.198-.341.198-.548 0-.141-.048-.308-.138-.478-.269-.497-.728-.838-1.305-.969l-.143-.035c-.53-.157-.87-.458-.87-.8 0-.209.151-.464.57-.464.448 0 .865-.086 1.236-.193l.022-.007v-.289C6.33 2.626 9.449.75 12.166.75z"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.289 4.986l-.004.065c-.008.135-.01.27-.01.41.001.427.04.899.131 1.397.31 1.664 1.263 2.747 1.943 3.48.373.402.661.714.779 1.027.166.453.068.914-.306 1.276-.313.302-.771.44-1.41.44-.342 0-.724-.04-1.179-.12a5.43 5.43 0 0 1-.685-.161c-.287-.089-.576-.134-.86-.134-.455 0-.785.13-1.075.273-.305.148-.619.3-1.019.422-.69.208-1.45.313-2.253.313-.806 0-1.567-.105-2.258-.313-.4-.122-.714-.274-1.02-.422-.29-.143-.619-.273-1.074-.273-.284 0-.573.045-.86.134a5.43 5.43 0 0 1-.686.16c-.454.08-.836.12-1.178.12-.64 0-1.098-.137-1.41-.44-.374-.361-.472-.822-.306-1.275.118-.313.406-.625.779-1.027.68-.734 1.633-1.817 1.943-3.48.092-.5.13-.972.13-1.399 0-.14-.002-.274-.01-.41l-.004-.064c-.114-1.768-.24-3.795.29-4.987C7.858 1.07 11.215.793 12.206.793z"/></svg>
     </a>
     <a class="social-bar__link" href="https://www.facebook.com/profile.php?id=61589597771423" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
