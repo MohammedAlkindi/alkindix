@@ -719,7 +719,12 @@ a:hover { opacity: 0.75; }
 /* =========================================================
    RESPONSIVE
 ========================================================= */
-@media (min-width: 769px) {
+/* The inline nav switches on at 1024px, not at the 768px content breakpoint.
+   Six items need about 665px of bar, which a large phone in landscape (a 14 Pro
+   Max is 932px) technically satisfies -- so the old 769px threshold handed
+   phones the desktop nav. Every phone, portrait or landscape, and a tablet in
+   portrait now get the hamburger. */
+@media (min-width: 1024px) {
   .nav__links { display: flex; }
   .nav__toggle { display: none; }
 }
