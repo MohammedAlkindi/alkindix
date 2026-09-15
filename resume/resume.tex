@@ -1,0 +1,172 @@
+% Mohammed Alkindi — resume
+% Build:  pdflatex -interaction=nonstopmode resume.tex
+% Output is copied to public/resume.pdf, which the site links from every page.
+%
+% Every figure in the OPEN SOURCE block is measured, not estimated. Re-derive
+% before each send; the command is in resume/README.md.
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.96]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[margin=0.45in,top=0.4in,bottom=0.35in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\definecolor{ink}{HTML}{111111}
+\definecolor{soft}{HTML}{555555}
+\definecolor{rule}{HTML}{BBBBBB}
+
+\color{ink}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\linespread{0.99}
+
+% --- section heading: small caps-ish label with a hairline under it --------
+\titleformat{\section}
+  {\normalfont\fontsize{8.4}{10}\selectfont\bfseries\color{soft}}
+  {}{0em}{\MakeUppercase}[\vspace{-0.62em}{\color{rule}\rule{\linewidth}{0.4pt}}]
+\titlespacing*{\section}{0pt}{0.6em}{0.3em}
+
+% --- bullets ---------------------------------------------------------------
+\setlist[itemize]{leftmargin=1.0em, topsep=0.08em, itemsep=0.04em,
+                  parsep=0pt, label=\textbullet}
+
+% --- an entry: bold title on the left, date flush right --------------------
+\newcommand{\entry}[2]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    #1 & {\color{soft}\small #2}
+  \end{tabularx}%
+  \vspace{0.12em}
+}
+
+\begin{document}
+
+% ===========================================================================
+\begin{center}
+  {\fontsize{19}{22}\selectfont\bfseries Mohammed Alkindi}\\[0.34em]
+  {\small Incoming B.S.\ Computer Science, UC San Diego\ \ $\cdot$\ \ Founder, ProofX\ \ $\cdot$\ \ Thiel Fellowship Semifinalist}\\[0.3em]
+  {\small\color{soft}
+    \href{mailto:alkindi.ceo@gmail.com}{alkindi.ceo@gmail.com}\ \ $\cdot$\ \
+    \href{https://alkindix.com}{alkindix.com}\ \ $\cdot$\ \
+    \href{https://www.linkedin.com/in/mohammed--alkindi/}{linkedin.com/in/mohammed{-}{-}alkindi}\ \ $\cdot$\ \
+    \href{https://github.com/MohammedAlkindi}{github.com/MohammedAlkindi}}
+\end{center}
+\vspace{-0.15em}
+
+% ===========================================================================
+\section{Open source}
+
+\textbf{110 pull requests merged into 32 upstream projects}, which together carry
+\textbf{626{,}632} GitHub stars. Most fix defects continuous integration never sees,
+because hosted runners do not match the machines real users have: Windows path
+handling, locale encoding and line endings account for the majority.
+
+\vspace{0.15em}
+\begin{itemize}
+  \item Merged at \textbf{Microsoft} (14), \textbf{NVIDIA}, \textbf{OpenAI},
+        \textbf{Anthropic}, \textbf{AWS}, \textbf{Google}, \textbf{Hugging Face},
+        \textbf{rust-lang}, \textbf{Astral} (\texttt{uv}, 90k stars),
+        \textbf{Pydantic}, \textbf{Express} (\texttt{multer}, 12k stars), tox and pdm.
+  \item Deepest in \texttt{simple-statistics} (21 merged), \texttt{NegPy} (17),
+        \texttt{gorakhargosh/watchdog} (10), \texttt{microsoft/hve-core} (8) and
+        \texttt{mcp-use} (6). At Anthropic, a line-ending normalization fix merged
+        into \texttt{claude-code-action}.
+  \item A Windows path-containment fix was adopted with credit into
+        \texttt{garrytan/gbrain} (30k stars) and shipped in v0.46.14.0.
+\end{itemize}
+
+% ===========================================================================
+\section{Experience}
+
+\entry{\textbf{Shell}\ \ $|$\ \ Data Analyst}{Jun 2026 -- Aug 2026}
+\begin{itemize}
+  \item Built a Python pipeline turning daily production data into validated dashboards,
+        PDF reports and email-ready output in about two minutes, replacing a manual process.
+  \item Added an interactive dashboard for asset-level filtering, well search and performance
+        tracking, validating every Excel input before anything reaches a report.
+\end{itemize}
+
+\vspace{0.3em}
+\entry{\textbf{ProofX}\ \ $|$\ \ Founder and Lead Engineer}{Aug 2025 -- Jul 2026}
+\begin{itemize}
+  \item Built \textbf{CollatzX}, a directed counterexample search engine running roughly
+        10M sequence iterations per second on commodity hardware, with hashed state tracking
+        and replayable run ledgers.
+  \item Built \textbf{Germinal}, a pipeline that proposes conjectures, formalizes them in Lean~4 and
+        attacks them with three independent counterexample methods. Worked with MIT E14 Lab partners
+        on technical direction and reproducibility standards.
+  \item Every run records its command, seed, budget and code revision, so any result can be reproduced
+        exactly or challenged.
+\end{itemize}
+
+% ===========================================================================
+\section{Selected projects}
+
+\entry{\textbf{Switchyard}\ \ $|$\ \ TypeScript, npm}{2026}
+\begin{itemize}
+  \item Coordination layer for running several coding agents against one repository. Each agent
+        gets an isolated git worktree and branch; merges are simulated in memory to separate
+        files that merely overlap from changes that would actually conflict.
+  \item Published as \texttt{@switchyardhq/switchyard}, now v0.4, with line-range collision
+        detection and read-only MCP access to fleet state.
+\end{itemize}
+
+\vspace{0.3em}
+\entry{\textbf{contextbill}\ \ $|$\ \ TypeScript, Next.js, Supabase}{2026}
+\begin{itemize}
+  \item Prices Claude Code transcripts. A zero-dependency CLI on npm and a hosted app share one
+        analysis core, so the same transcript prices identically on either surface.
+\end{itemize}
+
+\vspace{0.3em}
+\entry{\textbf{Corporate Financial Distress Prediction}\ \ $|$\ \ Python, scikit-learn}{Dec 2025 -- Feb 2026}
+\begin{itemize}
+  \item Interpretable pipeline over roughly 105K firm-year observations standardizing 60+ financial
+        ratios. K-Means segmentation with cluster-aware logistic regression reached 81\% accuracy and
+        0.84 ROC-AUC. Benchmarked against XGBoost at 0.90 and kept the interpretable model, since the
+        target was regulatory early warning rather than raw score.
+\end{itemize}
+
+% ===========================================================================
+\section{Education}
+
+\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{Starting Fall 2026}
+\vspace{0.18em}
+\entry{\textbf{University of Pennsylvania}\ \ $|$\ \ non-degree program}{Sep 2025 -- Apr 2026}
+\vspace{-0.55em}
+
+% ===========================================================================
+\section{Honors}
+\begin{itemize}
+  \item \textbf{Thiel Fellowship Semifinalist} (Feb 2026). Top $\sim$3\% of 3{,}000+ global applicants.
+  \item \textbf{MIT Bitcoin Hackathon} (Apr 2026). Top 22 of 47 teams for BridgX, a BTC-to-EVM bridge
+        prototype built in 36 hours.
+  \item \textbf{Oman National Scholarship}, Ministry of Higher Education (Aug 2025). Fully funded
+        national award.
+\end{itemize}
+
+% ===========================================================================
+\section{Community and leadership}
+\begin{itemize}
+  \item \textbf{Oman Space}, Co-Founder (Aug 2026 -- present). Connecting Omani students with
+        aerospace organizations, founders and practical routes into the sector.
+  \item Claude Builder Club and Penn Quantum Computing Club, member. Penn Chess Club, VP Marketing.
+        Write about engineering and open source to an audience of 4{,}400+ on LinkedIn.
+\end{itemize}
+
+% ===========================================================================
+\section{Technical skills}
+
+\textbf{Languages:} Python, TypeScript, JavaScript, SQL, Solidity, Lean 4\\
+\textbf{ML and data:} PyTorch, scikit-learn, pandas, NumPy, XGBoost, K-Means, PCA, FastAPI\\
+\textbf{Systems:} Git, React, Next.js, Supabase, SQLite, HPC, EVM/Solidity, PyQt5\\
+\textbf{Certifications:} Machine Learning Specialization (Stanford), CS50x and CS50P (Harvard)\ \ $\cdot$\ \ \textbf{Spoken:} Arabic and English, both native
+
+\end{document}

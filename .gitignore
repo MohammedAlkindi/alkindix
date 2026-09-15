@@ -24,3 +24,7 @@ desktop.ini
 node_modules/
 
 .vercel
+resume/*.aux
+resume/*.log
+resume/*.out
+resume/build.log
