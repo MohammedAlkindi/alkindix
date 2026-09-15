@@ -25,7 +25,22 @@ The site uses static HTML, CSS, and vanilla JavaScript. There is no build step.
 python -m http.server 4174 --directory public
 ```
 
-Open `http://localhost:4174` after starting the server.
+Open `http://localhost:4174` after starting the server. Note that this serves
+files literally: `vercel.json` owns `cleanUrls`, the redirects and the security
+headers, so `/about` 404s locally while `/about.html` works. Use `vercel dev`
+when routing or headers are what you are testing.
+
+## Resume
+
+`resume/resume.tex` is the source; `public/resume.pdf` is generated from it and
+is never edited by hand.
+
+```bash
+cd resume && pdflatex -interaction=nonstopmode -halt-on-error resume.tex
+cp resume.pdf ../public/resume.pdf
+```
+
+`resume/README.md` carries the checks that matter before sending it anywhere.
 
 ## Structure
 
@@ -41,6 +56,10 @@ public/
   index.html
   projects.html
   research.html
+  og.png
+  resume.pdf
+resume/
+  resume.tex
 vercel.json
 ```
 
