@@ -1,8 +1,5 @@
 # Alkindi
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Live](https://img.shields.io/badge/live-alkindix.com-brightgreen)](https://www.alkindix.com)
-
 Personal portfolio for Mohammed Alkindi's projects, research, photography, and writing.
 
 ## Pages
@@ -16,57 +13,3 @@ Personal portfolio for Mohammed Alkindi's projects, research, photography, and w
 | [`/creative`](https://www.alkindix.com/creative) | Photography and writing |
 | [`/creative/photography`](https://www.alkindix.com/creative/photography) | Complete photography archive |
 | [`/creative/memoir`](https://www.alkindix.com/creative/memoir) | Architect of Silence |
-
-## Development
-
-The site uses static HTML, CSS, and vanilla JavaScript. There is no build step.
-
-```powershell
-python -m http.server 4174 --directory public
-```
-
-Open `http://localhost:4174` after starting the server. Note that this serves
-files literally: `vercel.json` owns `cleanUrls`, the redirects and the security
-headers, so `/about` 404s locally while `/about.html` works. Use `vercel dev`
-when routing or headers are what you are testing.
-
-## Resume
-
-`resume/resume.tex` is the source; `public/resume.pdf` is generated from it and
-is never edited by hand.
-
-```bash
-cd resume && pdflatex -interaction=nonstopmode -halt-on-error resume.tex
-cp resume.pdf ../public/resume.pdf
-```
-
-`resume/README.md` carries the checks that matter before sending it anywhere.
-
-## Structure
-
-```text
-public/
-  creative/
-    memoir/
-    photography/
-  css/styles.css
-  images/photography/
-  js/app.js
-  about.html
-  index.html
-  projects.html
-  research.html
-  og.png
-  resume.pdf
-resume/
-  resume.tex
-vercel.json
-```
-
-## Deployment
-
-Vercel serves `public/` and deploys `main` automatically. Redirects in
-`vercel.json` consolidate the former Architect of Silence domain under
-`alkindix.com`.
-
-See [`docs/`](docs/) for architecture, content, design, and deployment notes.
