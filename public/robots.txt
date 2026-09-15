@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alkindix.com/sitemap.xml
+Sitemap: https://www.alkindix.com/sitemap.xml
