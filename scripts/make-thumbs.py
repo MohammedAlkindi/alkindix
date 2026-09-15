@@ -28,6 +28,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "..", "public", "images", "photography")
 OUT = os.path.join(SRC, "thumbs")
 WIDTHS = (480, 960)
+# Landscape photographs occupy a tile spanning two grid columns (~550 CSS px on
+# desktop), so they need a rung above 960w to stay crisp on a 2x display.
+WIDE_EXTRA = 1440
 QUALITY = 80
 
 
@@ -54,7 +57,10 @@ def main():
 
         with Image.open(path) as im:
             im = im.convert("RGB")
-            for width in WIDTHS:
+            widths = list(WIDTHS)
+            if im.width > im.height:
+                widths.append(WIDE_EXTRA)
+            for width in widths:
                 # Never upscale: a source narrower than the target keeps its own size.
                 if im.width <= width:
                     continue
