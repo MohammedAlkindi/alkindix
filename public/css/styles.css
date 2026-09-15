@@ -431,7 +431,7 @@ a:hover { opacity: 0.75; }
 .nav__menu a {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 600;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.75);
   letter-spacing: -0.03em;
   padding: 0.35rem 1rem;
   border-radius: 8px;
