@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Projects - Alkindi</title>
+  <title>Projects - Mohammed Alkindi</title>
   <meta name="description" content="Projects by Alkindi - computational tools, reporting systems, and public-interest infrastructure."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="canonical" href="https://alkindix.com/projects"/>
-  <meta property="og:title" content="Projects — Mohammed Alkindi"/>
-  <meta property="og:description" content="Selected systems and product work, plus 111 pull requests merged into 33 upstream projects."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://alkindix.com/projects"/>
-  <meta property="og:image" content="https://alkindix.com/og.png"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:site_name" content="Mohammed Alkindi"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Projects — Mohammed Alkindi"/>
-  <meta name="twitter:description" content="Selected systems and product work, plus 111 pull requests merged into 33 upstream projects."/>
-  <meta name="twitter:image" content="https://alkindix.com/og.png"/>
-  <meta name="author" content="Mohammed Alkindi"/>
+  <link rel="canonical" href="https://www.alkindix.com/projects"/>
+  <meta property="og:title" content="Projects - Mohammed Alkindi"/>
+  <meta property="og:description" content="Selected systems and product work, plus 111 pull requests merged into 33 upstream projects."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.alkindix.com/projects"/>
+  <meta property="og:image" content="https://www.alkindix.com/og.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="Mohammed Alkindi"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Projects - Mohammed Alkindi"/>
+  <meta name="twitter:description" content="Selected systems and product work, plus 111 pull requests merged into 33 upstream projects."/>
+  <meta name="twitter:image" content="https://www.alkindix.com/og.png"/>
+  <meta name="author" content="Mohammed Alkindi"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  <link rel="stylesheet" href="/css/styles.css?v=20260915-contrast"/>
+  <link rel="stylesheet" href="/css/styles.css?v=20260915-restructure"/>
   <style>
     .page-hero {
       padding: 6rem 0 4rem;
@@ -149,21 +149,28 @@
     }
 
     .project-card__links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       font-family: "Space Mono", monospace;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.72);
       text-decoration: none;
-      padding: 0.3rem 0.65rem;
+      padding: 0.42rem 0.9rem;
       border: 1px solid var(--line);
-      border-radius: 4px;
-      transition: color 0.2s, border-color 0.2s;
+      border-radius: 999px;
+      background: transparent;
+      transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+                  color 0.25s var(--ease);
     }
 
     .project-card__links a:hover {
-      color: var(--accent);
+      background: rgba(255,255,255,0.06);
       border-color: rgba(255,255,255,0.2);
+      color: var(--accent);
+      opacity: 1;
     }
 
     @media (max-width: 480px) {
@@ -175,6 +182,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="nav" role="banner">
     <div class="container nav__inner">
       <a class="brand" href="/" aria-label="Alkindi home">Alkindi</a>
@@ -183,9 +192,11 @@
       </button>
       <nav class="nav__links" role="navigation" aria-label="Primary">
         <a href="/about">About</a>
+        <a href="/awards">Awards</a>
+        <a href="/creative">Creative</a>
+        <a href="/open-source">Open Source</a>
         <a href="/projects">Projects</a>
         <a href="/research">Research</a>
-        <a href="/creative">Creative</a>
       </nav>
     </div>
   </header>
@@ -193,13 +204,15 @@
   <div class="nav__overlay" id="navOverlay" hidden role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
     <nav class="nav__menu" aria-label="Overlay navigation">
       <a href="/about">About</a>
+      <a href="/awards">Awards</a>
+      <a href="/creative">Creative</a>
+      <a href="/open-source">Open Source</a>
       <a href="/projects">Projects</a>
       <a href="/research">Research</a>
-      <a href="/creative">Creative</a>
     </nav>
   </div>
 
-  <main>
+  <main id="main">
     <div class="page-hero page-hero--visual">
       <div class="hero-visual hero-visual--projects" aria-hidden="true"></div>
       <div class="container">
@@ -226,9 +239,7 @@
             </div>
             <h3>Ridge</h3>
             <p>
-              Turns spreadsheets into findings you can audit: statistics, data-quality
-              diagnostics, and correlations computed deterministically, with AI
-              explanation as an optional layer that never produces the numbers.
+              Turns a spreadsheet into findings you can check. Every statistic and correlation is computed deterministically; the AI layer explains those numbers, it never produces them.
             </p>
             <div class="project-card__links">
               <a href="https://ridge-data.vercel.app" target="_blank" rel="noopener">Live</a>
@@ -238,14 +249,12 @@
 
           <div class="project-card" data-reveal>
             <div class="project-card__meta">
-              <span class="project-card__year">2025 - 2026</span>
+              <span class="project-card__year">2025 - present</span>
               <span class="project-card__tag">Research Infrastructure</span>
             </div>
             <h3>ProofX</h3>
             <p>
-              Open research infrastructure for bounded experimentation in discrete
-              mathematics and integer dynamics. Built around reproducible runs,
-              sequence analysis, and traceable research workflows.
+              Counterexample search for open problems in number theory. CollatzX runs about 10 million sequence iterations a second on ordinary hardware, and every run records its command, seed and code revision, so any result can be replayed exactly or challenged.
             </p>
             <div class="project-card__links">
               <a href="https://proofx.org" target="_blank" rel="noopener">Live</a>
@@ -260,27 +269,38 @@
             </div>
             <h3>Switchyard</h3>
             <p>
-              A fleet CLI that runs many AI coding agents on one repository without
-              collisions: every agent works in an isolated git worktree, with
-              collision detection before merge. Published on npm as
-              @switchyardhq/switchyard.
+              Runs several coding agents against one repository without collisions. Each agent gets its own git worktree, and merges are simulated in memory first, so files that merely overlap are separated from changes that would actually conflict. On npm as @switchyardhq/switchyard, now v0.4.
             </p>
             <div class="project-card__links">
               <a href="https://switchyardhq.vercel.app" target="_blank" rel="noopener">Live</a>
               <a href="https://github.com/MohammedAlkindi/switchyard" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
+          <div class="project-card" data-reveal>
+            <div class="project-card__meta">
+              <span class="project-card__year">2026</span>
+              <span class="project-card__tag">Developer Tools</span>
+            </div>
+            <h3>contextbill</h3>
+            <p>
+              Prices Claude Code transcripts. The CLI on npm and the hosted app share
+              one analysis core, so the same transcript costs the same on either, and
+              the CLI ships with no dependencies.
+            </p>
+            <div class="project-card__links">
+              <a href="https://contextbill.vercel.app" target="_blank" rel="noopener">Live</a>
+              <a href="https://github.com/MohammedAlkindi/contextbill" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
 
           <div class="project-card" data-reveal>
             <div class="project-card__meta">
-              <span class="project-card__year">2026 - present</span>
+              <span class="project-card__year">Jun - Aug 2026</span>
               <span class="project-card__tag">Analytics - Reporting</span>
             </div>
             <h3>Shell Reporting System</h3>
             <p>
-              Reporting automation developed during a data analytics internship at Shell.
-              It supports data validation, KPI extraction, dashboard generation, and
-              consistent operational reporting.
+              Daily production data into validated dashboards, PDF reports and email-ready output in about two minutes, replacing a manual process. Every Excel input is checked before anything reaches a report.
             </p>
           </div>
 
@@ -291,139 +311,21 @@
             </div>
             <h3>OmanX</h3>
             <p>
-              Guidance system for Omani scholarship students preparing to study in the
-              United States. It organizes official sources, checklists, and escalation
-              paths into a clearer student onboarding workflow.
+              Visa and compliance guidance for Omani students on government scholarships in the US. It answers only from approved official sources, and routes anything it cannot source to a person.
             </p>
             <div class="project-card__links">
               <a href="https://omanx.org" target="_blank" rel="noopener">Live</a>
             </div>
           </div>
 
-          <div class="project-card" data-reveal>
-            <div class="project-card__meta">
-              <span class="project-card__year">2026</span>
-              <span class="project-card__tag">Personal Infrastructure</span>
-            </div>
-            <h3>Pulse</h3>
-            <p>
-              Reads Gmail, GitHub, and Notion activity into a local ledger and
-              produces a weekly operating review in which every factual claim carries
-              a citation you can open. Local-first: no server, no cloud database, no
-              account.
-            </p>
-            <div class="project-card__links">
-              <a href="https://pulse-overview.vercel.app" target="_blank" rel="noopener">Overview</a>
-              <a href="https://github.com/MohammedAlkindi/pulse" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
 
-          <div class="project-card" data-reveal>
-            <div class="project-card__meta">
-              <span class="project-card__year">2026</span>
-              <span class="project-card__tag">Personal Finance</span>
-            </div>
-            <h3>Receipt</h3>
-            <p>
-              Turns bank statements into plain-English spending insights, locally:
-              semantic clustering, seven behavioral detectors, and a narrative
-              grounded in named merchants and exact amounts.
-            </p>
-            <div class="project-card__links">
-              <a href="https://github.com/MohammedAlkindi/receipt" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
 
-          <div class="project-card" data-reveal>
-            <div class="project-card__meta">
-              <span class="project-card__year">2026</span>
-              <span class="project-card__tag">Quantitative Research</span>
-            </div>
-            <h3>Quant</h3>
-            <p>
-              A research-first trading scaffold: cost-aware, out-of-sample
-              backtesting with one-bar execution delay, reported numbers pinned to
-              committed data by a golden test, and unvalidated code quarantined where
-              it cannot leak claims.
-            </p>
-            <div class="project-card__links">
-              <a href="https://github.com/MohammedAlkindi/quant" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
 
         </div>
       </div>
     </section>
 
 
-    <!-- OPEN SOURCE -->
-    <section class="projects-section" id="open-source">
-      <div class="container">
-        <span class="eyebrow">Open source</span>
-        <h2>Merged upstream</h2>
-        <p class="section-lead">
-          111 pull requests merged into 33 upstream projects, which together carry
-          637,514 GitHub stars &mdash; among them Microsoft, NVIDIA, OpenAI, Anthropic,
-          AWS, Google, Hugging Face, rust-lang, Astral, Pydantic and Express.
-          Measured 15 September 2026.
-          <a href="https://github.com/search?q=is%3Apr+author%3AMohammedAlkindi+is%3Amerged+-user%3AMohammedAlkindi&amp;type=pullrequests" target="_blank" rel="noopener">Verify the full list on GitHub</a>.
-        </p>
-        <div class="projects-grid">
-
-          <div class="project-card" data-reveal>
-            <div class="project-card__meta">
-              <span class="project-card__year">2026</span>
-              <span class="project-card__tag">watchdog - 7.4k stars</span>
-            </div>
-            <h3>Filesystem events on Windows</h3>
-            <p>
-              Renaming a file to a different case emitted a phantom deletion before
-              the rename; the false event is now coalesced away. Plus a documentation
-              correction on BaseThread daemon behaviour.
-            </p>
-            <div class="project-card__links">
-              <a href="https://github.com/gorakhargosh/watchdog/pull/1204" target="_blank" rel="noopener">PR #1204</a>
-              <a href="https://github.com/gorakhargosh/watchdog/pull/1205" target="_blank" rel="noopener">PR #1205</a>
-            </div>
-          </div>
-
-          <div class="project-card" data-reveal>
-            <div class="project-card__meta">
-              <span class="project-card__year">2026</span>
-              <span class="project-card__tag">simple-statistics - 3.5k stars</span>
-            </div>
-            <h3>Correctness and types in a statistics library</h3>
-            <p>
-              Rank correlation returned a different answer for the same paired data
-              depending on row order whenever values tied; ties now share their
-              average rank. Three further fixes covering null-returning types and
-              line endings that blocked linting on a fresh Windows clone.
-            </p>
-            <div class="project-card__links">
-              <a href="https://github.com/simple-statistics/simple-statistics/pulls?q=is%3Apr+author%3AMohammedAlkindi+is%3Amerged" target="_blank" rel="noopener">4 merged</a>
-            </div>
-          </div>
-
-          <div class="project-card" data-reveal>
-            <div class="project-card__meta">
-              <span class="project-card__year">2026</span>
-              <span class="project-card__tag">NegPy - portability</span>
-            </div>
-            <h3>Non-ASCII paths and platform assumptions</h3>
-            <p>
-              Three merged fixes to a film-negative processing tool: a Windows updater
-              that broke on any profile path containing non-ASCII characters, POSIX-only
-              path handling in script generation, and codepage-dependent source reads
-              in the test suite.
-            </p>
-            <div class="project-card__links">
-              <a href="https://github.com/marcinz606/NegPy/pulls?q=is%3Apr+author%3AMohammedAlkindi+is%3Amerged" target="_blank" rel="noopener">3 merged</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
 
   </main>
   <footer class="footer" role="contentinfo">
@@ -456,7 +358,7 @@
     </div>
   </footer>
 
-<script src="/js/app.js?v=20260915-contrast"></script>
+<script src="/js/app.js?v=20260915-restructure"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

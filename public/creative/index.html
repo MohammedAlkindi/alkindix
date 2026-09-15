@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Creative - Alkindi</title>
+  <title>Creative - Mohammed Alkindi</title>
   <meta name="description" content="Photography and long-form writing by Mohammed Alkindi."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="canonical" href="https://alkindix.com/creative"/>
-  <meta property="og:title" content="Creative — Mohammed Alkindi"/>
-  <meta property="og:description" content="Photography and long-form writing."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://alkindix.com/creative"/>
-  <meta property="og:image" content="https://alkindix.com/og.png"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:site_name" content="Mohammed Alkindi"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Creative — Mohammed Alkindi"/>
-  <meta name="twitter:description" content="Photography and long-form writing."/>
-  <meta name="twitter:image" content="https://alkindix.com/og.png"/>
-  <meta name="author" content="Mohammed Alkindi"/>
+  <link rel="canonical" href="https://www.alkindix.com/creative"/>
+  <meta property="og:title" content="Creative - Mohammed Alkindi"/>
+  <meta property="og:description" content="Photography and long-form writing."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.alkindix.com/creative"/>
+  <meta property="og:image" content="https://www.alkindix.com/og.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="Mohammed Alkindi"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Creative - Mohammed Alkindi"/>
+  <meta name="twitter:description" content="Photography and long-form writing."/>
+  <meta name="twitter:image" content="https://www.alkindix.com/og.png"/>
+  <meta name="author" content="Mohammed Alkindi"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  <link rel="stylesheet" href="/css/styles.css?v=20260915-contrast"/>
+  <link rel="stylesheet" href="/css/styles.css?v=20260915-restructure"/>
   <style>
     .page-hero {
       padding: 6rem 0 5rem;
@@ -113,12 +113,28 @@
     }
 
     .work-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       font-family: "Space Mono", monospace;
-      font-size: 0.68rem;
-      color: var(--accent);
+      font-size: 0.66rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: auto;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      padding: 0.42rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+                  color 0.25s var(--ease);
+    }
+
+    .work-card:hover .work-card__cta {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.2);
+      color: var(--accent);
+      opacity: 1;
     }
 
     @media (max-width: 900px) {
@@ -129,6 +145,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="nav" role="banner">
     <div class="container nav__inner">
       <a class="brand" href="/" aria-label="Alkindi home">Alkindi</a>
@@ -137,9 +155,11 @@
       </button>
       <nav class="nav__links" role="navigation" aria-label="Primary">
         <a href="/about">About</a>
+        <a href="/awards">Awards</a>
+        <a href="/creative">Creative</a>
+        <a href="/open-source">Open Source</a>
         <a href="/projects">Projects</a>
         <a href="/research">Research</a>
-        <a href="/creative">Creative</a>
       </nav>
     </div>
   </header>
@@ -147,13 +167,15 @@
   <div class="nav__overlay" id="navOverlay" hidden role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
     <nav class="nav__menu" aria-label="Overlay navigation">
       <a href="/about">About</a>
+      <a href="/awards">Awards</a>
+      <a href="/creative">Creative</a>
+      <a href="/open-source">Open Source</a>
       <a href="/projects">Projects</a>
       <a href="/research">Research</a>
-      <a href="/creative">Creative</a>
     </nav>
   </div>
 
-  <main>
+  <main id="main">
     <div class="page-hero page-hero--visual">
       <div class="hero-visual hero-visual--creative" aria-hidden="true"></div>
       <div class="container">
@@ -223,7 +245,7 @@
     </div>
   </footer>
 
-<script src="/js/app.js?v=20260915-contrast"></script>
+<script src="/js/app.js?v=20260915-restructure"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
