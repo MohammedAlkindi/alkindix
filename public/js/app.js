@@ -2,6 +2,8 @@
 // AlkindiX — Shared App Logic
 // =========================================================
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // Nav overlay
 const navToggle = document.querySelector('.nav__toggle');
 const navOverlay = document.getElementById('navOverlay');
@@ -41,19 +43,41 @@ if (navToggle && navOverlay) {
   });
 }
 
-// Nav scroll state
+// ---------------------------------------------------------
+// Scroll state — one rAF-batched reader, compositor-only writes
+// ---------------------------------------------------------
 const nav = document.querySelector('.nav');
 const progressBar = document.createElement('div');
 progressBar.className = 'scroll-progress';
 document.body.appendChild(progressBar);
 
-window.addEventListener('scroll', () => {
-  nav?.classList.toggle('scrolled', window.scrollY > 40);
+let scrollQueued = false;
+let navScrolled = false;
+
+function applyScroll() {
+  scrollQueued = false;
+
+  const y = window.scrollY;
+  const shouldBeScrolled = y > 40;
+  if (shouldBeScrolled !== navScrolled) {
+    navScrolled = shouldBeScrolled;
+    nav?.classList.toggle('scrolled', shouldBeScrolled);
+  }
+
   const h = document.documentElement;
-  const scrollableDistance = h.scrollHeight - h.clientHeight;
-  const progress = scrollableDistance > 0 ? window.scrollY / scrollableDistance * 100 : 0;
-  progressBar.style.width = progress + '%';
+  const scrollable = h.scrollHeight - h.clientHeight;
+  const progress = scrollable > 0 ? Math.min(y / scrollable, 1) : 0;
+  // scaleX stays on the compositor; animating width forces layout on every frame.
+  progressBar.style.transform = `scaleX(${progress})`;
+}
+
+window.addEventListener('scroll', () => {
+  if (scrollQueued) return;
+  scrollQueued = true;
+  requestAnimationFrame(applyScroll);
 }, { passive: true });
+
+applyScroll();
 
 // Active nav link based on current path
 const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
@@ -65,14 +89,85 @@ document.querySelectorAll('.nav__menu a, .nav__links a').forEach(a => {
   }
 });
 
+// ---------------------------------------------------------
 // Scroll reveal
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+// Fires as soon as an element crosses the viewport edge. The old
+// -60px bottom margin plus a 10% threshold meant a tall card had to be
+// well inside the fold before it started a 700ms fade, which read as lag.
+// ---------------------------------------------------------
+const revealTargets = document.querySelectorAll('[data-reveal]');
 
-document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+if (reduceMotion.matches) {
+  revealTargets.forEach(el => el.classList.add('visible'));
+} else {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -4% 0px' });
+
+  revealTargets.forEach(el => {
+    // Anything already on screen at load must not wait for a scroll event.
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('visible');
+    } else {
+      revealObserver.observe(el);
+    }
+  });
+
+  // Stagger children of a marked group so a list resolves in sequence
+  // rather than as one slab.
+  document.querySelectorAll('[data-reveal-children]').forEach(group => {
+    [...group.children].forEach((child, i) => {
+      child.style.setProperty('--stagger', `${Math.min(i * 55, 440)}ms`);
+    });
+  });
+}
+
+// ---------------------------------------------------------
+// Count-up for measured figures. Values come from the markup, so the
+// number on screen is always the number in the HTML.
+// ---------------------------------------------------------
+const counters = document.querySelectorAll('[data-count]');
+
+if (counters.length) {
+  if (reduceMotion.matches) {
+    counters.forEach(el => { el.textContent = el.dataset.count; });
+  } else {
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+    const runCount = el => {
+      const target = parseFloat(el.dataset.count);
+      if (!Number.isFinite(target)) return;
+      const suffix = el.dataset.countSuffix || '';
+      const duration = 1100;
+      const start = performance.now();
+
+      const fmt = n => n.toLocaleString('en-US');
+
+      const step = now => {
+        const t = Math.min((now - start) / duration, 1);
+        el.textContent = fmt(Math.round(easeOut(t) * target)) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      };
+
+      el.textContent = '0' + suffix;
+      requestAnimationFrame(step);
+    };
+
+    const countObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        runCount(e.target);
+        countObserver.unobserve(e.target);
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach(el => countObserver.observe(el));
+  }
+}
 
 // Photography filters
 document.querySelectorAll('[data-gallery-filter]').forEach(button => {
@@ -94,7 +189,9 @@ document.querySelectorAll('[data-gallery-filter]').forEach(button => {
   });
 });
 
+// ---------------------------------------------------------
 // Photo lightbox
+// ---------------------------------------------------------
 const lightbox = document.querySelector('[data-lightbox]');
 const lightboxImage = lightbox?.querySelector('[data-lightbox-image]');
 const lightboxCaption = lightbox?.querySelector('[data-lightbox-caption]');
@@ -162,9 +259,11 @@ document.addEventListener('keydown', event => {
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const href = a.getAttribute('href');
+    const behavior = reduceMotion.matches ? 'auto' : 'smooth';
+
     if (href === '#') {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior });
       return;
     }
 
@@ -172,12 +271,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) {
       e.preventDefault();
       const top = target.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
+      window.scrollTo({ top, behavior });
     }
   });
-});
-
-// Page load fade-in
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('loaded');
 });
