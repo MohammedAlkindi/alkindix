@@ -28,3 +28,4 @@ resume/*.aux
 resume/*.log
 resume/*.out
 resume/build.log
+resume/resume.pdf
