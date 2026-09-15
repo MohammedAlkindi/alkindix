@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="canonical" href="https://alkindix.com/projects"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  <link rel="stylesheet" href="/css/styles.css?v=20260722-final"/>
+  <link rel="stylesheet" href="/css/styles.css?v=20260915-motion"/>
   <style>
     .page-hero {
       padding: 6rem 0 4rem;
@@ -42,6 +42,19 @@
 
     /* Projects grid */
     .projects-section { padding: 5rem 0; }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 660px;
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .section-lead a {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1px;
+    }
 
     .projects-grid {
       display: grid;
@@ -332,10 +345,16 @@
 
 
     <!-- OPEN SOURCE -->
-    <section class="projects-section">
+    <section class="projects-section" id="open-source">
       <div class="container">
         <span class="eyebrow">Open source</span>
         <h2>Merged upstream</h2>
+        <p class="section-lead">
+          110 pull requests merged into 32 upstream projects, which together carry
+          626,632 GitHub stars &mdash; among them Microsoft, NVIDIA, OpenAI, Anthropic,
+          AWS, Google, Hugging Face, rust-lang, Astral, Pydantic and Express.
+          <a href="https://github.com/pulls?q=is%3Apr+author%3AMohammedAlkindi+is%3Amerged+-user%3AMohammedAlkindi" target="_blank" rel="noopener">Verify the full list on GitHub</a>.
+        </p>
         <div class="projects-grid">
 
           <div class="project-card" data-reveal>
@@ -424,7 +443,7 @@
     </div>
   </footer>
 
-<script src="/js/app.js?v=20260722-final"></script>
+<script src="/js/app.js?v=20260915-motion"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
