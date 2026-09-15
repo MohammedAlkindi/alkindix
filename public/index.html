@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  <link rel="stylesheet" href="/css/styles.css?v=20260722-final"/>
+  <link rel="stylesheet" href="/css/styles.css?v=20260915-motion"/>
   <style>
     /* Hero */
     .home-hero {
@@ -51,6 +51,82 @@
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
+    }
+
+    /* Open source - the measured record */
+    .oss-section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .oss-lead {
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 2.75rem;
+    }
+
+    .oss-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line-subtle);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .oss-stat {
+      background: var(--bg-elevated);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .oss-stat__value {
+      font-family: "Space Mono", monospace;
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.035em;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .oss-stat__label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 22ch;
+    }
+
+    .oss-orgs-lead {
+      font-family: "Space Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.38);
+      margin: 2.25rem 0 1rem;
+    }
+
+    .oss-orgs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .oss-orgs li {
+      font-family: "Space Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      background: rgba(255,255,255,0.02);
     }
 
     /* Ledger - the live index */
@@ -228,6 +304,10 @@
     @media (max-width: 820px) {
       .band-grid { grid-template-columns: 1fr; }
 
+      .oss-stats { grid-template-columns: 1fr; }
+      .oss-stat { padding: 1.5rem 1.4rem; }
+      .oss-stat__label { max-width: none; }
+
       .ledger__row {
         grid-template-columns: 1fr auto;
         row-gap: 0.4rem;
@@ -271,9 +351,10 @@
   <main>
 
     <!-- HERO -->
-    <section class="home-hero" aria-labelledby="hero-title">
+    <section class="home-hero page-hero--visual" aria-labelledby="hero-title">
+      <div class="hero-visual hero-visual--home" aria-hidden="true"></div>
       <div class="container">
-        <span class="home-hero__eyebrow">Mohammed Alkindi · UC San Diego CS · Data Analytics @ Shell</span>
+        <span class="home-hero__eyebrow">Mohammed Alkindi · Incoming CS @ UC San Diego · Founder, ProofX · Thiel Fellowship Semifinalist</span>
         <h1 id="hero-title">I build systems you can audit.</h1>
         <p class="home-hero__sub">
           Analysis engines, proof search, and reporting pipelines built so their claims
@@ -284,6 +365,54 @@
           <a href="/projects" class="btn btn--primary">View projects</a>
           <a href="/resume.pdf" class="btn" target="_blank" rel="noopener">Resume PDF</a>
           <a href="mailto:alkindi.ceo@gmail.com" class="btn">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE -->
+    <section class="oss-section" aria-labelledby="oss-title">
+      <div class="container">
+        <span class="eyebrow">Open source</span>
+        <h2 id="oss-title">Merged upstream</h2>
+        <p class="oss-lead">
+          Most of these fix defects continuous integration never sees, because hosted
+          runners do not match the machines real users have — Windows path handling,
+          locale encoding, line endings.
+        </p>
+
+        <div class="oss-stats" data-reveal data-reveal-children>
+          <div class="oss-stat">
+            <span class="oss-stat__value" data-count="110">110</span>
+            <span class="oss-stat__label">Pull requests merged</span>
+          </div>
+          <div class="oss-stat">
+            <span class="oss-stat__value" data-count="32">32</span>
+            <span class="oss-stat__label">Upstream projects</span>
+          </div>
+          <div class="oss-stat">
+            <span class="oss-stat__value" data-count="626632">626,632</span>
+            <span class="oss-stat__label">Combined stars of those projects</span>
+          </div>
+        </div>
+
+        <p class="oss-orgs-lead">Shipped into, among others:</p>
+        <ul class="oss-orgs" data-reveal data-reveal-children>
+          <li>Microsoft</li>
+          <li>NVIDIA</li>
+          <li>OpenAI</li>
+          <li>Anthropic</li>
+          <li>AWS</li>
+          <li>Google</li>
+          <li>Hugging Face</li>
+          <li>rust-lang</li>
+          <li>Astral</li>
+          <li>Pydantic</li>
+          <li>Express</li>
+        </ul>
+
+        <div class="ledger__footer">
+          <a class="index-link" href="/projects#open-source">Read the fixes &rarr;</a>
+          <a class="index-link" href="https://github.com/pulls?q=is%3Apr+author%3AMohammedAlkindi+is%3Amerged+-user%3AMohammedAlkindi" target="_blank" rel="noopener">Verify on GitHub &rarr;</a>
         </div>
       </div>
     </section>
@@ -315,6 +444,11 @@
           <a class="ledger__row" href="https://switchyardhq.vercel.app" target="_blank" rel="noopener">
             <span class="ledger__name">Switchyard</span>
             <span class="ledger__desc">Many AI coding agents on one repository without collisions. On npm as @switchyardhq/switchyard.</span>
+            <span class="ledger__status"><span class="ledger__dot"></span>Live</span>
+          </a>
+          <a class="ledger__row" href="https://contextbill.vercel.app" target="_blank" rel="noopener">
+            <span class="ledger__name">contextbill</span>
+            <span class="ledger__desc">Prices Claude Code transcripts. One analysis core shared by a zero-dependency CLI on npm and the hosted app, so both price a transcript identically.</span>
             <span class="ledger__status"><span class="ledger__dot"></span>Live</span>
           </a>
           <a class="ledger__row" href="https://pulse-overview.vercel.app" target="_blank" rel="noopener">
@@ -358,9 +492,9 @@
             <div class="band-item">
               <div class="band-item__header">
                 <span class="band-item__title">Data Analytics Intern — Shell</span>
-                <span class="band-item__date">May 2026 - Present</span>
+                <span class="band-item__date">Jun - Aug 2026</span>
               </div>
-              <p>Automated Python pipelines for daily production reporting, with deterministic KPI extraction and structured audit trails.</p>
+              <p>Built a Python pipeline turning daily production data into validated dashboards, PDF reports and email-ready output in about two minutes, replacing a manual process.</p>
             </div>
             <span class="status-badge"><span class="ledger__dot"></span>Open to research &amp; collaboration</span>
           </div>
@@ -458,7 +592,7 @@
     </div>
   </footer>
 
-<script src="/js/app.js?v=20260722-final"></script>
+<script src="/js/app.js?v=20260915-motion"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
