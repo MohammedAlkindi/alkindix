@@ -17,6 +17,14 @@
 \usepackage{xcolor}
 \usepackage{tabularx}
 \usepackage[hidelinks]{hyperref}
+% Without this the PDF carries no title or author, so the one document a
+% recruiter downloads shows up in their files as "resume.pdf" by nobody.
+\hypersetup{
+  pdftitle={Mohammed Alkindi - Resume},
+  pdfauthor={Mohammed Alkindi},
+  pdfsubject={Software engineering, open source, machine learning},
+  pdfkeywords={software engineering, open source, Python, TypeScript, machine learning}
+}
 \usepackage{microtype}
 
 \definecolor{ink}{HTML}{111111}
@@ -51,7 +59,7 @@
 % ===========================================================================
 \begin{center}
   {\fontsize{19}{22}\selectfont\bfseries Mohammed Alkindi}\\[0.34em]
-  {\small Incoming B.S.\ Computer Science, UC San Diego\ \ $\cdot$\ \ Founder, ProofX\ \ $\cdot$\ \ Thiel Fellowship Semifinalist}\\[0.3em]
+  {\small B.S.\ Computer Science, UC San Diego\ \ $\cdot$\ \ Founder, ProofX\ \ $\cdot$\ \ Thiel Fellowship Semifinalist}\\[0.3em]
   {\small\color{soft}
     \href{mailto:alkindi.ceo@gmail.com}{alkindi.ceo@gmail.com}\ \ $\cdot$\ \
     \href{https://alkindix.com}{alkindix.com}\ \ $\cdot$\ \
@@ -94,7 +102,7 @@ Windows path handling, locale encoding and line endings account for the majority
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{ProofX}\ \ $|$\ \ Founder and Lead Engineer}{Aug 2025 -- Jul 2026}
+\entry{\textbf{ProofX}\ \ $|$\ \ Founder and Lead Engineer}{Aug 2025 -- Present}
 \begin{itemize}
   \item Built \textbf{CollatzX}, a directed counterexample search engine running roughly
         10M sequence iterations per second on commodity hardware, with hashed state tracking
@@ -137,7 +145,7 @@ Windows path handling, locale encoding and line endings account for the majority
 % ===========================================================================
 \section{Education}
 
-\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{Starting Fall 2026}
+\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{2026 -- Present}
 \vspace{0.18em}
 \entry{\textbf{University of Pennsylvania}\ \ $|$\ \ non-degree program}{Sep 2025 -- Apr 2026}
 \vspace{-0.55em}
