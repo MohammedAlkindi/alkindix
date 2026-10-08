@@ -2,10 +2,10 @@
 % Build:  pdflatex -interaction=nonstopmode resume.tex
 % Output is copied to public/resume.pdf, which the site links from every page.
 %
-% Every figure in the OPEN SOURCE block is measured, not estimated. Re-derive
-% before each send; the command is in resume/README.md.
+% Every figure in the open source entry is measured, not estimated. Re-derive
+% before each send; the command is in resume/README.md. Last measured 2026-10-08.
 
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,letterpaper]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -22,7 +22,7 @@
 \hypersetup{
   pdftitle={Mohammed Alkindi - Resume},
   pdfauthor={Mohammed Alkindi},
-  pdfsubject={Software engineering, open source, machine learning},
+  pdfsubject={Software engineering, open source},
   pdfkeywords={software engineering, open source, Python, TypeScript, machine learning}
 }
 \usepackage{microtype}
@@ -59,122 +59,96 @@
 % ===========================================================================
 \begin{center}
   {\fontsize{19}{22}\selectfont\bfseries Mohammed Alkindi}\\[0.34em]
-  {\small B.S.\ Computer Science, UC San Diego\ \ $\cdot$\ \ Founder, ProofX\ \ $\cdot$\ \ Thiel Fellowship Semifinalist}\\[0.3em]
+  {\small Computer Science student, UC San Diego}\\[0.3em]
   {\small\color{soft}
-    \href{mailto:alkindi.ceo@gmail.com}{alkindi.ceo@gmail.com}\ \ $\cdot$\ \
-    \href{https://alkindix.com}{alkindix.com}\ \ $\cdot$\ \
+    San Diego, CA\ \ $\cdot$\ \
+    \href{mailto:malkindi@ucsd.edu}{malkindi@ucsd.edu}\ \ $\cdot$\ \
+    \href{https://github.com/MohammedAlkindi}{github.com/MohammedAlkindi}\ \ $\cdot$\ \
     \href{https://www.linkedin.com/in/mohammed--alkindi/}{linkedin.com/in/mohammed{-}{-}alkindi}\ \ $\cdot$\ \
-    \href{https://github.com/MohammedAlkindi}{github.com/MohammedAlkindi}}
+    \href{https://www.alkindix.com}{alkindix.com}}
 \end{center}
 \vspace{-0.15em}
 
 % ===========================================================================
-\section{Open source}
+\section{Education}
 
-\textbf{111 pull requests merged into 33 upstream projects}, which together carry
-\textbf{637{,}514} GitHub stars (measured 15 September 2026). Most fix defects continuous
-integration never sees, because hosted runners do not match the machines real users have:
-Windows path handling, locale encoding and line endings account for the majority.
-
-\vspace{0.15em}
+\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{Sep 2026 -- Present}
 \begin{itemize}
-  \item Merged at \textbf{Microsoft} (14), \textbf{NVIDIA}, \textbf{OpenAI},
-        \textbf{Anthropic}, \textbf{AWS}, \textbf{Google}, \textbf{Hugging Face},
-        \textbf{rust-lang}, \textbf{Astral} (\texttt{uv}, 90k stars),
-        \textbf{Pydantic}, \textbf{Express} (\texttt{multer}, 12k stars), tox and pdm.
-  \item Deepest in \texttt{simple-statistics} (21 merged), \texttt{NegPy} (17),
-        \texttt{gorakhargosh/watchdog} (10), \texttt{microsoft/hve-core} (8) and
-        \texttt{mcp-use} (6). At Anthropic, a line-ending normalization fix merged
-        into \texttt{claude-code-action}.
-  \item A Windows path-containment fix was adopted with credit into
-        \texttt{garrytan/gbrain} (30k stars) and shipped in v0.46.14.0.
+  \item IDEA Scholar, Jacobs School of Engineering. Coursework: CSE 11 (Java), MATH 18 (Linear Algebra).
+        Credit for MATH 20A and 20B (Calculus).
+\end{itemize}
+\vspace{0.2em}
+\entry{\textbf{University of Pennsylvania}\ \ $|$\ \ Non-degree program}{Sep 2025 -- Apr 2026}
+\begin{itemize}
+  \item VP of Marketing, Penn Chess Club.
 \end{itemize}
 
 % ===========================================================================
 \section{Experience}
 
-\entry{\textbf{Shell}\ \ $|$\ \ Data Analyst}{Jun 2026 -- Aug 2026}
+\entry{\textbf{Shell Kuwait}\ \ $|$\ \ Data Analyst Intern}{Jun 2026 -- Aug 2026}
 \begin{itemize}
-  \item Built a Python pipeline turning daily production data into validated dashboards,
-        PDF reports and email-ready output in about two minutes, replacing a manual process.
-  \item Added an interactive dashboard for asset-level filtering, well search and performance
-        tracking, validating every Excel input before anything reaches a report.
+  \item Built a Python tool that turns the daily production spreadsheets into dashboards, PDF reports and an
+        email draft in about two minutes. The team did this by hand before.
+  \item Checked every Excel input before it reached a report, so a bad source file stopped the run
+        instead of producing a wrong report.
+  \item Built an interactive dashboard to filter by asset, search wells and track performance.
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{ProofX}\ \ $|$\ \ Founder and Lead Engineer}{Aug 2025 -- Present}
+\entry{\textbf{Open source contributor}}{Aug 2026 -- Present}
 \begin{itemize}
-  \item Built \textbf{CollatzX}, a directed counterexample search engine running roughly
-        10M sequence iterations per second on commodity hardware, with hashed state tracking
-        and replayable run ledgers.
-  \item Built \textbf{Germinal}, a pipeline that proposes conjectures, formalizes them in Lean~4 and
-        attacks them with three independent counterexample methods. Worked with MIT E14 Lab partners
-        on technical direction and reproducibility standards.
-  \item Every run records its command, seed, budget and code revision, so any result can be reproduced
-        exactly or challenged.
+  \item 161 merged pull requests across 43 projects as of October 2026, mostly Windows, CI and
+        correctness bugs. Most active in simple-statistics (23), Microsoft hve-core (22), NegPy (17),
+        watchdog (10) and NVIDIA Automodel (10).
+  \item \textbf{Microsoft} (36 merged, most of them documentation and CI fixes in hve-core). In \texttt{apm},
+        package installs failed on Windows once staging paths passed 260 characters. Shortened the
+        generated path segments and kept cleanup working for older installs.
+  \item In Microsoft \texttt{onnxscript}, a default optimizer rule that folds BatchNorm into Gemm ignored
+        Gemm's beta, so rewritten models returned wrong values with no error. Fixed the bias math and added
+        tests that fail without either half of the fix.
+  \item In \texttt{watchdog}, renaming \texttt{file} to \texttt{FILE} on Windows reported a false deletion.
+        Traced it to the raw ReadDirectoryChangesW records and dropped the extra event.
 \end{itemize}
 
 % ===========================================================================
-\section{Selected projects}
+\section{Projects}
 
 \entry{\textbf{Switchyard}\ \ $|$\ \ TypeScript, npm}{2026}
 \begin{itemize}
-  \item Coordination layer for running several coding agents against one repository. Each agent
-        gets an isolated git worktree and branch; merges are simulated in memory to separate
-        files that merely overlap from changes that would actually conflict.
-  \item Published as \texttt{@switchyardhq/switchyard}, now v0.4, with line-range collision
-        detection and read-only MCP access to fleet state.
+  \item Runs several coding agents on one repository. Each agent gets its own git worktree and branch,
+        and merges are simulated in memory to tell overlapping files apart from real conflicts.
+        Published on npm as \texttt{@switchyardhq/switchyard} (v0.4).
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{contextbill}\ \ $|$\ \ TypeScript, Next.js, Supabase}{2026}
+\entry{\textbf{ProofX}\ \ $|$\ \ Python, Lean 4}{2024 -- 2026}
 \begin{itemize}
-  \item Prices Claude Code transcripts. A zero-dependency CLI on npm and a hosted app share one
-        analysis core, so the same transcript prices identically on either surface.
+  \item Counterexample search for number theory conjectures. Its Collatz engine ran about 10 million
+        sequence steps per second and logged the seed, budget and code revision of every run so any
+        result can be replayed. Paused.
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{Corporate Financial Distress Prediction}\ \ $|$\ \ Python, scikit-learn}{Dec 2025 -- Feb 2026}
+\entry{\textbf{Financial distress prediction}\ \ $|$\ \ Python, scikit-learn}{Dec 2025 -- Feb 2026}
 \begin{itemize}
-  \item Interpretable pipeline over roughly 105K firm-year observations standardizing 60+ financial
-        ratios. K-Means segmentation with cluster-aware logistic regression reached 81\% accuracy and
-        0.84 ROC-AUC. Benchmarked against XGBoost at 0.90 and kept the interpretable model, since the
-        target was regulatory early warning rather than raw score.
+  \item Modeled about 105K firm years across 60+ financial ratios. Cluster based logistic regression
+        reached 0.84 ROC AUC. Kept it over XGBoost (0.90) because the model had to be explainable.
 \end{itemize}
 
 % ===========================================================================
-\section{Education}
-
-\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{2026 -- Present}
-\vspace{0.18em}
-\entry{\textbf{University of Pennsylvania}\ \ $|$\ \ non-degree program}{Sep 2025 -- Apr 2026}
-\vspace{-0.55em}
-
-% ===========================================================================
-\section{Honors}
+\section{Honors and leadership}
 \begin{itemize}
-  \item \textbf{Thiel Fellowship Semifinalist} (Feb 2026). Top $\sim$3\% of 3{,}000+ global applicants.
-  \item \textbf{MIT Bitcoin Hackathon} (Apr 2026). Top 22 of 47 teams for BridgX, a BTC-to-EVM bridge
-        prototype built in 36 hours.
-  \item \textbf{Oman National Scholarship}, Ministry of Higher Education (Aug 2025). Fully funded
-        national award.
+  \item Thiel Fellowship Semifinalist (2026).
+  \item Oman National Scholarship, Ministry of Higher Education (2025). Fully funded.
+  \item Oman Space, co-founder (2026 -- Present). Connects Omani students with aerospace organizations.
 \end{itemize}
 
 % ===========================================================================
-\section{Community and leadership}
-\begin{itemize}
-  \item \textbf{Oman Space}, Co-Founder (Aug 2026 -- present). Connecting Omani students with
-        aerospace organizations, founders and practical routes into the sector.
-  \item Claude Builder Club and Penn Quantum Computing Club, member. Penn Chess Club, VP Marketing.
-        Write about engineering and open source to an audience of 4{,}400+ on LinkedIn.
-\end{itemize}
+\section{Skills}
 
-% ===========================================================================
-\section{Technical skills}
-
-\textbf{Languages:} Python, TypeScript, JavaScript, SQL, Solidity, Lean 4\\
-\textbf{ML and data:} PyTorch, scikit-learn, pandas, NumPy, XGBoost, K-Means, PCA, FastAPI\\
-\textbf{Systems:} Git, React, Next.js, Supabase, SQLite, HPC, EVM/Solidity, PyQt5\\
-\textbf{Certifications:} Machine Learning Specialization (Stanford), CS50x and CS50P (Harvard)\ \ $\cdot$\ \ \textbf{Spoken:} Arabic and English, both native
+\textbf{Languages:} Python, TypeScript, JavaScript, SQL, Java (coursework)\\
+\textbf{Tools:} Git, GitHub Actions, pytest, Vitest, pandas, NumPy, scikit-learn, React, Next.js, FastAPI, PostgreSQL (Supabase)\\
+\textbf{Certifications:} CS50x and CS50P (Harvard), Machine Learning Specialization (Stanford)\ \ $\cdot$\ \ \textbf{Spoken:} Arabic and English
 
 \end{document}
