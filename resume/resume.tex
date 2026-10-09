@@ -72,27 +72,23 @@
 % ===========================================================================
 \section{Education}
 
-\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{Sep 2026 -- Present}
+\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{Expected Jun 2030}
 \begin{itemize}
-  \item IDEA Scholar, Jacobs School of Engineering. Coursework: CSE 11 (Java), MATH 18 (Linear Algebra).
-        Credit for MATH 20A and 20B (Calculus).
+  \item IDEA Scholar, Jacobs School of Engineering. Coursework: CSE 11 (Java), Linear Algebra.
+        Calculus credit (MATH 20A, 20B).
 \end{itemize}
 \vspace{0.2em}
 \entry{\textbf{University of Pennsylvania}\ \ $|$\ \ Non-degree program}{Sep 2025 -- Apr 2026}
-\begin{itemize}
-  \item VP of Marketing, Penn Chess Club.
-\end{itemize}
 
 % ===========================================================================
 \section{Experience}
 
 \entry{\textbf{Shell Kuwait}\ \ $|$\ \ Data Analyst Intern}{Jun 2026 -- Aug 2026}
 \begin{itemize}
-  \item Built a Python tool that turns the daily production spreadsheets into dashboards, PDF reports and an
-        email draft in about two minutes. The team did this by hand before.
-  \item Checked every Excel input before it reached a report, so a bad source file stopped the run
-        instead of producing a wrong report.
-  \item Built an interactive dashboard to filter by asset, search wells and track performance.
+  \item Automated the daily production report with a Python tool that turns the day's spreadsheets into
+        dashboards, PDF reports and an email draft in about two minutes. The team did this by hand before.
+  \item Added validation on every Excel input, so a bad source file stopped the run before any report went out.
+  \item Built an interactive dashboard so colleagues could filter by asset, search wells and track performance.
 \end{itemize}
 
 % ===========================================================================
@@ -100,59 +96,66 @@
 
 \entry{\textbf{Contributor to outside projects}}{Aug 2026 -- Present}
 \begin{itemize}
-  \item 164 merged pull requests across 43 projects as of October 2026, mostly Windows, CI and
-        correctness bugs. Most active in simple-statistics (23), Microsoft hve-core (22), NegPy (17),
-        watchdog (10) and NVIDIA Automodel (10).
-  \item \textbf{Microsoft} (39 merged, most of them documentation and CI fixes in hve-core). In \texttt{apm},
-        package installs failed on Windows once staging paths passed 260 characters. Shortened the
-        generated path segments and kept cleanup working for older installs.
-  \item In Microsoft \texttt{onnxscript}, a default optimizer rule that folds BatchNorm into Gemm ignored
-        Gemm's beta, so rewritten models returned wrong values with no error. Fixed the bias math and added
-        tests that fail without either half of the fix.
-  \item In \texttt{watchdog}, renaming \texttt{file} to \texttt{FILE} on Windows reported a false deletion.
-        Traced it to the raw ReadDirectoryChangesW records and dropped the extra event.
+  \item Merged 164 pull requests across 43 projects as of October 2026, mostly Windows, CI and correctness
+        bugs. Most active in simple-statistics (23), Microsoft hve-core (22), NegPy (17), watchdog (10) and
+        NVIDIA Automodel (10).
+  \item \textbf{Microsoft:} 39 merged across hve-core, playwright-python, apm, onnxscript and data-formulator.
+        In \texttt{apm}, fixed Windows package installs that failed once staging paths passed 260 characters.
+  \item Fixed a default \texttt{onnxscript} optimizer rule that ignored Gemm's beta when folding BatchNorm into
+        Gemm, so rewritten models returned wrong values with no error. Added tests that fail without either
+        half of the fix.
+  \item Fixed a false deletion event in \texttt{watchdog} for Windows renames that change only letter case.
 \end{itemize}
 
 % ===========================================================================
 \section{Projects}
 
-\entry{\textbf{Ridge}\ \ $|$\ \ JavaScript, Node.js, Claude API}{2026}
+\entry{\textbf{Ridge}\ \ $|$\ \ JavaScript, Node.js, Express, Claude API}{2026}
 \begin{itemize}
-  \item Spreadsheet analysis tool that computes statistics, data quality checks and correlations before any
-        AI sees the data. Each finding records its method, sample size, coverage and source rows.
-  \item Reads messy workbooks: finds where the header starts, drops title and total rows, and reports every
-        excluded row with the reason. An optional Claude layer explains the results afterward. Live at
+  \item Built a spreadsheet analysis web app that computes statistics, data quality checks and correlations in
+        code first, with Claude as an optional explainer afterward. Each finding records its method, sample
+        size, coverage and source rows.
+  \item Handled messy workbooks by detecting where the header starts and dropping title and total rows, and
+        reported every excluded row with its reason. Tested with Vitest and Playwright in CI. Live at
         \href{https://ridge-data.vercel.app}{ridge-data.vercel.app}.
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{OmanX}\ \ $|$\ \ JavaScript, Supabase, Claude API}{2026 -- Present}
+\entry{\textbf{OmanX}\ \ $|$\ \ JavaScript, Node.js, Supabase, Claude API}{2026 -- Present}
 \begin{itemize}
-  \item Guidance assistant for Omani scholarship students in the US, UK and Australia. Visa and scholarship
-        questions are answered from a curated knowledge base and a search limited to government sites,
+  \item Built an AI guidance assistant for Omani scholarship students in the US, UK and Australia. Routed visa
+        and scholarship questions to a curated knowledge base and a search limited to government sites,
         with sources cited.
-  \item Urgent cases, such as a terminated SEVIS record, get a fixed checklist written in code instead of by
-        the model, so the steps are the same every time. Live at \href{https://www.omanx.org}{omanx.org}.
+  \item Wrote fixed checklists in code for urgent cases such as a terminated SEVIS record, so those steps never
+        depend on the model. Added a weekly CI check on every cited government link after a sweep found 14
+        dead ones. Live at \href{https://www.omanx.org}{omanx.org}.
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{ProofX}\ \ $|$\ \ Python, Lean 4}{2024 -- 2026}
+\entry{\textbf{ProofX}\ \ $|$\ \ Python, Lean 4\ \ $|$\ \ \href{https://proofx.org}{proofx.org}}{2024 -- 2026 (paused)}
 \begin{itemize}
-  \item Counterexample search for number theory conjectures. Its Collatz engine ran about 10 million
-        sequence steps per second and logged the seed, budget and code revision of every run so any
-        result can be replayed.
-  \item Germinal, its Lean 4 pipeline, proposes conjectures, formalizes them and runs three independent
-        counterexample searches on each one. Paused. Details at \href{https://proofx.org}{proofx.org}.
+  \item Built a Collatz counterexample search engine that ran about 10 million sequence steps per second and
+        logged the seed, budget and code revision of every run, so any result can be replayed.
+  \item Built Germinal, a Lean 4 pipeline that proposes and formalizes conjectures, then tests each one with
+        three independent counterexample searches.
 \end{itemize}
 
 % ===========================================================================
-\section{Honors and leadership}
+\section{Leadership}
+
 \begin{itemize}
-  \item Thiel Fellowship Semifinalist (2026).
-  \item Oman National Scholarship, Ministry of Higher Education (2025). Fully funded.
-  \item Mathematics Student of the Year, high school (2025). Sole recipient.
-  \item Oman Space, co-founder (2026 -- Present). Connects Omani students with aerospace organizations.
+  \item \textbf{Oman Space}, co-founder (Aug 2026 -- Present). Early stage group connecting Omani students with
+        aerospace organizations.
+  \item \textbf{Penn Chess Club}, VP of Marketing (Sep 2025 -- Apr 2026). Promoted club events and helped run them.
+  \item \textbf{High school math teams}, founder and president at two schools. Ran olympiad training and led a
+        top 4 national finish (2024).
 \end{itemize}
+
+% ===========================================================================
+\section{Honors}
+
+Thiel Fellowship Semifinalist (2026)\ \ $\cdot$\ \ Oman National Scholarship (2025)\ \ $\cdot$\ \
+Mathematics Student of the Year, sole recipient (2025)
 
 % ===========================================================================
 \section{Skills}
