@@ -3,7 +3,7 @@
 % Output is copied to public/resume.pdf, which the site links from every page.
 %
 % Every figure in the open source entry is measured, not estimated. Re-derive
-% before each send; the command is in resume/README.md. Last measured 2026-10-08.
+% before each send; the command is in resume/README.md. Last measured 2026-10-09.
 
 \documentclass[10pt,letterpaper]{article}
 
@@ -95,13 +95,15 @@
   \item Built an interactive dashboard to filter by asset, search wells and track performance.
 \end{itemize}
 
-\vspace{0.3em}
-\entry{\textbf{Open source contributor}}{Aug 2026 -- Present}
+% ===========================================================================
+\section{Open source}
+
+\entry{\textbf{Contributor to outside projects}}{Aug 2026 -- Present}
 \begin{itemize}
-  \item 161 merged pull requests across 43 projects as of October 2026, mostly Windows, CI and
+  \item 164 merged pull requests across 43 projects as of October 2026, mostly Windows, CI and
         correctness bugs. Most active in simple-statistics (23), Microsoft hve-core (22), NegPy (17),
         watchdog (10) and NVIDIA Automodel (10).
-  \item \textbf{Microsoft} (36 merged, most of them documentation and CI fixes in hve-core). In \texttt{apm},
+  \item \textbf{Microsoft} (39 merged, most of them documentation and CI fixes in hve-core). In \texttt{apm},
         package installs failed on Windows once staging paths passed 260 characters. Shortened the
         generated path segments and kept cleanup working for older installs.
   \item In Microsoft \texttt{onnxscript}, a default optimizer rule that folds BatchNorm into Gemm ignored
@@ -114,11 +116,23 @@
 % ===========================================================================
 \section{Projects}
 
-\entry{\textbf{Switchyard}\ \ $|$\ \ TypeScript, npm}{2026}
+\entry{\textbf{Ridge}\ \ $|$\ \ JavaScript, Node.js, Claude API}{2026}
 \begin{itemize}
-  \item Runs several coding agents on one repository. Each agent gets its own git worktree and branch,
-        and merges are simulated in memory to tell overlapping files apart from real conflicts.
-        Published on npm as \texttt{@switchyardhq/switchyard} (v0.4).
+  \item Spreadsheet analysis tool that computes statistics, data quality checks and correlations before any
+        AI sees the data. Each finding records its method, sample size, coverage and source rows.
+  \item Reads messy workbooks: finds where the header starts, drops title and total rows, and reports every
+        excluded row with the reason. An optional Claude layer explains the results afterward. Live at
+        \href{https://ridge-data.vercel.app}{ridge-data.vercel.app}.
+\end{itemize}
+
+\vspace{0.3em}
+\entry{\textbf{OmanX}\ \ $|$\ \ JavaScript, Supabase, Claude API}{2026 -- Present}
+\begin{itemize}
+  \item Guidance assistant for Omani scholarship students in the US, UK and Australia. Visa and scholarship
+        questions are answered from a curated knowledge base and a search limited to government sites,
+        with sources cited.
+  \item Urgent cases, such as a terminated SEVIS record, get a fixed checklist written in code instead of by
+        the model, so the steps are the same every time. Live at \href{https://www.omanx.org}{omanx.org}.
 \end{itemize}
 
 \vspace{0.3em}
@@ -126,14 +140,9 @@
 \begin{itemize}
   \item Counterexample search for number theory conjectures. Its Collatz engine ran about 10 million
         sequence steps per second and logged the seed, budget and code revision of every run so any
-        result can be replayed. Paused.
-\end{itemize}
-
-\vspace{0.3em}
-\entry{\textbf{Financial distress prediction}\ \ $|$\ \ Python, scikit-learn}{Dec 2025 -- Feb 2026}
-\begin{itemize}
-  \item Modeled about 105K firm years across 60+ financial ratios. Cluster based logistic regression
-        reached 0.84 ROC AUC. Kept it over XGBoost (0.90) because the model had to be explainable.
+        result can be replayed.
+  \item Germinal, its Lean 4 pipeline, proposes conjectures, formalizes them and runs three independent
+        counterexample searches on each one. Paused. Details at \href{https://proofx.org}{proofx.org}.
 \end{itemize}
 
 % ===========================================================================
@@ -141,6 +150,7 @@
 \begin{itemize}
   \item Thiel Fellowship Semifinalist (2026).
   \item Oman National Scholarship, Ministry of Higher Education (2025). Fully funded.
+  \item Mathematics Student of the Year, high school (2025). Sole recipient.
   \item Oman Space, co-founder (2026 -- Present). Connects Omani students with aerospace organizations.
 \end{itemize}
 
@@ -148,7 +158,7 @@
 \section{Skills}
 
 \textbf{Languages:} Python, TypeScript, JavaScript, SQL, Java (coursework)\\
-\textbf{Tools:} Git, GitHub Actions, pytest, Vitest, pandas, NumPy, scikit-learn, React, Next.js, FastAPI, PostgreSQL (Supabase)\\
+\textbf{Tools:} Git, GitHub Actions, pytest, Vitest, Playwright, pandas, NumPy, scikit-learn, Node.js, React, Next.js, PostgreSQL (Supabase)\\
 \textbf{Certifications:} CS50x and CS50P (Harvard), Machine Learning Specialization (Stanford)\ \ $\cdot$\ \ \textbf{Spoken:} Arabic and English
 
 \end{document}
