@@ -27,6 +27,17 @@
 }
 \usepackage{microtype}
 
+% ATS parsers read the text layer, not the page. These lines make that layer
+% match what a person sees: real space characters between words, Unicode for
+% every glyph, and no word split across two lines by hyphenation. Without
+% them a strict parser read the contact line as one token with the email
+% inside it, and glued each date onto the end of its title.
+\input{glyphtounicode}
+\pdfgentounicode=1
+\pdfinterwordspaceon
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
 \definecolor{ink}{HTML}{111111}
 \definecolor{soft}{HTML}{555555}
 \definecolor{rule}{HTML}{BBBBBB}
@@ -48,9 +59,7 @@
 
 % --- an entry: bold title on the left, date flush right --------------------
 \newcommand{\entry}[2]{%
-  \begin{tabularx}{\linewidth}{@{}X r@{}}
-    #1 & {\color{soft}\small #2}
-  \end{tabularx}%
+  \par\noindent #1 \hfill {\color{soft}\small #2}\par
   \vspace{0.12em}
 }
 
@@ -61,10 +70,10 @@
   {\fontsize{19}{22}\selectfont\bfseries Mohammed Alkindi}\\[0.34em]
   {\small Computer Science student, UC San Diego}\\[0.3em]
   {\small\color{soft}
-    San Diego, CA\ \ $\cdot$\ \
-    \href{mailto:malkindi@ucsd.edu}{malkindi@ucsd.edu}\ \ $\cdot$\ \
-    \href{https://github.com/MohammedAlkindi}{github.com/MohammedAlkindi}\ \ $\cdot$\ \
-    \href{https://www.linkedin.com/in/mohammed--alkindi/}{linkedin.com/in/mohammed{-}{-}alkindi}\ \ $\cdot$\ \
+    San Diego, CA \textbar{}
+    \href{mailto:malkindi@ucsd.edu}{malkindi@ucsd.edu} \textbar{}
+    \href{https://github.com/MohammedAlkindi}{github.com/MohammedAlkindi} \textbar{}
+    \href{https://www.linkedin.com/in/mohammed--alkindi/}{linkedin.com/in/mohammed{-}{-}alkindi} \textbar{}
     \href{https://www.alkindix.com}{alkindix.com}}
 \end{center}
 \vspace{-0.15em}
@@ -72,18 +81,18 @@
 % ===========================================================================
 \section{Education}
 
-\entry{\textbf{University of California, San Diego}\ \ $|$\ \ B.S.\ Computer Science}{Expected Jun 2030}
+\entry{\textbf{University of California, San Diego} \textbar{} B.S.\ Computer Science}{Expected Jun 2030}
 \begin{itemize}
   \item IDEA Scholar, Jacobs School of Engineering. Coursework: CSE 11 (Java), Linear Algebra.
         Calculus credit (MATH 20A, 20B).
 \end{itemize}
 \vspace{0.2em}
-\entry{\textbf{University of Pennsylvania}\ \ $|$\ \ Non-degree program}{Sep 2025 -- Apr 2026}
+\entry{\textbf{University of Pennsylvania} \textbar{} Non-degree program}{Sep 2025 -- Apr 2026}
 
 % ===========================================================================
 \section{Experience}
 
-\entry{\textbf{Shell Kuwait}\ \ $|$\ \ Data Analyst Intern}{Jun 2026 -- Aug 2026}
+\entry{\textbf{Shell Kuwait} \textbar{} Data Analyst Intern}{Jun 2026 -- Aug 2026}
 \begin{itemize}
   \item Automated the daily production report with a Python tool that turns the day's spreadsheets into
         dashboards, PDF reports and an email draft in about two minutes. The team did this by hand before.
@@ -110,7 +119,7 @@
 % ===========================================================================
 \section{Projects}
 
-\entry{\textbf{Ridge}\ \ $|$\ \ JavaScript, Node.js, Express, Claude API}{2026}
+\entry{\textbf{Ridge} \textbar{} JavaScript, Node.js, Express, Claude API}{2026}
 \begin{itemize}
   \item Built a spreadsheet analysis web app that computes statistics, data quality checks and correlations in
         code first, with Claude as an optional explainer afterward. Each finding records its method, sample
@@ -121,7 +130,7 @@
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{OmanX}\ \ $|$\ \ JavaScript, Node.js, Supabase, Claude API}{2026 -- Present}
+\entry{\textbf{OmanX} \textbar{} JavaScript, Node.js, Supabase, Claude API}{2026 -- Present}
 \begin{itemize}
   \item Built an AI guidance assistant for Omani scholarship students in the US, UK and Australia. Routed visa
         and scholarship questions to a curated knowledge base and a search limited to government sites,
@@ -132,7 +141,7 @@
 \end{itemize}
 
 \vspace{0.3em}
-\entry{\textbf{ProofX}\ \ $|$\ \ Python, Lean 4\ \ $|$\ \ \href{https://proofx.org}{proofx.org}}{2024 -- 2026 (paused)}
+\entry{\textbf{ProofX} \textbar{} Python, Lean 4 \textbar{} \href{https://proofx.org}{proofx.org}}{2024 -- 2026 (paused)}
 \begin{itemize}
   \item Built a Collatz counterexample search engine that ran about 10 million sequence steps per second and
         logged the seed, budget and code revision of every run, so any result can be replayed.
@@ -154,7 +163,7 @@
 % ===========================================================================
 \section{Honors}
 
-Thiel Fellowship Semifinalist (2026)\ \ $\cdot$\ \ Oman National Scholarship (2025)\ \ $\cdot$\ \
+Thiel Fellowship Semifinalist (2026) \textbar{} Oman National Scholarship (2025) \textbar{}
 Mathematics Student of the Year, sole recipient (2025)
 
 % ===========================================================================
@@ -162,6 +171,6 @@ Mathematics Student of the Year, sole recipient (2025)
 
 \textbf{Languages:} Python, TypeScript, JavaScript, SQL, Java (coursework)\\
 \textbf{Tools:} Git, GitHub Actions, pytest, Vitest, Playwright, pandas, NumPy, scikit-learn, Node.js, React, Next.js, PostgreSQL (Supabase)\\
-\textbf{Certifications:} CS50x and CS50P (Harvard), Machine Learning Specialization (Stanford)\ \ $\cdot$\ \ \textbf{Spoken:} Arabic and English
+\textbf{Certifications:} CS50x and CS50P (Harvard), Machine Learning Specialization (Stanford) \textbar{} \textbf{Spoken:} Arabic and English
 
 \end{document}

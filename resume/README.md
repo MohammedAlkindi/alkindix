@@ -51,3 +51,23 @@ gh api -X GET search/issues \
 For the project count and the combined stars, page through the same query and
 take the distinct `repository_url` values. As of 2026-09-15 that is 110 merged
 pull requests across 32 projects carrying 626,632 stars.
+
+**Applicant tracking systems read the text layer, not the page.** Before
+2026-10-09 a strict parser read the contact line as one token
+(`CA·malkindi@ucsd.edu·github.com/...`) and glued every date onto its title
+(`Computer ScienceExpected Jun 2030`). The preamble now turns on real space
+characters (`\pdfinterwordspaceon`), Unicode glyph mapping and no hyphenation,
+entries are no longer tables, and separators are a plain `|`. Check after any
+layout change:
+
+```bash
+python3 -c "
+import re; from pypdf import PdfReader
+t = PdfReader('resume.pdf').pages[0].extract_text(); L = t.splitlines()
+print('email:', re.findall(r'[\w.+-]+@[\w-]+\.[\w.]+', t))
+print('glued dates:', [l for l in L if re.search(r'[a-z](Sep|Jun|Aug|Expected)', l)])
+print('split words:', [l for l in L if l.endswith('-')])
+"
+```
+
+The email must come back as `malkindi@ucsd.edu` alone and both lists must be empty.
