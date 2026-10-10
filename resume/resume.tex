@@ -64,6 +64,7 @@
 }
 
 \begin{document}
+\raggedright
 
 % ===========================================================================
 \begin{center}
@@ -81,12 +82,7 @@
 % ===========================================================================
 \section{Education}
 
-\entry{\textbf{University of California, San Diego} \textbar{} B.S.\ Computer Science}{Expected Jun 2030}
-\begin{itemize}
-  \item IDEA Scholar, Jacobs School of Engineering. Coursework: CSE 11 (Java), Linear Algebra.
-        Calculus credit (MATH 20A, 20B).
-\end{itemize}
-\vspace{0.2em}
+\entry{\textbf{University of California, San Diego} \textbar{} B.S.\ Computer Science \textbar{} IDEA Scholar}{Expected Jun 2030}
 \entry{\textbf{University of Pennsylvania} \textbar{} Non-degree program}{Sep 2025 -- Apr 2026}
 
 % ===========================================================================
@@ -105,42 +101,21 @@
 
 \entry{\textbf{Contributor to outside projects}}{Aug 2026 -- Present}
 \begin{itemize}
-  \item Merged 164 pull requests across 43 projects as of October 2026, mostly Windows, CI and correctness
-        bugs. Most active in simple-statistics (23), Microsoft hve-core (22), NegPy (17), watchdog (10) and
-        NVIDIA Automodel (10).
-  \item \textbf{Microsoft:} 39 merged across hve-core, playwright-python, apm, onnxscript and data-formulator.
-        In \texttt{apm}, fixed Windows package installs that failed once staging paths passed 260 characters.
-  \item Fixed a default \texttt{onnxscript} optimizer rule that ignored Gemm's beta when folding BatchNorm into
-        Gemm, so rewritten models returned wrong values with no error. Added tests that fail without either
-        half of the fix.
-  \item Fixed a false deletion event in \texttt{watchdog} for Windows renames that change only letter case.
+  \item Merged 164 pull requests across 43 projects as of October 2026 (39 at Microsoft), mostly correctness,
+        Windows and CI bugs. Most active in simple-statistics (23), Microsoft hve-core (22) and NegPy (17).
+  \item Fixed floating point cancellation in simple-statistics, where linear regression returned a slope
+        69\% wrong when x was a timestamp. Centered the sums on the means and applied the same fix to Jenks variance.
+  \item Corrected six standard normal table entries above z = 2.9 and two chi-squared critical values in
+        simple-statistics, and gave tied values midranks in its rank correlation.
+  \item Fixed a default optimizer rule in Microsoft onnxscript that ignored Gemm's beta when folding
+        BatchNorm into Gemm, so rewritten models returned wrong values with no error. Added tests that fail
+        without either half of the fix.
+  \item Fixed a false deletion event in watchdog for Windows renames that change only letter case.
 \end{itemize}
 
 % ===========================================================================
 \section{Projects}
 
-\entry{\textbf{Ridge} \textbar{} JavaScript, Node.js, Express, Claude API}{2026}
-\begin{itemize}
-  \item Built a spreadsheet analysis web app that computes statistics, data quality checks and correlations in
-        code first, with Claude as an optional explainer afterward. Each finding records its method, sample
-        size, coverage and source rows.
-  \item Handled messy workbooks by detecting where the header starts and dropping title and total rows, and
-        reported every excluded row with its reason. Tested with Vitest and Playwright in CI. Live at
-        \href{https://ridge-data.vercel.app}{ridge-data.vercel.app}.
-\end{itemize}
-
-\vspace{0.3em}
-\entry{\textbf{OmanX} \textbar{} JavaScript, Node.js, Supabase, Claude API}{2026 -- Present}
-\begin{itemize}
-  \item Built an AI guidance assistant for Omani scholarship students in the US, UK and Australia. Routed visa
-        and scholarship questions to a curated knowledge base and a search limited to government sites,
-        with sources cited.
-  \item Wrote fixed checklists in code for urgent cases such as a terminated SEVIS record, so those steps never
-        depend on the model. Added a weekly CI check on every cited government link after a sweep found 14
-        dead ones. Live at \href{https://www.omanx.org}{omanx.org}.
-\end{itemize}
-
-\vspace{0.3em}
 \entry{\textbf{ProofX} \textbar{} Python, Lean 4 \textbar{} \href{https://proofx.org}{proofx.org}}{2024 -- 2026 (paused)}
 \begin{itemize}
   \item Built a Collatz counterexample search engine that ran about 10 million sequence steps per second and
@@ -149,28 +124,43 @@
         three independent counterexample searches.
 \end{itemize}
 
-% ===========================================================================
-\section{Leadership}
-
+\vspace{0.3em}
+\entry{\textbf{Ridge} \textbar{} JavaScript, Node.js, Claude API \textbar{} \href{https://ridge-data.vercel.app}{ridge-data.vercel.app}}{2026}
 \begin{itemize}
-  \item \textbf{Oman Space}, co-founder (Aug 2026 -- Present). Early stage group connecting Omani students with
-        aerospace organizations.
-  \item \textbf{Penn Chess Club}, VP of Marketing (Sep 2025 -- Apr 2026). Promoted club events and helped run them.
-  \item \textbf{High school math teams}, founder and president at two schools. Ran olympiad training and led a
-        top 4 national finish (2024).
+  \item Built a spreadsheet analysis app that computes correlations, Welch intervals, chi-square and
+        Kolmogorov-Smirnov tests in code before any AI sees the data. Each finding records its method,
+        sample size and source rows.
+  \item Handled messy workbooks by detecting the header row and dropping title and total rows, with every
+        excluded row reported. Tested with Vitest and Playwright in CI.
+\end{itemize}
+
+\vspace{0.3em}
+\entry{\textbf{OmanX} \textbar{} JavaScript, Node.js, Supabase, Claude API \textbar{} \href{https://www.omanx.org}{omanx.org}}{2026 -- Present}
+\begin{itemize}
+  \item Built an AI guidance assistant for Omani scholarship students abroad. It answers visa questions from a
+        curated knowledge base and government sites, and urgent cases get fixed checklists written in code.
 \end{itemize}
 
 % ===========================================================================
 \section{Honors}
 
-Thiel Fellowship Semifinalist (2026) \textbar{} Oman National Scholarship (2025) \textbar{}
-Mathematics Student of the Year, sole recipient (2025)
+Mathematics Student of the Year, sole recipient (2025) \textbar{} National mathematics competition, top 4 team (2024)\\
+Thiel Fellowship Semifinalist (2026) \textbar{} Oman National Scholarship (2025)
+
+% ===========================================================================
+\section{Leadership}
+\begin{itemize}
+  \item \textbf{High school math teams}, founder and president at two schools. Ran their olympiad training.
+  \item \textbf{Oman Space}, co-founder (Aug 2026 -- Present). Early stage group connecting Omani students with
+        aerospace organizations.
+  \item \textbf{Penn Chess Club}, VP of Marketing (Sep 2025 -- Apr 2026). Promoted club events and helped run them.
+\end{itemize}
 
 % ===========================================================================
 \section{Skills}
 
-\textbf{Languages:} Python, TypeScript, JavaScript, SQL, Java (coursework)\\
-\textbf{Tools:} Git, GitHub Actions, pytest, Vitest, Playwright, pandas, NumPy, scikit-learn, Node.js, React, Next.js, PostgreSQL (Supabase)\\
+\textbf{Languages:} Python, TypeScript, JavaScript, SQL, Lean 4, Java (coursework)\\
+\textbf{Tools:} Git, GitHub Actions, pytest, Vitest, Playwright, pandas, NumPy, scikit-learn, Node.js, React, PostgreSQL\\
 \textbf{Certifications:} CS50x and CS50P (Harvard), Machine Learning Specialization (Stanford) \textbar{} \textbf{Spoken:} Arabic and English
 
 \end{document}
