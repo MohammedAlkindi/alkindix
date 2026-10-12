@@ -1,0 +1,10 @@
+# Mohammed Alkindi
+
+> Personal portfolio of a computer science student at UC San Diego, with software projects, open-source contributions, and creative work.
+
+- [Projects](https://www.alkindix.com/projects): ProofX, Ridge, Switchyard, and other work.
+- [Open source](https://www.alkindix.com/open-source): Selected merged upstream fixes.
+- [About](https://www.alkindix.com/about): Experience, education, and honors.
+- [Resume](https://www.alkindix.com/resume.pdf): Current resume.
+- [Research](https://www.alkindix.com/research): Research notes and experiments.
+- [Creative](https://www.alkindix.com/creative): Photography and writing.
