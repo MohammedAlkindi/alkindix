@@ -4,80 +4,74 @@
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-// Nav overlay
+// Modal backgrounds stay out of the keyboard and accessibility tree.
 const navToggle = document.querySelector('.nav__toggle');
 const navOverlay = document.getElementById('navOverlay');
+const desktopNav = window.matchMedia('(min-width: 900px)');
+const pageRegions = [...document.querySelectorAll('main, .footer')];
+const headerRegions = [...document.querySelectorAll('.brand, .nav__links')];
 
-function closeOverlay() {
-  navOverlay?.classList.remove('active');
+function setBackgroundInert(active, includeHeader = false) {
+  [...pageRegions, ...(includeHeader ? [document.querySelector('.nav')] : headerRegions)]
+    .filter(Boolean).forEach(element => { element.inert = active; });
+}
+
+function trapFocus(event, elements) {
+  if (event.key !== 'Tab' || !elements.length) return;
+  const first = elements[0];
+  const last = elements[elements.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault(); last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault(); first.focus();
+  }
+}
+
+function closeOverlay(restoreFocus = true) {
+  if (!navOverlay || navOverlay.hidden) return;
+  navOverlay.classList.remove('active');
+  navOverlay.hidden = true;
+  navOverlay.setAttribute('aria-hidden', 'true');
   navToggle?.classList.remove('active');
   navToggle?.setAttribute('aria-expanded', 'false');
-  navOverlay?.setAttribute('aria-hidden', 'true');
-  navOverlay?.setAttribute('hidden', '');
+  navToggle?.setAttribute('aria-label', 'Open navigation');
+  setBackgroundInert(false);
   document.body.style.overflow = '';
+  if (restoreFocus) navToggle?.focus();
 }
 
 if (navToggle && navOverlay) {
   navToggle.addEventListener('click', () => {
-    const open = !navOverlay.classList.contains('active');
-
-    if (!open) {
-      closeOverlay();
-      return;
-    }
-
-    navOverlay.removeAttribute('hidden');
+    if (!navOverlay.hidden) { closeOverlay(); return; }
+    navOverlay.hidden = false;
     navOverlay.classList.add('active');
+    navOverlay.setAttribute('aria-hidden', 'false');
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded', 'true');
-    navOverlay.setAttribute('aria-hidden', 'false');
+    navToggle.setAttribute('aria-label', 'Close navigation');
+    setBackgroundInert(true);
     document.body.style.overflow = 'hidden';
+    navOverlay.querySelector('a')?.focus();
   });
-
   navOverlay.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeOverlay);
+    link.addEventListener('click', () => closeOverlay(false));
   });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeOverlay();
+  navOverlay.addEventListener('click', event => {
+    if (event.target === navOverlay) closeOverlay();
+  });
+  document.addEventListener('keydown', event => {
+    if (navOverlay.hidden) return;
+    if (event.key === 'Escape') { event.preventDefault(); closeOverlay(); }
+    trapFocus(event, [navToggle, ...navOverlay.querySelectorAll('a')]);
+  });
+  desktopNav.addEventListener('change', event => {
+    if (event.matches) closeOverlay(false);
   });
 }
 
-// ---------------------------------------------------------
-// Scroll state — one rAF-batched reader, compositor-only writes
-// ---------------------------------------------------------
-const nav = document.querySelector('.nav');
-const progressBar = document.createElement('div');
-progressBar.className = 'scroll-progress';
-document.body.appendChild(progressBar);
-
-let scrollQueued = false;
-let navScrolled = false;
-
-function applyScroll() {
-  scrollQueued = false;
-
-  const y = window.scrollY;
-  const shouldBeScrolled = y > 40;
-  if (shouldBeScrolled !== navScrolled) {
-    navScrolled = shouldBeScrolled;
-    nav?.classList.toggle('scrolled', shouldBeScrolled);
-  }
-
-  const h = document.documentElement;
-  const scrollable = h.scrollHeight - h.clientHeight;
-  const progress = scrollable > 0 ? Math.min(y / scrollable, 1) : 0;
-  // scaleX stays on the compositor; animating width forces layout on every frame.
-  progressBar.style.transform = `scaleX(${progress})`;
-}
-
-window.addEventListener('scroll', () => {
-  if (scrollQueued) return;
-  scrollQueued = true;
-  requestAnimationFrame(applyScroll);
-}, { passive: true });
-
-applyScroll();
+document.querySelectorAll('[data-year]').forEach(element => {
+  element.textContent = String(new Date().getFullYear());
+});
 
 // Active nav link based on current path
 const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
@@ -86,88 +80,9 @@ document.querySelectorAll('.nav__menu a, .nav__links a').forEach(a => {
   const hrefPath = href ? new URL(href, window.location.href).pathname.replace(/\/$/, '') : '';
   if (hrefPath === currentPath) {
     a.classList.add('active');
+    a.setAttribute('aria-current', 'page');
   }
 });
-
-// ---------------------------------------------------------
-// Scroll reveal
-// Fires as soon as an element crosses the viewport edge. The old
-// -60px bottom margin plus a 10% threshold meant a tall card had to be
-// well inside the fold before it started a 700ms fade, which read as lag.
-// ---------------------------------------------------------
-const revealTargets = document.querySelectorAll('[data-reveal]');
-
-if (reduceMotion.matches) {
-  revealTargets.forEach(el => el.classList.add('visible'));
-} else {
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    });
-  }, { threshold: 0, rootMargin: '0px 0px -4% 0px' });
-
-  revealTargets.forEach(el => {
-    // Anything already on screen at load must not wait for a scroll event.
-    if (el.getBoundingClientRect().top < window.innerHeight) {
-      el.classList.add('visible');
-    } else {
-      revealObserver.observe(el);
-    }
-  });
-
-  // Stagger children of a marked group so a list resolves in sequence
-  // rather than as one slab.
-  document.querySelectorAll('[data-reveal-children]').forEach(group => {
-    [...group.children].forEach((child, i) => {
-      child.style.setProperty('--stagger', `${Math.min(i * 55, 440)}ms`);
-    });
-  });
-}
-
-// ---------------------------------------------------------
-// Count-up for measured figures. Values come from the markup, so the
-// number on screen is always the number in the HTML.
-// ---------------------------------------------------------
-const counters = document.querySelectorAll('[data-count]');
-
-if (counters.length) {
-  if (reduceMotion.matches) {
-    counters.forEach(el => { el.textContent = el.dataset.count; });
-  } else {
-    const easeOut = t => 1 - Math.pow(1 - t, 3);
-
-    const runCount = el => {
-      const target = parseFloat(el.dataset.count);
-      if (!Number.isFinite(target)) return;
-      const suffix = el.dataset.countSuffix || '';
-      const duration = 1100;
-      const start = performance.now();
-
-      const fmt = n => n.toLocaleString('en-US');
-
-      const step = now => {
-        const t = Math.min((now - start) / duration, 1);
-        el.textContent = fmt(Math.round(easeOut(t) * target)) + suffix;
-        if (t < 1) requestAnimationFrame(step);
-      };
-
-      el.textContent = '0' + suffix;
-      requestAnimationFrame(step);
-    };
-
-    const countObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        runCount(e.target);
-        countObserver.unobserve(e.target);
-      });
-    }, { threshold: 0.4 });
-
-    counters.forEach(el => countObserver.observe(el));
-  }
-}
 
 // Photography filters
 document.querySelectorAll('[data-gallery-filter]').forEach(button => {
@@ -225,6 +140,7 @@ function closeLightbox() {
   lightboxImage?.removeAttribute('src');
   lightboxImage?.setAttribute('alt', '');
   document.body.style.overflow = '';
+  setBackgroundInert(false, true);
   lightboxTrigger?.focus();
 }
 
@@ -236,6 +152,7 @@ document.querySelectorAll('[data-lightbox-src]').forEach(button => {
     lightboxTrigger = button;
     showLightboxImage();
     lightbox.removeAttribute('hidden');
+    setBackgroundInert(true, true);
     document.body.style.overflow = 'hidden';
     lightboxClose?.focus();
   });
@@ -250,28 +167,17 @@ lightbox?.addEventListener('click', event => {
 
 document.addEventListener('keydown', event => {
   if (!lightbox || lightbox.hasAttribute('hidden')) return;
-  if (event.key === 'Escape') closeLightbox();
+  if (event.key === 'Escape') { event.preventDefault(); closeLightbox(); }
+  trapFocus(event, [...lightbox.querySelectorAll('button')]);
   if (event.key === 'ArrowLeft') moveLightbox(-1);
   if (event.key === 'ArrowRight') moveLightbox(1);
 });
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const href = a.getAttribute('href');
-    const behavior = reduceMotion.matches ? 'auto' : 'smooth';
-
-    if (href === '#') {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior });
-      return;
-    }
-
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior });
-    }
+// Native anchors preserve URL history and keyboard focus.
+document.querySelectorAll('a[href="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    document.querySelector('.brand')?.focus({ preventScroll: true });
   });
 });
