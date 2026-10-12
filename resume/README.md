@@ -1,7 +1,6 @@
 # Resume
 
-`resume.tex` is the source. `public/resume.pdf` is the copy the site serves; it is
-generated, never edited by hand.
+`public/resume.pdf` is the current resume supplied by Mohammed on 12 October 2026, copied byte-for-byte from his master PDF. `resume.tex` is an older version and does not generate the current download. Do not overwrite the published PDF with a build of that source until the source has been brought up to date.
 
 ## Build
 
