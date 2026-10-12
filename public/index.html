@@ -4,54 +4,40 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Mohammed Alkindi</title>
-  <meta name="description" content="Mohammed Alkindi builds analysis engines, proof search and reporting pipelines. 161 pull requests merged into 43 upstream projects."/>
+  <meta name="description" content="Computer science student at UC San Diego. I build software whose answers you can check. 169 pull requests merged across 43+ open-source projects."/>
+  <meta name="color-scheme" content="light dark"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="canonical" href="https://www.alkindix.com/"/>
   <meta property="og:title" content="Mohammed Alkindi"/>
-  <meta property="og:description" content="Mohammed Alkindi builds analysis engines, proof search and reporting pipelines. 161 pull requests merged into 43 upstream projects."/>
+  <meta property="og:description" content="I build software whose answers you can check. 169 pull requests merged across 43+ open-source projects."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.alkindix.com/"/>
   <meta property="og:image" content="https://www.alkindix.com/og.png"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
-  <meta property="og:site_name" content="Mohammed Alkindi"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Mohammed Alkindi"/>
-  <meta name="twitter:description" content="Mohammed Alkindi builds analysis engines, proof search and reporting pipelines. 161 pull requests merged into 43 upstream projects."/>
-  <meta name="twitter:image" content="https://www.alkindix.com/og.png"/>
   <meta name="author" content="Mohammed Alkindi"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  <link rel="stylesheet" href="/css/styles.css?v=20260915-nav"/>
+  <link rel="stylesheet" href="/css/site.css?v=20261012"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Mohammed Alkindi",
     "url": "https://www.alkindix.com/",
-    "image": "https://www.alkindix.com/og.png",
     "email": "mailto:malkindi@ucsd.edu",
-    "jobTitle": "Software Engineer",
-    "description": "Computer science student at UC San Diego. Builds analysis engines, proof search and reporting pipelines, and contributes fixes upstream to the open-source projects they depend on.",
-    "nationality": { "@type": "Country", "name": "Oman" },
+    "description": "Computer science student at UC San Diego. Builds analysis engines, proof search and reporting pipelines, and fixes the open-source projects they depend on.",
     "alumniOf": [
       { "@type": "CollegeOrUniversity", "name": "University of California, San Diego" },
       { "@type": "CollegeOrUniversity", "name": "University of Pennsylvania" }
     ],
     "knowsLanguage": ["ar", "en"],
-    "knowsAbout": [
-      "Open source software",
-      "Python",
-      "TypeScript",
-      "Machine learning",
-      "Data engineering",
-      "Lean 4",
-      "Computational mathematics"
-    ],
     "award": [
       "Thiel Fellowship Semifinalist (2026)",
-      "Oman National Scholarship, Ministry of Higher Education (2025)"
+      "IDEA Scholar, UC San Diego Jacobs School of Engineering (2026)",
+      "Oman Government Scholarship (2025)"
     ],
     "sameAs": [
       "https://github.com/MohammedAlkindi",
@@ -61,132 +47,212 @@
     ]
   }
   </script>
-  <style>
-    /* The page is a single statement, so it should occupy exactly the
-       viewport and show no scrollbar. Flex sizing rather than overflow:hidden,
-       so a short viewport can still scroll instead of clipping the text. */
-    html, body { height: 100%; }
-
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      flex: 1 0 auto;
-      display: flex;
-      align-items: center;
-      min-height: 0;
-    }
-
-    .footer { flex-shrink: 0; }
-
-    .home-hero {
-      width: 100%;
-      padding: 2.5rem 0;
-    }
-
-    .home-hero h1 {
-      font-size: clamp(2.6rem, 6.5vw, 4.4rem);
-      letter-spacing: -0.035em;
-      line-height: 1.04;
-      margin-bottom: 1.6rem;
-      max-width: 16ch;
-    }
-
-    .home-hero__sub {
-      font-size: 1.08rem;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 33rem;
-      margin-bottom: 2.4rem;
-    }
-
-    @media (max-width: 768px) {
-      .home-hero { padding: 2rem 0; }
-    }
-  </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="nav" role="banner">
-    <div class="container nav__inner">
-      <a class="brand" href="/" aria-label="Alkindi home">Alkindi</a>
-      <button class="nav__toggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav__links" role="navigation" aria-label="Primary">
-        <a href="/about">About</a>
-        <a href="/awards">Awards</a>
-        <a href="/creative">Creative</a>
-        <a href="/open-source">Open Source</a>
-        <a href="/projects">Projects</a>
-        <a href="/research">Research</a>
+  <header class="top">
+    <div class="wrap top__inner">
+      <a class="mark" href="/" aria-label="Mohammed Alkindi, home">Mohammed Alkindi</a>
+      <nav class="top__nav" aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#open-source">Open source</a>
+        <a href="#about">About</a>
+        <a href="#photography">Photography</a>
+        <a href="/resume.pdf">Resume</a>
       </nav>
     </div>
   </header>
 
-  <div class="nav__overlay" id="navOverlay" hidden role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
-    <nav class="nav__menu" aria-label="Overlay navigation">
-      <a href="/about">About</a>
-      <a href="/awards">Awards</a>
-      <a href="/creative">Creative</a>
-      <a href="/open-source">Open Source</a>
-      <a href="/projects">Projects</a>
-      <a href="/research">Research</a>
-    </nav>
-  </div>
-
   <main id="main">
 
-    <section class="home-hero page-hero--visual" aria-labelledby="hero-title">
-      <div class="hero-visual hero-visual--home" aria-hidden="true"></div>
-      <div class="container">
-        <h1 id="hero-title">I build systems you can audit.</h1>
-        <p class="home-hero__sub">
-          Analysis engines, proof search and reporting pipelines. The point of all of
-          them is the same: you should be able to check the answer, not just trust it.
-        </p>
-        <div class="home-hero__actions">
-          <a href="/projects" class="btn btn--primary">View projects</a>
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas class="hero__plot" id="heroPlot" aria-hidden="true"></canvas>
+      <div class="wrap hero__inner">
+        <h1 id="hero-title">I build software whose answers you can check.</h1>
+        <p class="lede">Computer science student at UC San Diego, from Oman. I write search engines, statistics tools and reporting pipelines, and I fix the open-source code they run on.</p>
+        <ul class="hero__links">
+          <li><a class="button" href="mailto:malkindi@ucsd.edu">Email me</a></li>
+          <li><a href="https://github.com/MohammedAlkindi">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/mohammed--alkindi/">LinkedIn</a></li>
+          <li><a href="/resume.pdf">Resume (PDF)</a></li>
+        </ul>
+      </div>
+      <p class="wrap hero__note" id="heroNote">The lines are Collatz trajectories for 48 starting numbers, computed as the page loads. The highlighted one starts at 27 and takes 111 steps to reach 1.</p>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <h2 id="work-title">Work</h2>
+
+        <article class="project">
+          <div class="project__text">
+            <h3>ProofX</h3>
+            <p>A search engine for counterexamples in number theory. Its parallel Numba kernel checks about 21 million integers per second on two cores, roughly 200 times faster than plain Python.</p>
+            <p>Every run writes a seeded ledger, so any result replays exactly. 500 of those results are re-proved as Lean 4 theorems and checked by the Lean kernel.</p>
+            <dl class="facts">
+              <div><dt>Built with</dt><dd>Python, Numba, Lean 4</dd></div>
+              <div><dt>Tests</dt><dd>437 passing</dd></div>
+            </dl>
+            <p class="project__links"><a href="https://proofx.org">proofx.org</a><a href="https://github.com/MohammedAlkindi/proofx">Source</a></p>
+          </div>
+          <figure class="project__visual">
+            <canvas class="plot" id="stoppingPlot" role="img" aria-label="Scatter plot of the number of Collatz steps for every starting value up to 30,000. Points form dense bands that rise slowly as n grows."></canvas>
+            <figcaption>Steps to reach 1 for every starting number up to 30,000. Your browser computed this just now.</figcaption>
+          </figure>
+        </article>
+
+        <article class="project">
+          <div class="project__text">
+            <h3>Ridge</h3>
+            <p>Spreadsheet analysis that runs the statistics in code before any AI sees the data. Correlations, Welch intervals, chi-square and KS tests are computed first, and every finding records its method, sample size and source rows.</p>
+            <p>A typical file is analyzed in under 100 ms. 565 unit and API tests plus Playwright browser tests run in CI.</p>
+            <dl class="facts">
+              <div><dt>Built with</dt><dd>Node.js, Express, Claude API</dd></div>
+              <div><dt>Formats</dt><dd>11, from CSV to PowerPoint</dd></div>
+            </dl>
+            <p class="project__links"><a href="https://tryridge.vercel.app">Try it live</a><a href="https://github.com/MohammedAlkindi/ridge">Source</a></p>
+          </div>
+          <figure class="project__visual project__visual--shot">
+            <img src="/img/ridge-800.webp" srcset="/img/ridge-800.webp 800w, /img/ridge.webp 1600w" sizes="(min-width: 900px) 560px, 92vw" width="1600" height="941" alt="Ridge analyzing a 91-row sales sample: 4 quality flags, a spend distribution histogram, and a dataset summary." loading="lazy" decoding="async"/>
+            <figcaption>The live app on its bundled sample file.</figcaption>
+          </figure>
+        </article>
+
+        <article class="project">
+          <div class="project__text">
+            <h3>Switchyard</h3>
+            <p>A command-line tool for running several AI coding agents on one repository. Each agent gets its own Git worktree, and Switchyard simulates every pair's merge in memory with <code>git merge-tree</code>, so conflicts surface before anyone merges.</p>
+            <p>19 commands, 4 npm releases, and 260 integration tests against real repositories on Windows, macOS and Linux.</p>
+            <dl class="facts">
+              <div><dt>Built with</dt><dd>TypeScript, Node.js</dd></div>
+              <div><dt>Install</dt><dd><code>npm i -g @switchyardhq/switchyard</code></dd></div>
+            </dl>
+            <p class="project__links"><a href="https://www.npmjs.com/package/@switchyardhq/switchyard">npm</a><a href="https://github.com/MohammedAlkindi/switchyard">Source</a></p>
+          </div>
+          <figure class="project__visual">
+            <svg class="diagram" viewBox="0 0 560 330" role="img" aria-labelledby="sy-t sy-d">
+              <title id="sy-t">Three agents on separate worktrees</title>
+              <desc id="sy-d">Agents A, B and C branch off main into their own worktrees. A simulated merge finds that A and B both edit lines 40 to 52 of src/api.ts, while C is clear.</desc>
+              <line class="d-main" x1="24" y1="56" x2="536" y2="56"/>
+              <text class="d-label" x="24" y="36">main</text>
+              <circle class="d-node" cx="70" cy="56" r="6"/>
+              <path class="d-branch" d="M70 56 C 110 56, 110 126, 150 126 H 400"/>
+              <path class="d-branch" d="M70 56 C 110 56, 110 196, 150 196 H 400"/>
+              <path class="d-branch d-branch--quiet" d="M70 56 C 110 56, 110 266, 150 266 H 400"/>
+              <text class="d-label" x="160" y="114">agent A  worktree</text>
+              <text class="d-label" x="160" y="184">agent B  worktree</text>
+              <text class="d-label" x="160" y="254">agent C  worktree</text>
+              <rect class="d-edit" x="290" y="118" width="70" height="16" rx="3"/>
+              <rect class="d-edit" x="300" y="188" width="70" height="16" rx="3"/>
+              <rect class="d-edit d-edit--quiet" x="230" y="258" width="60" height="16" rx="3"/>
+              <path class="d-clash" d="M330 136 V 186"/>
+              <text class="d-note" x="418" y="152">src/api.ts</text>
+              <text class="d-note" x="418" y="170">lines 40 to 52</text>
+              <text class="d-note d-note--strong" x="418" y="188">A and B collide</text>
+              <text class="d-note" x="418" y="270">C merges clean</text>
+            </svg>
+            <figcaption>What a collision check reports before anything is merged.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--band" id="open-source" aria-labelledby="os-title">
+      <div class="wrap os">
+        <div class="os__text">
+          <h2 id="os-title">Open source</h2>
+          <p class="lede">169 pull requests merged into 43+ outside projects since August 2026. Most fix bugs that only appear off the happy path: floating-point error, Windows paths, text encodings and distributed training.</p>
+          <ul class="fixes">
+            <li><strong>simple-statistics</strong> Linear regression returned a slope 69% wrong when x was a timestamp. The sums are now centered on the means.</li>
+            <li><strong>Microsoft onnxscript</strong> An optimizer rule ignored Gemm's beta when folding BatchNorm into Gemm, so rewritten models silently returned wrong values.</li>
+            <li><strong>NVIDIA NeMo</strong> Validation loss came from one rank only. It is now reduced across every data-parallel rank.</li>
+            <li><strong>watchdog</strong> Renaming a file's letter case on Windows reported a deletion that never happened.</li>
+          </ul>
+          <p><a href="https://github.com/search?q=author%3AMohammedAlkindi+is%3Apr+is%3Amerged+-user%3AMohammedAlkindi&amp;type=pullrequests">See all 169 on GitHub</a></p>
+        </div>
+        <figure class="os__chart">
+          <figcaption>Merged pull requests by project owner</figcaption>
+          <ol class="bars">
+            <li style="--v:44"><span>Microsoft</span><b>44</b></li>
+            <li style="--v:23"><span>simple-statistics</span><b>23</b></li>
+            <li style="--v:19"><span>NVIDIA</span><b>19</b></li>
+            <li style="--v:17"><span>NegPy</span><b>17</b></li>
+            <li style="--v:10"><span>watchdog</span><b>10</b></li>
+            <li style="--v:7"><span>tox</span><b>7</b></li>
+            <li style="--v:7"><span>mcp-use</span><b>7</b></li>
+            <li style="--v:5"><span>pdm</span><b>5</b></li>
+            <li style="--v:4"><span>AWS</span><b>4</b></li>
+            <li style="--v:33" class="bars__rest"><span>30+ others</span><b>33</b></li>
+          </ol>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about">
+        <h2 id="about-title">About</h2>
+        <div class="about__cols">
+          <div>
+            <h3>Experience</h3>
+            <div class="entry">
+              <p class="entry__head"><strong>Shell</strong> <span>Data Analyst Intern, Jun to Aug 2026</span></p>
+              <p>Automated the daily production report. The pipeline detects two report layouts, checks every input against 12 rules that stop the run on bad data, and renders the dashboard in under five seconds. It replaced about three hours of manual Excel work a day.</p>
+            </div>
+            <h3>Education</h3>
+            <div class="entry">
+              <p class="entry__head"><strong>UC San Diego</strong> <span>B.S. Computer Science</span></p>
+              <p class="entry__head"><strong>University of Pennsylvania</strong> <span>Professional Development Program</span></p>
+            </div>
+          </div>
+          <div>
+            <h3>Recognition</h3>
+            <ul class="honors">
+              <li><strong>Thiel Fellowship semifinalist</strong> <span>2026, top 3% of 3,000+ applicants</span></li>
+              <li><strong>IDEA Scholar, Jacobs School of Engineering</strong> <span>2026</span></li>
+              <li><strong>Oman Government Scholarship</strong> <span>2025, fully funded</span></li>
+              <li><strong>Mathematics Student of the Year</strong> <span>2025, sole recipient</span></li>
+              <li><strong>Meta Connect</strong> <span>2026, invited to the AI Developer Roundtable</span></li>
+              <li><strong>VP of Outreach, Penn Chess Club</strong> <span>2025 to 2026</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
+    <section class="section" id="photography" aria-labelledby="photo-title">
+      <div class="wrap">
+        <div class="photo__head">
+          <h2 id="photo-title">Photography</h2>
+          <p><a href="/creative/photography">All photographs</a><a href="/creative/memoir">Architect of Silence, a memoir</a></p>
+        </div>
+      </div>
+      <ul class="strip" aria-label="Selected photographs">
+        <li><img src="/images/photography/thumbs/h4-480w.webp" srcset="/images/photography/thumbs/h4-480w.webp 480w, /images/photography/thumbs/h4-960w.webp 960w" sizes="(min-width: 900px) 360px, 72vw" alt="Aerial view of a turquoise coastline meeting pale sand." loading="lazy" decoding="async"/></li>
+        <li><img src="/images/photography/thumbs/h31-480w.webp" srcset="/images/photography/thumbs/h31-480w.webp 480w, /images/photography/thumbs/h31-960w.webp 960w" sizes="(min-width: 900px) 360px, 72vw" alt="A lone tree beside a winding road through green tea fields under storm clouds." loading="lazy" decoding="async"/></li>
+        <li><img src="/images/photography/thumbs/h5-480w.webp" srcset="/images/photography/thumbs/h5-480w.webp 480w, /images/photography/thumbs/h5-960w.webp 960w" sizes="(min-width: 900px) 360px, 72vw" alt="The Burj Khalifa lit against a dark blue night sky." loading="lazy" decoding="async"/></li>
+        <li><img src="/images/photography/thumbs/h21-480w.webp" srcset="/images/photography/thumbs/h21-480w.webp 480w, /images/photography/thumbs/h21-960w.webp 960w" sizes="(min-width: 900px) 360px, 72vw" alt="A statue on a campus lawn in autumn, with one bright red tree." loading="lazy" decoding="async"/></li>
+        <li><img src="/images/photography/thumbs/h22-480w.webp" srcset="/images/photography/thumbs/h22-480w.webp 480w, /images/photography/thumbs/h22-960w.webp 960w" sizes="(min-width: 900px) 360px, 72vw" alt="A violet sunset reflected in a still lake lined with trees." loading="lazy" decoding="async"/></li>
+        <li><img src="/images/photography/thumbs/h9-480w.webp" srcset="/images/photography/thumbs/h9-480w.webp 480w, /images/photography/thumbs/h9-960w.webp 960w" sizes="(min-width: 900px) 360px, 72vw" alt="Overhead view of terraced vegetable plots in deep green." loading="lazy" decoding="async"/></li>
+      </ul>
+    </section>
+
   </main>
-  <footer class="footer" role="contentinfo">
-    <div class="container footer__inner">
-      <span class="muted" style="font-size:0.85rem;">&copy; 2026 Alkindi</span>
-      <nav class="footer__social" aria-label="Social links">
-    <a class="footer__social-link" href="https://www.linkedin.com/in/mohammed--alkindi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    </a>
-    <a class="footer__social-link" href="https://github.com/MohammedAlkindi/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-    </a>
-    <a class="footer__social-link" href="mailto:malkindi@ucsd.edu" aria-label="Email">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-    </a>
-    <a class="footer__social-link" href="https://www.instagram.com/alkindi.ceo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-    </a>
-    <a class="footer__social-link" href="https://x.com/alkindi_ceo" target="_blank" rel="noopener noreferrer" aria-label="X">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25h6.946l4.261 5.632 4.787-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
-    <a class="footer__social-link" href="https://www.facebook.com/profile.php?id=61589597771423" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
-    <a class="footer__social-link" href="/creative/photography" aria-label="Photography">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-    </a>
-      </nav>
-      <a class="to-top" href="#" aria-label="Back to top">&#8593;</a>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <p class="foot__ask">Working on something that needs answers you can check? <a href="mailto:malkindi@ucsd.edu">malkindi@ucsd.edu</a></p>
+      <p class="foot__links">
+        <a href="https://github.com/MohammedAlkindi">GitHub</a>
+        <a href="https://www.linkedin.com/in/mohammed--alkindi/">LinkedIn</a>
+        <a href="https://x.com/alkindi_ceo">X</a>
+        <a href="https://www.instagram.com/alkindi.ceo/">Instagram</a>
+        <a href="/resume.pdf">Resume</a>
+      </p>
     </div>
   </footer>
 
-<script src="/js/app.js?v=20260915-nav"></script>
+  <script src="/js/site.js?v=20261012"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

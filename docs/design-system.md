@@ -1,5 +1,28 @@
 # Design System
 
+## Homepage (`public/css/site.css`)
+
+Ink on stone. The only loud element is the math: the hero trajectories and the
+ProofX plot. Everything else stays quiet, left aligned, and sentence case.
+
+| Token | Light | Dark | Use |
+| --- | --- | --- | --- |
+| `--paper` | `#edefea` | `#10141c` | Page background |
+| `--surface` | `#f6f7f3` | `#161b25` | Figures, open-source band |
+| `--ink` | `#172036` | `#e4e7e1` | Text, primary button |
+| `--graphite` | `#555c6a` | `#9ca3af` | Secondary text |
+| `--rule` | `#cdd2ca` | `#2b313c` | Borders, link underlines |
+| `--signal` | `#1f6b5c` | `#6fc2aa` | Plots, bars, focus ring, hover |
+| `--clash` | `#a4462f` | `#e08b6f` | Collision marker in the Switchyard diagram |
+
+Type: Schibsted Grotesk for everything, 400 to 700. Code uses the system monospace.
+Motion: one orchestrated moment (the hero trajectories draw in over 1.6s) and the
+open-source bars growing once. Both are skipped under reduced motion.
+
+## Creative pages (`public/css/styles.css`)
+
+The photography and memoir pages keep the earlier dark system below.
+
 All pages share `public/styles.css`. The system is built on CSS custom properties (tokens), a small set of utility classes, and a single font pair.
 
 ## Tokens

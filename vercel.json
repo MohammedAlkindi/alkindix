@@ -8,8 +8,15 @@
     { "source": "/memoir",      "destination": "/creative/memoir",                              "permanent": true  },
     { "source": "/photography", "destination": "/creative/photography",                         "permanent": true  },
     { "source": "/photography.html", "destination": "/creative/photography",                    "permanent": true  },
-    { "source": "/systems",     "destination": "/projects",                                     "permanent": true  },
-    { "source": "/systems.html","destination": "/projects",                                     "permanent": true  },
+    { "source": "/systems",     "destination": "/#work",                                        "permanent": true  },
+    { "source": "/systems.html","destination": "/#work",                                        "permanent": true  },
+    { "source": "/projects",    "destination": "/#work",                                        "permanent": true  },
+    { "source": "/research",    "destination": "/#work",                                        "permanent": true  },
+    { "source": "/integers",    "destination": "/#work",                                        "permanent": true  },
+    { "source": "/open-source", "destination": "/#open-source",                                 "permanent": true  },
+    { "source": "/about",       "destination": "/#about",                                       "permanent": true  },
+    { "source": "/awards",      "destination": "/#about",                                       "permanent": true  },
+    { "source": "/resume",      "destination": "/resume.pdf",                                   "permanent": false },
 
     { "source": "/(.*)", "has": [{ "type": "host", "value": "architectofsilence.com" }],     "destination": "https://alkindix.com/creative/memoir", "permanent": true },
     { "source": "/(.*)", "has": [{ "type": "host", "value": "www.architectofsilence.com" }], "destination": "https://alkindix.com/creative/memoir", "permanent": true }
