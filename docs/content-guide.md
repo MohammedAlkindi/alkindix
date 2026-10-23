@@ -19,8 +19,8 @@ or placeholder repository link.
 
 ## Research
 
-`public/research.html` separates formal studies from exploratory integer work. Avoid
-claims that are not supported by a report, repository, or documented result.
+`public/research.html` lists studies and analyses. Avoid claims that are not supported
+by a report, repository, or documented result.
 
 ## Creative work
 
