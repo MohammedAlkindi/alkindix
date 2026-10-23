@@ -10,6 +10,8 @@ Personal portfolio for Mohammed Alkindi's projects, research, photography, and w
 | [`/about`](https://www.alkindix.com/about) | Profile, experience, and education |
 | [`/projects`](https://www.alkindix.com/projects) | Selected systems and product work |
 | [`/research`](https://www.alkindix.com/research) | Research and computational studies |
+| [`/open-source`](https://www.alkindix.com/open-source) | Merged upstream contributions |
+| [`/awards`](https://www.alkindix.com/awards) | Awards |
 | [`/creative`](https://www.alkindix.com/creative) | Photography and writing |
 | [`/creative/photography`](https://www.alkindix.com/creative/photography) | Complete photography archive |
 | [`/creative/memoir`](https://www.alkindix.com/creative/memoir) | Architect of Silence |
