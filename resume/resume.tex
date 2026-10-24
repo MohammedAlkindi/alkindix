@@ -1,9 +1,11 @@
-% Mohammed Alkindi — resume
-% Build:  pdflatex -interaction=nonstopmode resume.tex
-% Output is copied to public/resume.pdf, which the site links from every page.
+% Mohammed Alkindi - resume
+% Build:  pdflatex -interaction=nonstopmode -halt-on-error resume.tex
+% Output is copied to public/resume.pdf, which the site links from every page,
+% and to Career/Resumes/Resume.pdf in his Google Drive.
 %
-% Every figure in the open source entry is measured, not estimated. Re-derive
-% before each send; the command is in resume/README.md. Last measured 2026-10-09.
+% Every figure here is measured, not estimated. Re-derive the open source
+% numbers before each send; the commands are in resume/README.md.
+% Last measured 2026-10-24.
 
 \documentclass[10pt,letterpaper]{article}
 
@@ -15,7 +17,6 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{xcolor}
-\usepackage{tabularx}
 \usepackage[hidelinks]{hyperref}
 % Without this the PDF carries no title or author, so the one document a
 % recruiter downloads shows up in their files as "resume.pdf" by nobody.
@@ -23,7 +24,7 @@
   pdftitle={Mohammed Alkindi - Resume},
   pdfauthor={Mohammed Alkindi},
   pdfsubject={Software engineering, open source},
-  pdfkeywords={software engineering, open source, Python, TypeScript, machine learning}
+  pdfkeywords={software engineering, open source, Python, TypeScript, machine learning, data analysis}
 }
 \usepackage{microtype}
 
@@ -51,7 +52,7 @@
 \titleformat{\section}
   {\normalfont\fontsize{8.4}{10}\selectfont\bfseries\color{soft}}
   {}{0em}{\MakeUppercase}[\vspace{-0.62em}{\color{rule}\rule{\linewidth}{0.4pt}}]
-\titlespacing*{\section}{0pt}{0.6em}{0.3em}
+\titlespacing*{\section}{0pt}{0.8em}{0.34em}
 
 % --- bullets ---------------------------------------------------------------
 \setlist[itemize]{leftmargin=1.0em, topsep=0.08em, itemsep=0.04em,
@@ -68,8 +69,7 @@
 
 % ===========================================================================
 \begin{center}
-  {\fontsize{19}{22}\selectfont\bfseries Mohammed Alkindi}\\[0.34em]
-  {\small Computer Science student, UC San Diego}\\[0.3em]
+  {\fontsize{19}{22}\selectfont\bfseries Mohammed Alkindi}\\[0.4em]
   {\small\color{soft}
     San Diego, CA \textbar{}
     \href{mailto:malkindi@ucsd.edu}{malkindi@ucsd.edu} \textbar{}
@@ -82,85 +82,81 @@
 % ===========================================================================
 \section{Education}
 
-\entry{\textbf{University of California, San Diego} \textbar{} B.S.\ Computer Science \textbar{} IDEA Scholar}{Expected Jun 2030}
-\entry{\textbf{University of Pennsylvania} \textbar{} Non-degree program}{Sep 2025 -- Apr 2026}
+\entry{\textbf{University of California, San Diego} \textbar{} B.S.\ Computer Science \textbar{} IDEA Scholar}{Sep 2026 -- Jun 2030 (Expected)}
+{\small Current coursework: CSE 11 (accelerated intro to programming, Java), MATH 18 (Linear Algebra). Credit for Calculus I and II.}\par
+\vspace{0.2em}
+\entry{\textbf{University of Pennsylvania} \textbar{} Professional Development Program (non-degree)}{Sep 2025 -- Apr 2026}
 
 % ===========================================================================
 \section{Experience}
 
-\entry{\textbf{Shell Kuwait} \textbar{} Data Analyst Intern}{Jun 2026 -- Aug 2026}
+\entry{\textbf{Open Source Contributor}}{Aug 2026 -- Present}
 \begin{itemize}
-  \item Automated the daily production report with a Python tool that turns the day's spreadsheets into
-        dashboards, PDF reports and an email draft in about two minutes. The team did this by hand before.
-  \item Added validation on every Excel input, so a bad source file stopped the run before any report went out.
-  \item Built an interactive dashboard so colleagues could filter by asset, search wells and track performance.
+  \item Merged 199 pull requests into 47 outside projects, including 60 at Microsoft and 22 at NVIDIA, with 82\% of
+        decided pull requests accepted. Most active in Microsoft hve-core (32), simple-statistics (23), NegPy (17) and watchdog (15).
+  \item Fixed floating point cancellation in simple-statistics linear regression, which returned a slope 69\% wrong on
+        timestamp inputs, by centering the sums on the means. Applied the same fix to Jenks variance.
+  \item Fixed a Microsoft onnxscript optimizer rule that ignored Gemm's beta when folding BatchNorm into Gemm, so
+        rewritten ONNX models returned wrong values with no error.
+  \item Fixed distributed training bugs in NVIDIA NeMo Automodel, including validation loss that was never reduced
+        across data parallel ranks and multi node torchrun jobs that failed to rendezvous on SkyPilot.
 \end{itemize}
 
-% ===========================================================================
-\section{Open source}
-
-\entry{\textbf{Contributor to outside projects}}{Aug 2026 -- Present}
+\vspace{0.25em}
+\entry{\textbf{Shell} \textbar{} Data Analyst Intern \textbar{} Kuwait}{Jun 2026 -- Aug 2026}
 \begin{itemize}
-  \item Merged 164 pull requests across 43 projects as of October 2026 (39 at Microsoft), mostly correctness,
-        Windows and CI bugs. Most active in simple-statistics (23), Microsoft hve-core (22) and NegPy (17).
-  \item Fixed floating point cancellation in simple-statistics, where linear regression returned a slope
-        69\% wrong when x was a timestamp. Centered the sums on the means and applied the same fix to Jenks variance.
-  \item Corrected six standard normal table entries above z = 2.9 and two chi-squared critical values in
-        simple-statistics, and gave tied values midranks in its rank correlation.
-  \item Fixed a default optimizer rule in Microsoft onnxscript that ignored Gemm's beta when folding
-        BatchNorm into Gemm, so rewritten models returned wrong values with no error. Added tests that fail
-        without either half of the fix.
-  \item Fixed a false deletion event in watchdog for Windows renames that change only letter case.
+  \item Automated the daily production report with a Python pipeline (pandas, openpyxl, matplotlib) that detects both
+        source workbook layouts and renders the dashboard in under 5 seconds, replacing roughly 3 hours of manual Excel work per day.
+  \item Wrote 12 validation rules (types, ranges, required fields, duplicates) that block publishing on bad input, and
+        logged a SHA-256 hash of every source file for audit.
+  \item Built an interactive dashboard with asset filters, well search and KPI cards, plus PDF and email outputs.
 \end{itemize}
 
 % ===========================================================================
 \section{Projects}
 
-\entry{\textbf{ProofX} \textbar{} Python, Lean 4 \textbar{} \href{https://proofx.org}{proofx.org}}{2024 -- 2026 (paused)}
+\entry{\textbf{ProofX} \textbar{} Python, Numba, Lean 4 \textbar{} \href{https://proofx.org}{proofx.org}}{2024 -- Present}
 \begin{itemize}
-  \item Built a Collatz counterexample search engine that ran about 10 million sequence steps per second and
-        logged the seed, budget and code revision of every run, so any result can be replayed.
-  \item Built Germinal, a Lean 4 pipeline that proposes and formalizes conjectures, then tests each one with
-        three independent counterexample searches.
+  \item Built a parallel Collatz search kernel in Numba that checks about 24 million integers per second on 2 CPU
+        threads, about 240x faster than plain Python. Saved runs go to a seeded ledger so results can be replayed.
+  \item Converted search ledgers into 500 Lean 4 theorems checked by the Lean kernel, and automated conjecture testing by
+        racing 7 proof tactics and running 3 counterexample searches with a 15 second limit. 430 tests pass in CI.
 \end{itemize}
 
-\vspace{0.3em}
-\entry{\textbf{Ridge} \textbar{} JavaScript, Node.js, Claude API \textbar{} \href{https://ridge-data.vercel.app}{ridge-data.vercel.app}}{2026}
+\vspace{0.25em}
+\entry{\textbf{Ridge} \textbar{} Node.js, Express, Claude API, Vercel \textbar{} \href{https://ridge-data.vercel.app}{ridge-data.vercel.app}}{2026}
 \begin{itemize}
-  \item Built a spreadsheet analysis app that computes correlations, Welch intervals, chi-square and
-        Kolmogorov-Smirnov tests in code before any AI sees the data. Each finding records its method,
-        sample size and source rows.
-  \item Handled messy workbooks by detecting the header row and dropping title and total rows, with every
-        excluded row reported. Tested with Vitest and Playwright in CI.
+  \item Built a spreadsheet analysis app that runs 10 statistical methods (Pearson, Spearman, Welch, chi-square, KS
+        and others) in code before any LLM sees the data. The AI explanation is optional and runs last.
+  \item Reads CSV, Excel and other office files and records the method, sample size and source rows behind every
+        finding. 565 unit and API tests and 85 Playwright browser tests pass in CI, with dependency scanning and rate limiting.
 \end{itemize}
 
-\vspace{0.3em}
-\entry{\textbf{OmanX} \textbar{} JavaScript, Node.js, Supabase, Claude API \textbar{} \href{https://www.omanx.org}{omanx.org}}{2026 -- Present}
+\vspace{0.25em}
+\entry{\textbf{Switchyard} \textbar{} TypeScript, Node.js \textbar{} \href{https://www.npmjs.com/package/@switchyardhq/switchyard}{npm @switchyardhq/switchyard}}{2026}
 \begin{itemize}
-  \item Built an AI guidance assistant for Omani scholarship students abroad. It answers visa questions from a
-        curated knowledge base and government sites, and urgent cases get fixed checklists written in code.
-\end{itemize}
-
-% ===========================================================================
-\section{Honors}
-
-Mathematics Student of the Year, sole recipient (2025) \textbar{} National mathematics competition, top 4 team (2024)\\
-Thiel Fellowship Semifinalist (2026) \textbar{} Oman Government Scholarship (2025)
-
-% ===========================================================================
-\section{Leadership}
-\begin{itemize}
-  \item \textbf{High school math teams}, founder and president at two schools. Ran their olympiad training.
-  \item \textbf{Oman Space}, co-founder (Aug 2026 -- Present). Early stage group connecting Omani students with
-        aerospace organizations.
-  \item \textbf{Penn Chess Club}, VP of Outreach (Sep 2025 -- Apr 2026). Promoted club events and helped run them.
+  \item Built a CLI with 19 commands that runs several AI coding agents in isolated Git worktrees and flags merge
+        conflicts early by simulating the merge in memory with git merge-tree for every agent pair that edits the same file.
+  \item Shipped 5 npm releases. 260 tests, 220 of them against real Git repos, pass in CI on Windows, macOS and Linux.
 \end{itemize}
 
 % ===========================================================================
-\section{Skills}
+\section{Honors and Leadership}
+\begin{itemize}
+  \item \textbf{Thiel Fellowship Semifinalist} (2026), from more than 3,000 applicants.
+  \item \textbf{MIT Bitcoin Hackathon, Community Prize} (2026) for BridgX, a Bitcoin to EVM bridge prototype built in 36 hours.
+  \item \textbf{Oman Government Scholarship} (2025), fully funded by the Ministry of Higher Education.
+  \item \textbf{Mathematics Student of the Year} (2025), sole recipient. Top 4 team in a national mathematics competition (2024).
+  \item \textbf{Meta Connect 2026}, invited by Meta to attend in Menlo Park and join its AI Developer Roundtable.
+  \item \textbf{Penn Chess Club}, VP of Outreach (2025 -- 2026). Promoted and helped run club events, and built the club website.
+\end{itemize}
 
-\textbf{Languages:} Python, TypeScript, JavaScript, SQL, Lean 4, Java (coursework)\\
-\textbf{Tools:} Git, GitHub Actions, pytest, Vitest, Playwright, pandas, NumPy, scikit-learn, Node.js, React, PostgreSQL\\
-\textbf{Certifications:} CS50x and CS50P (Harvard), Machine Learning Specialization (Stanford) \textbar{} \textbf{Spoken:} Arabic and English
+% ===========================================================================
+\section{Technical Skills}
+
+\textbf{Languages:} Python, TypeScript, JavaScript, Java, SQL, Bash, PowerShell, Lean 4\\
+\textbf{Data and ML:} pandas, NumPy, scikit-learn, PyTorch, XGBoost, Numba, statistical inference, K-Means, PCA\\
+\textbf{Frameworks and Tools:} Node.js, Express, FastAPI, React, PostgreSQL, Supabase, Docker, Git, GitHub Actions, pytest, Playwright\\
+\textbf{Certifications:} Machine Learning Specialization (Stanford), CS50x and CS50P (Harvard) \textbar{} \textbf{Spoken:} Arabic, English
 
 \end{document}
