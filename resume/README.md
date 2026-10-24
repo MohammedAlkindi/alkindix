@@ -1,6 +1,9 @@
 # Resume
 
-`public/resume.pdf` is the current resume supplied by Mohammed on 12 October 2026, copied byte-for-byte from his master PDF. `resume.tex` is an older version and does not generate the current download. Do not overwrite the published PDF with a build of that source until the source has been brought up to date.
+`resume.tex` is the single source. Build it, then copy the PDF to `public/resume.pdf`, to
+`Career/Resumes/Resume.pdf` in his Google Drive, and to dotgithub `infra/data/resume.pdf` (the copy
+the opportunities routine attaches). All three were brought back in line on 24 October 2026; before
+that the site and Drive served a LibreOffice export from 12 October that this source did not generate.
 
 ## Build
 
@@ -48,8 +51,8 @@ gh api -X GET search/issues \
 ```
 
 For the project count and the combined stars, page through the same query and
-take the distinct `repository_url` values. As of 2026-09-15 that is 110 merged
-pull requests across 32 projects carrying 626,632 stars.
+take the distinct `repository_url` values. As of 2026-10-24 that is 199 merged pull
+requests across 47 projects (60 at Microsoft, 22 at NVIDIA), 45 closed unmerged, so 82% accepted.
 
 **Applicant tracking systems read the text layer, not the page.** Before
 2026-10-09 a strict parser read the contact line as one token
