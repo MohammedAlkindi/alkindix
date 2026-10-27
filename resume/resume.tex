@@ -5,7 +5,7 @@
 %
 % Every figure here is measured, not estimated. Re-derive the open source
 % numbers before each send; the commands are in resume/README.md.
-% Last measured 2026-10-24.
+% Last measured 2026-10-26.
 
 \documentclass[10pt,letterpaper]{article}
 
@@ -24,7 +24,7 @@
   pdftitle={Mohammed Alkindi - Resume},
   pdfauthor={Mohammed Alkindi},
   pdfsubject={Software engineering, open source},
-  pdfkeywords={software engineering, open source, Python, TypeScript, machine learning, data analysis}
+  pdfkeywords={software engineering, open source, Python, TypeScript, Java, machine learning, LLM, RAG, AI agents, Claude API, OpenAI API, MCP, data analysis}
 }
 \usepackage{microtype}
 
@@ -92,18 +92,19 @@
 
 \entry{\textbf{Open Source Contributor}}{Aug 2026 -- Present}
 \begin{itemize}
-  \item Merged 199 pull requests into 47 outside projects, including 60 at Microsoft and 22 at NVIDIA, with 82\% of
-        decided pull requests accepted. Most active in Microsoft hve-core (32), simple-statistics (23), NegPy (17) and watchdog (15).
+  \item Merged 203 pull requests into 47 outside projects, including 60 at Microsoft and 22 at NVIDIA, with 82\% of
+        decided pull requests accepted. 69 went to LLM and AI agent tooling, including Microsoft hve-core (32) and Agent Package
+        Manager (8), NVIDIA NeMo Automodel (13) and NeMo Agent Toolkit (5), and mcp-use, a Model Context Protocol framework (7).
   \item Fixed floating point cancellation in simple-statistics linear regression, which returned a slope 69\% wrong on
         timestamp inputs, by centering the sums on the means. Applied the same fix to Jenks variance.
   \item Fixed a Microsoft onnxscript optimizer rule that ignored Gemm's beta when folding BatchNorm into Gemm, so
         rewritten ONNX models returned wrong values with no error.
-  \item Fixed distributed training bugs in NVIDIA NeMo Automodel, including validation loss that was never reduced
+  \item Fixed distributed LLM training bugs in NVIDIA NeMo Automodel, including validation loss that was never reduced
         across data parallel ranks and multi node torchrun jobs that failed to rendezvous on SkyPilot.
 \end{itemize}
 
 \vspace{0.25em}
-\entry{\textbf{Shell} \textbar{} Data Analyst Intern \textbar{} Kuwait}{Jun 2026 -- Aug 2026}
+\entry{\textbf{Shell} \textbar{} Data Analyst Intern}{Jun 2026 -- Aug 2026}
 \begin{itemize}
   \item Automated the daily production report with a Python pipeline (pandas, openpyxl, matplotlib) that detects both
         source workbook layouts and renders the dashboard in under 5 seconds, replacing roughly 3 hours of manual Excel work per day.
@@ -155,6 +156,7 @@
 \section{Technical Skills}
 
 \textbf{Languages:} Python, TypeScript, JavaScript, Java, SQL, Bash, PowerShell, Lean 4\\
+\textbf{AI and LLMs:} Claude API, OpenAI API, RAG, embeddings, prompt engineering, AI agents, Hugging Face Transformers, MCP\\
 \textbf{Data and ML:} pandas, NumPy, scikit-learn, PyTorch, XGBoost, Numba, statistical inference, K-Means, PCA\\
 \textbf{Frameworks and Tools:} Node.js, Express, FastAPI, React, PostgreSQL, Supabase, Docker, Git, GitHub Actions, pytest, Playwright\\
 \textbf{Certifications:} Machine Learning Specialization (Stanford), CS50x and CS50P (Harvard) \textbar{} \textbf{Spoken:} Arabic, English

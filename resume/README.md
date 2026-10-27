@@ -51,8 +51,14 @@ gh api -X GET search/issues \
 ```
 
 For the project count and the combined stars, page through the same query and
-take the distinct `repository_url` values. As of 2026-10-24 that is 199 merged pull
+take the distinct `repository_url` values. As of 2026-10-26 that is 203 merged pull
 requests across 47 projects (60 at Microsoft, 22 at NVIDIA), 45 closed unmerged, so 82% accepted.
+NVIDIA counts both the `NVIDIA` and `NVIDIA-NeMo` orgs (9 + 13).
+
+The "LLM and AI agent tooling" figure (69 on 2026-10-26) is the merged count in exactly these
+repositories: microsoft/hve-core (32), NVIDIA-NeMo/Automodel (13), microsoft/apm (8),
+mcp-use/mcp-use (7), NVIDIA/NeMo-Agent-Toolkit (5), NVIDIA/SkillSpector (3) and NVIDIA/garak (1).
+Add a repository to this list before counting it.
 
 **Applicant tracking systems read the text layer, not the page.** Before
 2026-10-09 a strict parser read the contact line as one token
