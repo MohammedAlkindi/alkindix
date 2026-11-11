@@ -8,6 +8,7 @@
 - Moved PhotographyX and Architect of Silence under canonical AlkindiX routes.
 - Simplified portfolio copy, personal-practice links, and shared interactions.
 - Research: limited the financial distress card to results the published code supports.
+- Projects: folded contextbill into the Switchyard entry after the two repositories merged, and removed the link to the deleted standalone repository.
 
 ## 1.0.0 - 2025
 
