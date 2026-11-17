@@ -5,7 +5,7 @@
 %
 % Every figure here is measured, not estimated. Re-derive the open source
 % numbers before each send; the commands are in resume/README.md.
-% Last measured 2026-10-26.
+% Last measured 2026-11-17.
 
 \documentclass[10pt,letterpaper]{article}
 
@@ -85,16 +85,16 @@
 \entry{\textbf{University of California, San Diego} \textbar{} B.S.\ Computer Science \textbar{} IDEA Scholar}{Sep 2026 -- Jun 2030 (Expected)}
 {\small Current coursework: CSE 11 (accelerated intro to programming, Java), MATH 18 (Linear Algebra). Credit for Calculus I and II.}\par
 \vspace{0.2em}
-\entry{\textbf{University of Pennsylvania} \textbar{} Professional Development Program (non-degree)}{Sep 2025 -- Apr 2026}
+\entry{\textbf{University of Pennsylvania} \textbar{} Professional Development Program (non-degree)}{Oct 2025 -- May 2026}
 
 % ===========================================================================
 \section{Experience}
 
 \entry{\textbf{Open Source Contributor}}{Aug 2026 -- Present}
 \begin{itemize}
-  \item Merged 203 pull requests into 47 outside projects, including 60 at Microsoft and 22 at NVIDIA, with 82\% of
-        decided pull requests accepted. 69 went to LLM and AI agent tooling, including Microsoft hve-core (32) and Agent Package
-        Manager (8), NVIDIA NeMo Automodel (13) and NeMo Agent Toolkit (5), and mcp-use, a Model Context Protocol framework (7).
+  \item Merged 248 pull requests into 53 outside projects with a combined 900,000+ GitHub stars, including 83 at Microsoft,
+        22 at NVIDIA, and OpenClaw, uv, the OpenAI Agents SDK and Qwen Code. 83 went to LLM and AI agent tooling, including
+        Microsoft hve-core (43) and Agent Package Manager (11), NVIDIA NeMo Automodel (13) and NeMo Agent Toolkit (5), and mcp-use (7).
   \item Fixed floating point cancellation in simple-statistics linear regression, which returned a slope 69\% wrong on
         timestamp inputs, by centering the sums on the means. Applied the same fix to Jenks variance.
   \item Fixed a Microsoft onnxscript optimizer rule that ignored Gemm's beta when folding BatchNorm into Gemm, so
@@ -118,19 +118,19 @@
 
 \entry{\textbf{ProofX} \textbar{} Python, Numba, Lean 4 \textbar{} \href{https://proofx.org}{proofx.org}}{2024 -- Present}
 \begin{itemize}
-  \item Built a parallel Collatz search kernel in Numba that checks about 24 million integers per second on 2 CPU
-        threads, about 240x faster than plain Python. Saved runs go to a seeded ledger so results can be replayed.
-  \item Converted search ledgers into 500 Lean 4 theorems checked by the Lean kernel, and automated conjecture testing by
-        racing 7 proof tactics and running 3 counterexample searches with a 15 second limit. 430 tests pass in CI.
+  \item Built search tools for open number theory conjectures (Collatz, Goldbach) in Python and Numba. Every run is saved
+        to a seeded ledger with its parameters and code revision, so any result can be replayed and challenged.
+  \item Turned search ledgers into 500 Lean 4 theorems (539 in the project) that Lean builds and checks in CI. Conjecture
+        testing runs 7 proof tactics concurrently, plus 3 counterexample searches with a 15 second limit. 447 tests pass in CI.
 \end{itemize}
 
 \vspace{0.25em}
 \entry{\textbf{Ridge} \textbar{} Node.js, Express, Claude API, Vercel \textbar{} \href{https://ridge-data.vercel.app}{ridge-data.vercel.app}}{2026}
 \begin{itemize}
-  \item Built a spreadsheet analysis app that runs 10 statistical methods (Pearson, Spearman, Welch, chi-square, KS
+  \item Built a spreadsheet analysis app that runs 9 statistical methods (Pearson, Spearman, Welch, chi-square, KS
         and others) in code before any LLM sees the data. The AI explanation is optional and runs last.
   \item Reads CSV, Excel and other office files and records the method, sample size and source rows behind every
-        finding. 565 unit and API tests and 85 Playwright browser tests pass in CI, with dependency scanning and rate limiting.
+        finding. 565 unit and API tests and 87 Playwright browser tests pass in CI, with dependency scanning and rate limiting.
 \end{itemize}
 
 \vspace{0.25em}
@@ -138,7 +138,8 @@
 \begin{itemize}
   \item Built a CLI with 19 commands that runs several AI coding agents in isolated Git worktrees and flags merge
         conflicts early by simulating the merge in memory with git merge-tree for every agent pair that edits the same file.
-  \item Shipped 5 npm releases. 260 tests, 220 of them against real Git repos, pass in CI on Windows, macOS and Linux.
+  \item Shipped 5 npm releases with 960+ downloads. 302 tests, most of them against real Git repos, pass in CI on Windows,
+        macOS and Linux.
 \end{itemize}
 
 % ===========================================================================

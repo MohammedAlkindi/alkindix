@@ -51,12 +51,14 @@ gh api -X GET search/issues \
 ```
 
 For the project count and the combined stars, page through the same query and
-take the distinct `repository_url` values. As of 2026-10-26 that is 203 merged pull
-requests across 47 projects (60 at Microsoft, 22 at NVIDIA), 45 closed unmerged, so 82% accepted.
-NVIDIA counts both the `NVIDIA` and `NVIDIA-NeMo` orgs (9 + 13).
+take the distinct `repository_url` values. As of 2026-11-17 that is 248 merged pull
+requests across 53 projects (83 at Microsoft, 22 at NVIDIA), 92 closed unmerged, so 73% accepted;
+the rate is no longer on the resume. The 53 projects had 909,749 combined stars that day (sum of
+`gh api repos/OWNER/REPO --jq .stargazers_count`; openclaw/openclaw alone is 394,673), so the
+resume says 900,000+. NVIDIA counts both the `NVIDIA` and `NVIDIA-NeMo` orgs (9 + 13).
 
-The "LLM and AI agent tooling" figure (69 on 2026-10-26) is the merged count in exactly these
-repositories: microsoft/hve-core (32), NVIDIA-NeMo/Automodel (13), microsoft/apm (8),
+The "LLM and AI agent tooling" figure (83 on 2026-11-17) is the merged count in exactly these
+repositories: microsoft/hve-core (43), NVIDIA-NeMo/Automodel (13), microsoft/apm (11),
 mcp-use/mcp-use (7), NVIDIA/NeMo-Agent-Toolkit (5), NVIDIA/SkillSpector (3) and NVIDIA/garak (1).
 Add a repository to this list before counting it.
 
@@ -79,3 +81,11 @@ print('split words:', [l for l in L if l.endswith('-')])
 ```
 
 The email must come back as `malkindi@ucsd.edu` alone and both lists must be empty.
+
+**Project figures, measured 2026-11-17.** ProofX: 447 Python tests passed in CI run 44048472744, and
+`ProofX/Generated/LedgerCertificates.lean` holds 500 generated theorems (539 `theorem` lines in the
+project). Ridge: 565 unit and API tests and 87 Playwright tests in run 42365041336, and 9 methods
+named in its README. Switchyard: 19 commands in the published 0.5.0, 5 npm versions, 962 downloads
+to 2026-11-16 (`api.npmjs.org/downloads/range`), 302 tests at HEAD. The ProofX speed line was removed
+on 2026-11-17: the Numba kernel runs about 30 million integers per second on 2 threads, but returns
+short stopping times for some inputs, so "checks" was not true.
